@@ -42,32 +42,58 @@ readable to signal it's a Singapore professional service.
 - Card `<h3>`s (Commercial / Residential / Industrial) are appropriately nested under
   the Services `<h2>`.
 
+## Update — 2026-07-08
+
+- **Canonical URL**: done. Domain confirmed as `b-acoustics.com` (see `CNAME`);
+  `<link rel="canonical" href="https://b-acoustics.com/">` is in place.
+- **Blog/resource content**: two long-tail landing pages now exist under `blog/`:
+  `office-soundproofing-cost-singapore.html` and `stc-vs-nrc-explained.html`. Both are
+  plain static HTML (not the bundler-wrapped format `index.html` uses), each with its
+  own title/meta description/canonical/OG/Twitter tags and an `Article` JSON-LD block,
+  and they cross-link to each other and back to `index.html`. They were previously
+  orphaned (no inbound link from the homepage) — fixed by adding footer links
+  ("Office Cost Guide", "STC vs NRC") on `index.html` so they're discoverable by crawl,
+  not just by URL.
+- **`sitemap.xml` + `robots.txt`**: added at the repo root, listing the homepage and
+  both blog posts, with `robots.txt` pointing at the sitemap.
+
+### A structural note on `index.html`
+
+`index.html` isn't plain static markup — it's a self-contained "bundler" export (present
+since the initial commit) that inlines assets as base64 in a `script[type="__bundler/manifest"]`
+block and the actual page markup as an escaped JSON string in
+`script[type="__bundler/template"]`, unpacked into `document.documentElement` by JS on
+`DOMContentLoaded`. The real `<title>`/meta tags/JSON-LD only exist inside that escaped
+string, not in the initial static `<head>` (which just says "Bundled Page"). This has been
+the working format since day one and JS-rendering crawlers do see the final unpacked head,
+so it hasn't been flattened — but it makes hand-editing that string error-prone (see the
+"Fix unterminated JSON string syntax error" commit). When editing `index.html` content going
+forward, decode the template line as JSON, edit the resulting HTML, then re-serialize with
+`JSON.stringify` rather than hand-patching escaped quotes in place — safer and is how the
+footer-link change above was made.
+
 ## Remaining recommendations (not yet applied — need your input or content)
 
-1. **Canonical URL**: not added, since the live domain wasn't confirmed. Once
-   `b-acoustics.sg` (or whatever domain) is live, add:
-   `<link rel="canonical" href="https://YOUR-DOMAIN/">`
-2. **Physical address / phone number**: the JSON-LD schema currently has no
+1. **Physical address / phone number**: the JSON-LD schema currently has no
    `telephone` or `address` field because none exist on the page. Local SEO (Google
    Business Profile parity, map-pack ranking) benefits significantly from a real
    registered address and phone number in schema — add these once available.
-3. **Google Business Profile**: not a code change, but for local-intent terms like
+2. **Google Business Profile**: not a code change, but for local-intent terms like
    "acoustic consultant Singapore," a verified GBP listing usually outranks organic
    page SEO alone. Worth setting up in parallel.
-4. **Blog/resource content**: the page is a single static page. If ranking for
-   long-tail terms like "office soundproofing cost Singapore" or "STC vs NRC explained"
-   matters, that needs dedicated content pages — this site has no routing for that today.
-5. **Team `[ name ]` placeholders**: three roles (Principal Acoustic Engineer, Lead
+3. **Team `[ name ]` placeholders**: three roles (Principal Acoustic Engineer, Lead
    Architect, Project Delivery) still show `[ name ]` instead of actual names. This is a
    content gap, not an SEO or asset-generation issue, but real named experts with
    credentials (e.g. MIOA) support E-E-A-T (Google's expertise/authority signals) more
    than placeholder text.
-6. **Image sitemap / real photography**: the 3 "project photo" and 5 "texture" slots
+4. **Image sitemap / real photography**: the 3 "project photo" and 5 "texture" slots
    now have descriptive inline SVG illustrations with real alt text, which is
    accessible and crawlable — but they are illustrative placeholders, not real project
    photography. Swapping in actual project photos (with the same alt-text pattern
    already in place) will improve both credibility and Google Images traffic for
-   "acoustic panels Singapore" / "soundproofing Singapore" image search.
+   "acoustic panels Singapore" / "soundproofing Singapore" image search. Still blocked
+   on fal.ai billing (see memory: `office-acoustics.webp` generation 403'd on exhausted
+   balance).
 
 ## Target keyword coverage after this pass
 
