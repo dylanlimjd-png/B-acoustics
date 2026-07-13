@@ -28,6 +28,7 @@ readable to signal it's a Singapore professional service.
 - 8 image/texture placeholders replaced with inline SVGs + descriptive captions +
   `aria-label`, each carrying real alt-equivalent text (see asset section of this repo's
   chat log or the diff for exact wording — e.g. "Party-wall sound isolation — home theatre").
+  *(Superseded 2026-07-13 — see below: these are now real photos, not SVGs.)*
 
 ## Heading structure (reviewed, left as-is — already sound)
 
@@ -72,6 +73,23 @@ forward, decode the template line as JSON, edit the resulting HTML, then re-seri
 `JSON.stringify` rather than hand-patching escaped quotes in place — safer and is how the
 footer-link change above was made.
 
+## Update — 2026-07-13
+
+- **Real project photography**: done. The 3 "project photo" and 5 "texture" slots
+  (previously inline SVG illustrations) are now real images generated via Google
+  Nano Banana, downloaded locally into `/images/`, and wired into `index.html`
+  (same `alt` text/`aria-label` wording carried over from the SVG version, so no
+  loss of existing alt-text SEO value). Each was compressed with `sharp`
+  (resize + webp quality 78) before commit — total image weight dropped from
+  18MB to ~700KB across the 8 files, keeping page-load performance in check.
+  Verified rendering with no regressions via headless Chromium against the live
+  site. Uncompressed source images are not in the repo (kept outside it as a
+  local backup) — regenerate via Nano Banana if higher-res originals are ever
+  needed for print/other use.
+- This also closes out the fal.ai billing blocker noted in the prior pass —
+  image generation moved to Nano Banana instead, so that dependency no longer
+  applies.
+
 ## Remaining recommendations (not yet applied — need your input or content)
 
 1. **Physical address / phone number**: the JSON-LD schema currently has no
@@ -86,14 +104,6 @@ footer-link change above was made.
    content gap, not an SEO or asset-generation issue, but real named experts with
    credentials (e.g. MIOA) support E-E-A-T (Google's expertise/authority signals) more
    than placeholder text.
-4. **Image sitemap / real photography**: the 3 "project photo" and 5 "texture" slots
-   now have descriptive inline SVG illustrations with real alt text, which is
-   accessible and crawlable — but they are illustrative placeholders, not real project
-   photography. Swapping in actual project photos (with the same alt-text pattern
-   already in place) will improve both credibility and Google Images traffic for
-   "acoustic panels Singapore" / "soundproofing Singapore" image search. Still blocked
-   on fal.ai billing (see memory: `office-acoustics.webp` generation 403'd on exhausted
-   balance).
 
 ## Target keyword coverage after this pass
 
