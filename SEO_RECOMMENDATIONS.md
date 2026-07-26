@@ -98,12 +98,10 @@ footer-link change above was made.
    registered address and phone number in schema — add these once available.
 2. **Google Business Profile**: not a code change, but for local-intent terms like
    "acoustic consultant Singapore," a verified GBP listing usually outranks organic
-   page SEO alone. Worth setting up in parallel.
-3. **Team `[ name ]` placeholders**: three roles (Principal Acoustic Engineer, Lead
-   Architect, Project Delivery) still show `[ name ]` instead of actual names. This is a
-   content gap, not an SEO or asset-generation issue, but real named experts with
-   credentials (e.g. MIOA) support E-E-A-T (Google's expertise/authority signals) more
-   than placeholder text.
+   page SEO alone. *(In progress 2026-07-26 — business description and ad-image
+   prompts drafted; listing setup itself is the user's action, not a code change.)*
+3. ~~**Team `[ name ]` placeholders**~~ — done. Real names (Thomas Ee, Ivan Cheong,
+   Delon Lee) now appear in the Studio section.
 
 ## Target keyword coverage after this pass
 
@@ -114,3 +112,40 @@ footer-link change above was made.
 | noise reduction | commercial/industrial service bullets, expertise intro, image captions |
 | acoustic panels | materials intro, schema `knowsAbout`, image captions/alt text |
 | sound isolation | hero paragraph, residential service bullet, expertise intro, image alt text |
+
+## Update — 2026-07-26
+
+- **Three service landing pages added** under `/services/` — the biggest topical-depth
+  gap identified after connecting Google Search Console (pages ranked page 2-3 for
+  target queries with no dedicated content to reinforce them). Each is plain static
+  HTML (same safe pattern as `blog/*.html`, no bundler risk), with its own
+  title/meta description/canonical/OG/Twitter tags and a `Service` JSON-LD block
+  (new schema type, not used elsewhere on the site):
+  - `services/office-acoustics-singapore.html` — Commercial (room acoustics, speech
+    privacy, mechanical noise reduction)
+  - `services/party-wall-soundproofing-singapore.html` — Residential (party-wall/floor
+    isolation, window/façade upgrades, home theatre tuning)
+  - `services/industrial-noise-compliance-singapore.html` — Industrial (boundary noise
+    compliance, plant/duct attenuation, vibration control)
+
+  Each includes an FAQ section targeting long-tail/featured-snippet queries and cross-
+  links to the two existing blog posts and the other service pages.
+- **Internal linking strengthened site-wide** (previously flagged as thin — only 2
+  footer links existed): `index.html`'s `#services` cards now each have a "Learn more"
+  link to the matching service page; `index.html`'s footer, and both existing blog
+  posts' footers, now link to all 3 service pages; both blog posts' "related" sections
+  gained a link to their most topically-relevant new service page.
+- **`sitemap.xml`** updated with the 3 new service page URLs.
+- **"Selected work" section on `index.html` genericized**: the three specific named
+  projects (a Tanjong Pagar office HQ, a Bukit Timah residence, a Jurong industrial
+  plant) and their claimed numeric outcomes (NRC/STC/dB figures) were removed at the
+  user's request and replaced with generic category labels (Open-Plan Office / Home
+  Theatre / Industrial Plant) — the section eyebrow/heading were adjusted to match
+  ("Capabilities" / "Built for the environment.") since specific measured-outcome
+  claims no longer apply. These project names should **not** be reintroduced in future
+  copy (GBP listing, ad creative, new content) — see project memory for the decision.
+  Image alt text was updated to remove the specific names while keeping descriptive
+  SEO value (e.g. "commercial soundproofing project, Singapore").
+- GBP business description (3 drafted variants) and Nano Banana ad-image prompts were
+  produced this session but are conversation-only, not committed to the repo — see
+  project memory `seo-improvement-plan-2026-07` for the chosen direction if resuming.
