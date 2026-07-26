@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "b-acoustics-api",
+  "main": "src/index.js",
+  "compatibility_date": "2026-07-26",
+  "kv_namespaces": [
+    {
+      "binding": "CHAT_RATE_LIMIT",
+      "id": "917a566fb5c04d8092ed5344abd37853"
+    }
+  ]
+}
