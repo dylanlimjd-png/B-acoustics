@@ -92,8 +92,12 @@ footer-link change above was made.
 
 ## Remaining recommendations (not yet applied — need your input or content)
 
-1. **Physical address / phone number**: the JSON-LD schema currently has no
-   `telephone` or `address` field because none exist on the page. Local SEO (Google
+1. **Physical address / phone number**: phone done 2026-07-26 — `telephone: "+65 9641
+   6999"` added to the JSON-LD `ProfessionalService` schema (both the static shell
+   head and the bundler template's decoded head), plus a matching visible, clickable
+   `tel:` link added to the on-page NAP block in the Enquire/contact section (next to
+   the existing Email/Studio rows). Address is still outstanding — schema still has
+   no `address` field because none exist on the page yet. Local SEO (Google
    Business Profile parity, map-pack ranking) benefits significantly from a real
    registered address and phone number in schema — add these once available.
 2. **Google Business Profile**: not a code change, but for local-intent terms like
