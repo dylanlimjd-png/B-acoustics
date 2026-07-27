@@ -66,16 +66,18 @@ a fresh look next session — ask the user for a screenshot or exact viewport/de
 details rather than re-guessing blind, and hard-refresh (bypass cache) when
 comparing against the live URL.
 
-**New recurring activity — "SEO ranking" (started 2026-07-27), informal weekly
-cadence.** A live-browser Google search check (no Google login — see
+**New recurring activity — "SEO ranking" (started 2026-07-27), weekly cadence.**
+A live-browser Google search check (no Google login — see
 `seo-ranking-routine-2026-07` project memory for why and the exact method) of
-actual organic visibility, indexing coverage, and GBP/local-pack presence. No
-scheduling tool can run this unattended (cloud routines can't drive a browser;
-session-local cron isn't durable across sessions), so there's no automation here —
-**check the date of the last `## SEO ranking check` entry in
-`SEO_RECOMMENDATIONS.md`, and if it's been ~7+ days, proactively suggest running it
-together** in whatever session is active. Findings + resolution plans are logged in
-`SEO_RECOMMENDATIONS.md`, not here.
+actual organic visibility, indexing coverage, and GBP/local-pack presence. The
+check itself still can't run unattended (cloud routines can't drive a browser;
+session-local cron isn't durable across sessions) — but as of 2026-07-27, **a
+`SessionStart` hook** (`.claude/hooks/seo-ci-reminder.sh`, wired in the personal/
+gitignored `.claude/settings.local.json`) automatically checks the last-logged
+date of both this activity and the weekly ranked-topics generation below, and
+injects a reminder into context whenever either is ~7+ days stale — so it no
+longer relies on remembering to check manually. Findings + resolution plans are
+still logged in `SEO_RECOMMENDATIONS.md`, not here.
 
 ---
 
