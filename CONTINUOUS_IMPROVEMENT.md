@@ -27,6 +27,15 @@ in a single session — worth tackling together. Item 4 can follow once reviews/
 had a week or two to accumulate. Item 5 has its own planning doc in progress (see repo
 root once drafted).
 
+**Progress:**
+- **Item 5 (AI chat agent) — done 2026-07-27.** Cloudflare Worker backend (enquiry
+  email + chat API) built, deployed, wired into `index.html`, verified end-to-end, live.
+  See `chat-agent-worker-backend-2026-07` project memory.
+- **Item 1 (AEO/GEO) — partially done 2026-07-27.** `FAQPage` JSON-LD added to all 3
+  service pages' existing FAQ sections. Homepage and the 2 blog posts still have no
+  FAQ section/schema — that's the remaining increment if this item is picked back up.
+  See `SEO_RECOMMENDATIONS.md` → Update — 2026-07-27.
+
 ---
 
 *Format for future weeks: append a new `## Week of YYYY-MM-DD` section above this line,
