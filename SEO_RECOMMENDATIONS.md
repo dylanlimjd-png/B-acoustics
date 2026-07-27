@@ -176,3 +176,65 @@ footer-link change above was made.
   pages, both blog posts. This closes out the AEO/GEO item from the
   continuous-improvement tracker.
 - **Registered address added to schema** — see item 1 above.
+
+## SEO ranking check — 2026-07-27 (first run; now a weekly routine, see below)
+
+Live organic Google search via browser (Singapore locale `gl=sg`, no account/login
+used — see `seo-ranking-routine-2026-07` project memory for why). This is a spot
+check of real SERPs, not a rank-tracking tool or Search Console data (still not
+connected — see `continuous_improvement_stream_2026-07` memory).
+
+### Findings
+
+1. **No organic visibility yet for any target term.** Not on page 1 or 2 for
+   "acoustic consultant Singapore" (primary target), not on page 1 for "soundproofing
+   Singapore" (broad, highly competitive) or "office soundproofing cost Singapore"
+   (the exact blog post's target term).
+2. **Indexing gap — likely the bigger issue.** `site:b-acoustics.com` shows **only
+   the 2 blog posts indexed.** The homepage and all 3 service pages don't appear at
+   all (caveat: the `site:` operator under-reports; treat as a signal, not proof —
+   but it was consistent across every query run). Ranking is moot until Google
+   actually indexes these pages.
+3. **Brand-name collision.** Searching "b-acoustics" gets crowded out by unrelated
+   audio-equipment brands (SB Acoustics, BE Acoustics, B-System) — the one blog post
+   that does rank is buried among them.
+4. **GBP has no local-pack visibility yet.** Searching the brand name directly, the
+   Google Maps local pack shows competitors (Advanced Acoustics, dB Acoustics,
+   NoiseStop) — consistent with the GBP listing being new (went live 2026-07-26) with
+   zero reviews.
+
+### Resolution plans
+
+1. **No organic visibility** — expected this early (site content is <1 month old
+   for the homepage, 1 day old for service pages); competitive commercial terms
+   typically take 3-6+ months to gain visibility. The main lever is **backlinks**
+   (currently zero known inbound links) — see the backlink-building priority already
+   flagged in `seo_improvement_plan_2026-07` memory. Track via this weekly routine to
+   measure real progress rather than guessing.
+2. **Indexing gap** — once Search Console access exists (still blocked, see
+   `continuous_improvement_stream_2026-07` memory), use URL Inspection → Request
+   Indexing on the homepage and all 3 service pages, and confirm `sitemap.xml` is
+   submitted there. Also worth checking GSC's "Live Test" rendered-HTML view for the
+   homepage specifically — `index.html`'s bundler format requires full JS execution
+   before any content exists in the DOM (see `index_html_bundler_format` memory and
+   the Core Web Vitals finding above), so it's worth confirming Googlebot's renderer
+   actually waits for and executes that unpack step rather than indexing a blank
+   shell. Re-check after 1-2 weeks regardless, since the service pages are very new.
+3. **Brand-name collision** — not much to fix structurally; low priority since
+   branded search isn't the primary acquisition channel this early. Resolves
+   naturally as more Singapore-specific, branded backlinks and citations accumulate
+   (GBP listing, directory listings) that reinforce "B-Acoustics" + "Singapore" +
+   "acoustic" co-occurrence to Google.
+4. **GBP local-pack visibility** — complete GBP verification if not already done,
+   add photos/description/categories/service areas (descriptions already drafted,
+   see `seo_improvement_plan_2026-07` memory), and get first reviews — same lever as
+   the open "Trust signals & social proof" item on `CONTINUOUS_IMPROVEMENT.md`.
+   Ensure NAP consistency between the GBP listing and the site (address/phone now
+   match per the 2026-07-27 update above). Local-pack visibility typically needs a
+   verified listing plus reviews plus some citation building — expect weeks, not
+   days.
+
+**This check is now a weekly routine ("SEO ranking")** — see `CONTINUOUS_IMPROVEMENT.md`
+for the cadence/automation approach and `seo-ranking-routine-2026-07` project memory
+for the full method (exact queries run, why no Google login is used, and the
+cloud-automation constraint).
