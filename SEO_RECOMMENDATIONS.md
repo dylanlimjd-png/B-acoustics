@@ -155,13 +155,24 @@ footer-link change above was made.
   produced this session but are conversation-only, not committed to the repo — see
   project memory `seo-improvement-plan-2026-07` for the chosen direction if resuming.
 
-## Update — 2026-07-27 (AEO/GEO pass)
+## Update — 2026-07-27 (AEO/GEO pass — now complete site-wide)
 
 - **`FAQPage` JSON-LD added to all 3 service pages.** Each already had a visible
   "Frequently asked" Q&A section (added 2026-07-26) but no structured-data markup
   for it — added a second `<script type="application/ld+json">` block per page with
   a `FAQPage`/`Question`/`Answer` structure matching the visible text verbatim
   (required for AI Overviews/ChatGPT/Perplexity to safely cite it, and to avoid a
-  schema-content mismatch). The homepage (`index.html`) and the 2 blog posts still
-  have no FAQ section/schema — flagged as the next AEO increment if pursued.
+  schema-content mismatch).
+- **New FAQ section + schema added to the homepage** (`index.html`, "07 / FAQ",
+  between Process and Studio — Studio/Enquire renumbered 08/09 accordingly). 5
+  company-level Q&As (what an acoustic consultant does, property types served, STC
+  vs NRC, project timeline, verification testing) that don't overlap the 3 service
+  pages' per-domain FAQs. Footer nav gained a `#faq` link.
+- **FAQ sections + schema added to both blog posts.** 4 Q&As each, distilling each
+  article's existing content into direct question/answer form, inserted before each
+  post's closing "How B-Acoustics..." section (same placement pattern as the
+  service pages).
+- **Every page on the site now has `FAQPage` schema** — homepage, all 3 service
+  pages, both blog posts. This closes out the AEO/GEO item from the
+  continuous-improvement tracker.
 - **Registered address added to schema** — see item 1 above.

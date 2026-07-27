@@ -31,10 +31,11 @@ root once drafted).
 - **Item 5 (AI chat agent) — done 2026-07-27.** Cloudflare Worker backend (enquiry
   email + chat API) built, deployed, wired into `index.html`, verified end-to-end, live.
   See `chat-agent-worker-backend-2026-07` project memory.
-- **Item 1 (AEO/GEO) — partially done 2026-07-27.** `FAQPage` JSON-LD added to all 3
-  service pages' existing FAQ sections. Homepage and the 2 blog posts still have no
-  FAQ section/schema — that's the remaining increment if this item is picked back up.
-  See `SEO_RECOMMENDATIONS.md` → Update — 2026-07-27.
+- **Item 1 (AEO/GEO) — done 2026-07-27.** `FAQPage` JSON-LD added site-wide: the 3
+  service pages' existing FAQ sections, a new FAQ section on the homepage (5
+  company-level Q&As), and new FAQ sections on both blog posts (4 Q&As each).
+  Every page on the site now carries `FAQPage` schema. See `SEO_RECOMMENDATIONS.md`
+  → Update — 2026-07-27.
 - **Item 2 (Core Web Vitals) — audited 2026-07-27, bigger finding than expected.**
   This was NOT a quick audit-and-confirm as originally hoped. Live Lighthouse mobile
   scores: Performance 62, Accessibility 88, Best Practices 100, SEO 100. CLS is
