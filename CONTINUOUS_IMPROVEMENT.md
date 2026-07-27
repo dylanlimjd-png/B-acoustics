@@ -35,6 +35,21 @@ root once drafted).
   service pages' existing FAQ sections. Homepage and the 2 blog posts still have no
   FAQ section/schema — that's the remaining increment if this item is picked back up.
   See `SEO_RECOMMENDATIONS.md` → Update — 2026-07-27.
+- **Item 2 (Core Web Vitals) — audited 2026-07-27, bigger finding than expected.**
+  This was NOT a quick audit-and-confirm as originally hoped. Live Lighthouse mobile
+  scores: Performance 62, Accessibility 88, Best Practices 100, SEO 100. CLS is
+  perfect (0), but **LCP is 7.6s** (target ~2.5s) — dominated by a 6.6s
+  element-render-delay. Root cause is **not images** (the prior compression pass
+  already fixed that) — it's structural: `index.html`'s "bundler" format ships the
+  entire page as one ~420KB escaped-JSON document that must fully download, then be
+  JS-decoded/decompressed/unpacked via `DOMParser` before *any* content (even plain
+  hero text) can paint. Compounding it, the dc-runtime loads React/ReactDOM from an
+  external `unpkg.com` CDN with no connection hint. Applied the safe, low-risk fix
+  (a `preconnect` hint for `unpkg.com`, commit `de7261a`) — the real fix for the 6.6s
+  delay is moving `index.html` off the bundler format onto plain static HTML (the
+  same safe pattern the blog/service pages already use), which is a genuine
+  re-platform of the homepage, not a quick tweak. Flagging for a dedicated future
+  session if pursued.
 
 ---
 
