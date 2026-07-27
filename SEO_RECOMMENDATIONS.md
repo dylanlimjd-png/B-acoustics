@@ -92,14 +92,15 @@ footer-link change above was made.
 
 ## Remaining recommendations (not yet applied — need your input or content)
 
-1. **Physical address / phone number**: phone done 2026-07-26 — `telephone: "+65 9641
-   6999"` added to the JSON-LD `ProfessionalService` schema (both the static shell
-   head and the bundler template's decoded head), plus a matching visible, clickable
-   `tel:` link added to the on-page NAP block in the Enquire/contact section (next to
-   the existing Email/Studio rows). Address is still outstanding — schema still has
-   no `address` field because none exist on the page yet. Local SEO (Google
-   Business Profile parity, map-pack ranking) benefits significantly from a real
-   registered address and phone number in schema — add these once available.
+1. ~~**Physical address / phone number**~~ — done. Phone added 2026-07-26
+   (`telephone: "+65 9641 6999"` in schema + visible `tel:` link). Address added
+   2026-07-27: `228 Changi Road #03-02, Singapore 419741` added as a `PostalAddress`
+   to the JSON-LD `ProfessionalService` schema and to the visible Studio contact
+   block on `index.html`, and to the `provider` object in all 3 service pages'
+   `Service` schema. Per explicit user instruction, only the address/phone are
+   public — the registered legal entity name is deliberately omitted from all
+   visible content and schema (see project memory `business-legal-entity-2026-07`
+   for why).
 2. **Google Business Profile**: not a code change, but for local-intent terms like
    "acoustic consultant Singapore," a verified GBP listing usually outranks organic
    page SEO alone. *(In progress 2026-07-26 — business description and ad-image
@@ -153,3 +154,14 @@ footer-link change above was made.
 - GBP business description (3 drafted variants) and Nano Banana ad-image prompts were
   produced this session but are conversation-only, not committed to the repo — see
   project memory `seo-improvement-plan-2026-07` for the chosen direction if resuming.
+
+## Update — 2026-07-27 (AEO/GEO pass)
+
+- **`FAQPage` JSON-LD added to all 3 service pages.** Each already had a visible
+  "Frequently asked" Q&A section (added 2026-07-26) but no structured-data markup
+  for it — added a second `<script type="application/ld+json">` block per page with
+  a `FAQPage`/`Question`/`Answer` structure matching the visible text verbatim
+  (required for AI Overviews/ChatGPT/Perplexity to safely cite it, and to avoid a
+  schema-content mismatch). The homepage (`index.html`) and the 2 blog posts still
+  have no FAQ section/schema — flagged as the next AEO increment if pursued.
+- **Registered address added to schema** — see item 1 above.
