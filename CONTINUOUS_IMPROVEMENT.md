@@ -52,6 +52,20 @@ root once drafted).
   re-platform of the homepage, not a quick tweak. Flagging for a dedicated future
   session if pursued.
 
+**PARKED — unresolved bug, 2026-07-27:** user reports a spacing issue right before
+the "08 / Studio" section (on the live site) that **persists after two rounds of
+attempted fixes** (commit `443e3fa` tightened the FAQ section's bottom padding and
+removed a trailing border on the last FAQ item; verified via a local headless-
+Chromium screenshot + raw pixel sampling that showed no stray border and a visibly
+tighter gap — but the user confirmed on the real live site the same issue is still
+there). This means either (a) the live site hadn't finished a CDN/cache propagation
+when checked, (b) the actual issue is something other than what was diagnosed
+locally (e.g. a real-browser/viewport-specific rendering difference, or a different
+section boundary than assumed), or (c) the fix didn't address the root cause. Needs
+a fresh look next session — ask the user for a screenshot or exact viewport/device
+details rather than re-guessing blind, and hard-refresh (bypass cache) when
+comparing against the live URL.
+
 ---
 
 *Format for future weeks: append a new `## Week of YYYY-MM-DD` section above this line,
