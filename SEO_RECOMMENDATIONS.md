@@ -238,3 +238,23 @@ connected — see `continuous_improvement_stream_2026-07` memory).
 for the cadence/automation approach and `seo-ranking-routine-2026-07` project memory
 for the full method (exact queries run, why no Google login is used, and the
 cloud-automation constraint).
+
+## Update — 2026-07-28: homepage indexing-gap fix shipped
+
+Resolution plan #2 above (indexing gap) is fixed. Confirmed via direct inspection
+that Googlebot's first-pass raw HTML for `index.html` previously contained no real
+content — only a loading spinner and a `This page requires JavaScript to display`
+`<noscript>` fallback, because the entire page shipped as an escaped-JSON blob
+unpacked client-side (the "bundler" format — see `index_html_bundler_format`
+memory). Re-platformed `index.html` to plain static HTML (same safe pattern as
+`services/*.html` and `blog/*.html`); raw HTML now contains the real hero text,
+all sections, and both JSON-LD blocks with zero JS execution required. Also fixed
+the related Core Web Vitals finding from `CONTINUOUS_IMPROVEMENT.md` as a side
+effect (local Lighthouse mobile: performance score 74→95, LCP 5.4s→2.4s) since it
+was the same root cause. Pushed to `origin/main` (commit `70de168`) and confirmed
+live on b-acoustics.com.
+
+**Next weekly "SEO ranking" check should specifically look for `b-acoustics.com`
+(the homepage) appearing in `site:b-acoustics.com`**, which it did not as of
+2026-07-27 — this is the signal that the fix actually resolved indexing, not just
+the technical symptom.

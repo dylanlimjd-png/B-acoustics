@@ -51,6 +51,11 @@ root once drafted).
   same safe pattern the blog/service pages already use), which is a genuine
   re-platform of the homepage, not a quick tweak. Flagging for a dedicated future
   session if pursued.
+  **RESOLVED 2026-07-28** — did the re-platform. `index.html` moved off the
+  bundler format onto plain static HTML (matching `services/*.html`/`blog/*.html`);
+  local Lighthouse mobile: Performance 74→95, LCP 5.4s→2.4s. This was also the
+  confirmed root cause of the homepage not being indexed by Google — see the
+  2026-07-28 update in `SEO_RECOMMENDATIONS.md`. Pushed as commit `70de168`.
 
 **PARKED — unresolved bug, 2026-07-27:** user reports a spacing issue right before
 the "08 / Studio" section (on the live site) that **persists after two rounds of
