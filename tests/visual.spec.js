@@ -16,6 +16,11 @@ for (const { name, path } of PAGES) {
   test(`${name} matches visual baseline`, async ({ page }) => {
     await page.goto(path, { waitUntil: 'networkidle' });
     await page.evaluate(() => document.fonts.ready);
+    // index.html sets html{scroll-behavior:smooth}, which animates the
+    // scroll steps Chromium uses to stitch a full-page screenshot together —
+    // that can catch two consecutive captures mid-transition. Force instant
+    // scrolling for the capture only; doesn't touch the live site's behavior.
+    await page.addStyleTag({ content: 'html{scroll-behavior:auto !important;}' });
     await expect(page).toHaveScreenshot(`${name}.png`, { fullPage: true });
   });
 }
