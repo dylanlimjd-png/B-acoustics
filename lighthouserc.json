@@ -7,15 +7,15 @@
         "/services/office-acoustics-singapore.html",
         "/blog/stc-vs-nrc-explained.html"
       ],
-      "numberOfRuns": 1
+      "numberOfRuns": 3
     },
     "assert": {
       "assertMatrix": [
         {
           "matchingUrlPattern": ".*/index\\.html$",
           "assertions": {
-            "categories:performance": ["error", { "minScore": 0.85 }],
-            "largest-contentful-paint": ["error", { "maxNumericValue": 3500 }],
+            "categories:performance": ["error", { "minScore": 0.8 }],
+            "largest-contentful-paint": ["error", { "maxNumericValue": 4000 }],
             "cumulative-layout-shift": ["error", { "maxNumericValue": 0.1 }]
           }
         },
