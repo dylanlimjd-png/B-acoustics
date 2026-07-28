@@ -9,6 +9,14 @@ just the rollup of what's still open, updated whenever any of them change.
 
 Last updated: 2026-07-28.
 
+**Session paused here for the night.** Everything below is committed and
+live on `main`, CI confirmed stable (3 consecutive clean runs). Nothing is
+mid-flight or left broken. Pick up next session with:
+1. Item #10 below (service/blog page Lighthouse scores, 0.78–0.83) — the
+   next actionable-by-me item, if you want it addressed.
+2. The remaining 2-4 blog posts (see `SEO_RECOMMENDATIONS.md`).
+3. Anything from the "Watch items" section that's come due.
+
 ## Open items — ranked 2026-07-28
 
 Ranked by impact vs. effort (same method as `CONTINUOUS_IMPROVEMENT.md`'s
