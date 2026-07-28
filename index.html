@@ -34,7 +34,7 @@
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does an acoustic consultant actually do?","acceptedAnswer":{"@type":"Answer","text":"We measure how sound behaves in your specific space — a baseline noise or reverberation reading — then model, specify and verify a fix, rather than installing generic soundproofing products off a catalogue."}},{"@type":"Question","name":"Which property types does B-Acoustics work with?","acceptedAnswer":{"@type":"Answer","text":"Commercial fit-outs, residential homes, and industrial sites across Singapore."}},{"@type":"Question","name":"What's the difference between STC and NRC ratings?","acceptedAnswer":{"@type":"Answer","text":"STC measures how well a wall, floor or door blocks sound between spaces; NRC measures how much sound a material absorbs within a space."}},{"@type":"Question","name":"How long does a project take, from enquiry to completion?","acceptedAnswer":{"@type":"Answer","text":"It depends on scope, but every project moves through the same five stages — assess, model, specify, build, verify — with a timeline set once the target rating and site access are confirmed."}},{"@type":"Question","name":"Do you test and verify results after the work is done?","acceptedAnswer":{"@type":"Answer","text":"Yes — verification measurement against the agreed target is the final step of every project, not an optional add-on."}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;}
@@ -62,6 +62,11 @@
 .nav-links a:first-child{border-top:none;}
 }
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #C4300F;outline-offset:2px;}
+#ba-chat-toggle{transition:filter 0.15s ease;}
+#ba-chat-toggle:hover{filter:brightness(0.9);}
+#ba-chat-send:disabled{opacity:0.5;cursor:default;}
+#ba-chat-body::-webkit-scrollbar{width:6px;}
+#ba-chat-body::-webkit-scrollbar-thumb{background:rgba(241,237,228,0.25);border-radius:3px;}
 </style>
 
 </head>
@@ -624,14 +629,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   });
 })();
 </script>
-
-<style>
-  #ba-chat-toggle { transition: filter 0.15s ease; }
-  #ba-chat-toggle:hover { filter: brightness(0.9); }
-  #ba-chat-send:disabled { opacity: 0.5; cursor: default; }
-  #ba-chat-body::-webkit-scrollbar { width: 6px; }
-  #ba-chat-body::-webkit-scrollbar-thumb { background: rgba(241,237,228,0.25); border-radius: 3px; }
-</style>
 
 <button id="ba-chat-toggle" aria-label="Open chat" style="position:fixed; bottom:24px; right:24px; z-index:9999; width:58px; height:58px; border-radius:50%; border:none; background:#F73E1B; color:#F1EDE4; cursor:pointer; box-shadow:0 8px 24px rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center;">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
