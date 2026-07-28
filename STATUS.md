@@ -9,19 +9,26 @@ just the rollup of what's still open, updated whenever any of them change.
 
 Last updated: 2026-07-28.
 
-## Open items
+## Open items — ranked 2026-07-28
 
-| # | Item | Priority | Blocked on | Source |
-|---|---|---|---|---|
-| 1 | Real GBP photos — shot list ready, not yet taken/uploaded | High | You (needs a site visit) | `Photo request list.md` |
-| 2 | First GBP reviews — solicit from real clients | High | You (client outreach) | `CONTINUOUS_IMPROVEMENT.md` Item 3, `DESIGN_FEEDBACK.md` |
-| 3 | Mobile nav has no hamburger/collapse — wraps awkwardly on narrow viewports | Medium | — | `DESIGN_FEEDBACK.md` |
-| 4 | Off-page authority: SG directory listings, MIOA, architecture/interior-design outreach, press | Medium | — | `SEO_RECOMMENDATIONS.md` |
-| 5 | 4-6 more blog posts (candidates: home theatre soundproofing cost, NEA boundary noise limits, HDB vs condo rules) | Medium | — | `SEO_RECOMMENDATIONS.md` |
-| 6 | Broader WCAG 2.2 pass (focus states, form labeling, alt-text completeness) — today's fix only covered accent-orange contrast | Medium | — | `CONTINUOUS_IMPROVEMENT.md` Item 4 |
-| 7 | `AggregateRating`/`Review` schema | Low | #2 (needs real reviews to exist first) | `SEO_RECOMMENDATIONS.md` |
-| 8 | Dead Instagram footer link (`href="#"`) | Low | — | `DESIGN_FEEDBACK.md` |
-| 9 | Optional H1 A/B test | Low | — | `SEO_RECOMMENDATIONS.md` |
+Ranked by impact vs. effort (same method as `CONTINUOUS_IMPROVEMENT.md`'s
+weekly ranking), with an explicit **Actionable** column since two of the
+highest-impact items require you personally (a site visit, client
+outreach) and can't be started in a coding session.
+
+| Rank | Item | Impact | Effort | Actionable by me now? | Source |
+|---|---|---|---|---|---|
+| 1 | First GBP reviews — solicit from real clients | Very High | Low (for you) | **No — needs you** | `CONTINUOUS_IMPROVEMENT.md` Item 3, `DESIGN_FEEDBACK.md` |
+| 2 | Real GBP photos — shot list ready, not yet taken/uploaded | High | Medium (for you) | **No — needs you** | `Photo request list.md` |
+| 3 | Mobile nav has no hamburger/collapse — wraps badly on the homepage's 5-item nav on narrow viewports (service/blog pages' 3-item nav is only marginally affected) | High | Low-Medium | **Yes** | `DESIGN_FEEDBACK.md` |
+| 4 | Broader WCAG 2.2 pass (focus states, form labeling, alt-text completeness) | Med-High | Medium | Yes | `CONTINUOUS_IMPROVEMENT.md` Item 4 |
+| 5 | 4-6 more blog posts | Medium | High (real research/writing per post) | Yes | `SEO_RECOMMENDATIONS.md` |
+| 6 | Off-page authority: SG directory listings, MIOA, outreach, press | High ceiling, slow | Very High, ongoing, partly needs your relationships | Partial | `SEO_RECOMMENDATIONS.md` |
+| 7 | `AggregateRating`/`Review` schema | Low until #1 exists | Low | Blocked on #1 | `SEO_RECOMMENDATIONS.md` |
+| 8 | Dead Instagram footer link (`href="#"`) | Trivial | Trivial | Yes, anytime | `DESIGN_FEEDBACK.md` |
+| 9 | Optional H1 A/B test | Low, needs analytics infra we don't have | Medium | No — no infra | `SEO_RECOMMENDATIONS.md` |
+
+**Next up: #3, mobile nav** — highest-impact item actually startable right now.
 
 ## Watch items (not actionable yet, just checking periodically)
 
