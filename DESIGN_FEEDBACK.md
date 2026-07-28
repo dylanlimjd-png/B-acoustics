@@ -70,7 +70,7 @@ in the codebase), not a live screenshot.
 
 | Priority | Action | Status |
 |---|---|---|
-| High | Fix accent-orange contrast (darken for light-bg/button use) | **In progress — started 2026-07-28** |
+| High | Fix accent-orange contrast (darken for light-bg/button use) | **FIXED 2026-07-28** — commit `78799bf` |
 | High | Extend homepage visual language to the 3 service pages | Not started |
 | Medium | Add mobile nav (hamburger/collapse) | Not started |
 | Medium | Surface real GBP reviews near "Selected Work" once they exist | Not started (blocked on `Photo request list.md` / GBP reviews) |
