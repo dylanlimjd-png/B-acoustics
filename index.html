@@ -40,13 +40,13 @@
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{margin:0;background:#F1EDE4;color:#16140F;-webkit-font-smoothing:antialiased;font-family:'Helvetica Neue',Arial,sans-serif;}
-  ::selection{background:var(--accent,#F73E1B);color:#F1EDE4;}
+  ::selection{background:var(--accent-safe,#C4300F);color:#F1EDE4;}
   a{color:inherit;text-decoration:none;}
   input,select,textarea,button{font-family:inherit;}
   ::placeholder{color:#8B8473;}
   @keyframes baMarquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 .ba-nav-link{transition:color .15s;}
-.ba-nav-link:hover{color:var(--accent,#F73E1B) !important;}
+.ba-nav-link:hover{color:var(--accent-safe,#C4300F) !important;}
 .ba-btn-solid{transition:filter .15s;}
 .ba-btn-solid:hover{filter:brightness(0.88);}
 .ba-btn-ghost-light{transition:background .15s,color .15s;}
@@ -58,7 +58,7 @@
 </head>
 <body>
 
-<div style="width:100%; overflow-x:hidden; --accent: #F73E1B;">
+<div style="width:100%; overflow-x:hidden; --accent: #F73E1B; --accent-safe: #C4300F;">
 
   <nav style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:16px clamp(20px,5vw,64px); background:rgba(241,237,228,0.84); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid rgba(22,20,15,0.12);">
     <a href="#top" style="display:flex; align-items:center;" aria-label="B-Acoustics — home">
@@ -69,7 +69,7 @@
       <a href="#approach" class="ba-nav-link" style="font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:#46413A;">Approach</a>
       <a href="#work" class="ba-nav-link" style="font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:#46413A;">Work</a>
       <a href="#materials" class="ba-nav-link" style="font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:#46413A;">Materials</a>
-      <a href="#contact" class="ba-btn-solid" style="font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:#F1EDE4; background:var(--accent,#F73E1B); padding:10px 18px;">Enquire</a>
+      <a href="#contact" class="ba-btn-solid" style="font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:#F1EDE4; background:var(--accent-safe,#C4300F); padding:10px 18px;">Enquire</a>
     </div>
   </nav>
 
@@ -79,13 +79,13 @@
       Acoustic engineering — Singapore
     </div>
     <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:clamp(46px,8.6vw,130px); line-height:0.95; letter-spacing:-0.035em; margin:30px 0 0; max-width:16ch;">
-      Space that <span style="color:var(--accent,#F73E1B);">sounds</span> right.
+      Space that <span style="color:var(--accent-safe,#C4300F);">sounds</span> right.
     </h1>
     <p style="max-width:640px; font-size:clamp(16px,1.5vw,21px); line-height:1.55; color:#3A352D; margin:30px 0 0;">
       B-Acoustics unites architects and acoustic engineers to design, model and build quiet — delivering soundproofing, sound isolation and noise reduction across commercial, residential and industrial spaces in Singapore.
     </p>
     <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:38px;">
-      <a href="#contact" class="ba-btn-solid" style="font-family:'Space Mono',monospace; font-size:13px; text-transform:uppercase; letter-spacing:0.08em; color:#F1EDE4; background:var(--accent,#F73E1B); padding:16px 26px;">Start an enquiry</a>
+      <a href="#contact" class="ba-btn-solid" style="font-family:'Space Mono',monospace; font-size:13px; text-transform:uppercase; letter-spacing:0.08em; color:#F1EDE4; background:var(--accent-safe,#C4300F); padding:16px 26px;">Start an enquiry</a>
       <a href="#work" class="ba-btn-ghost-light" style="font-family:'Space Mono',monospace; font-size:13px; text-transform:uppercase; letter-spacing:0.08em; color:#16140F; background:transparent; padding:16px 26px; border:1px solid rgba(22,20,15,0.4);">See selected work</a>
     </div>
     <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:18px; margin-top:clamp(56px,9vh,110px); padding-top:22px; border-top:1px solid rgba(22,20,15,0.16); font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.1em; color:#6E685C;">
@@ -99,7 +99,7 @@
   <section id="services" style="max-width:1340px; margin:0 auto; width:100%; padding:clamp(72px,11vh,150px) clamp(20px,5vw,64px);">
     <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:clamp(40px,6vh,72px);">
       <div>
-        <div style="font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent,#F73E1B);">01 / Services</div>
+        <div style="font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent-safe,#C4300F);">01 / Services</div>
         <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:clamp(30px,4.4vw,58px); line-height:1.02; letter-spacing:-0.03em; margin:18px 0 0; max-width:18ch;">Three environments, one standard of quiet.</h2>
       </div>
       <p style="max-width:360px; font-size:16px; line-height:1.55; color:#3A352D; margin:0;">From open-plan offices to factory floors and private homes — every brief begins with measurement, not assumption.</p>
@@ -117,7 +117,7 @@
           <li>— Speech privacy &amp; masking</li>
           <li>— Mechanical noise reduction &amp; isolation</li>
         </ul>
-        <a href="services/office-acoustics-singapore.html" style="display:inline-block; margin-top:20px; font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent,#F73E1B); text-decoration:none;">Learn more &rarr;</a>
+        <a href="services/office-acoustics-singapore.html" style="display:inline-block; margin-top:20px; font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent-safe,#C4300F); text-decoration:none;">Learn more &rarr;</a>
       </div>
       <div style="border-bottom:1px solid rgba(22,20,15,0.16); border-right:1px solid rgba(22,20,15,0.16); padding:34px 30px 40px;">
         <div style="display:flex; align-items:baseline; justify-content:space-between;">
@@ -131,7 +131,7 @@
           <li>— Window &amp; façade upgrades</li>
           <li>— Home theatre tuning</li>
         </ul>
-        <a href="services/party-wall-soundproofing-singapore.html" style="display:inline-block; margin-top:20px; font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent,#F73E1B); text-decoration:none;">Learn more &rarr;</a>
+        <a href="services/party-wall-soundproofing-singapore.html" style="display:inline-block; margin-top:20px; font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent-safe,#C4300F); text-decoration:none;">Learn more &rarr;</a>
       </div>
       <div style="border-bottom:1px solid rgba(22,20,15,0.16); padding:34px 30px 40px;">
         <div style="display:flex; align-items:baseline; justify-content:space-between;">
@@ -145,7 +145,7 @@
           <li>— Plant &amp; duct attenuation</li>
           <li>— Vibration &amp; structure-borne</li>
         </ul>
-        <a href="services/industrial-noise-compliance-singapore.html" style="display:inline-block; margin-top:20px; font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent,#F73E1B); text-decoration:none;">Learn more &rarr;</a>
+        <a href="services/industrial-noise-compliance-singapore.html" style="display:inline-block; margin-top:20px; font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent-safe,#C4300F); text-decoration:none;">Learn more &rarr;</a>
       </div>
     </div>
   </section>
@@ -189,7 +189,7 @@
   <section id="work" style="max-width:1340px; margin:0 auto; width:100%; padding:clamp(72px,11vh,150px) clamp(20px,5vw,64px);">
     <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:clamp(40px,6vh,72px);">
       <div>
-        <div style="font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent,#F73E1B);">03 / Capabilities</div>
+        <div style="font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent-safe,#C4300F);">03 / Capabilities</div>
         <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:clamp(30px,4.4vw,58px); line-height:1.02; letter-spacing:-0.03em; margin:18px 0 0;">Built for the environment.</h2>
       </div>
     </div>
@@ -229,22 +229,22 @@
       <div style="font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.1em; color:#6E685C; margin-bottom:26px;">Reading the numbers — a quick key</div>
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:clamp(22px,2.6vw,36px);">
         <div>
-          <div style="display:flex; align-items:baseline; gap:10px;"><span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:23px; letter-spacing:-0.01em;">NRC</span><span style="font-family:'Space Mono',monospace; font-size:11px; color:var(--accent,#F73E1B);">0 — 1</span></div>
+          <div style="display:flex; align-items:baseline; gap:10px;"><span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:23px; letter-spacing:-0.01em;">NRC</span><span style="font-family:'Space Mono',monospace; font-size:11px; color:var(--accent-safe,#C4300F);">0 — 1</span></div>
           <div style="font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#6E685C; margin-top:8px;">Noise Reduction Coefficient</div>
           <p style="font-size:14px; line-height:1.55; color:#46413A; margin:10px 0 0;">How much sound a surface soaks up instead of reflecting. Higher means a softer, less echoey room.</p>
         </div>
         <div>
-          <div style="display:flex; align-items:baseline; gap:10px;"><span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:23px; letter-spacing:-0.01em;">STC</span><span style="font-family:'Space Mono',monospace; font-size:11px; color:var(--accent,#F73E1B);">higher = quieter</span></div>
+          <div style="display:flex; align-items:baseline; gap:10px;"><span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:23px; letter-spacing:-0.01em;">STC</span><span style="font-family:'Space Mono',monospace; font-size:11px; color:var(--accent-safe,#C4300F);">higher = quieter</span></div>
           <div style="font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#6E685C; margin-top:8px;">Sound Transmission Class</div>
           <p style="font-size:14px; line-height:1.55; color:#46413A; margin:10px 0 0;">How well a wall or floor blocks sound passing through it. The higher the rating, the quieter the room next door.</p>
         </div>
         <div>
-          <div style="display:flex; align-items:baseline; gap:10px;"><span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:23px; letter-spacing:-0.01em;">dB</span><span style="font-family:'Space Mono',monospace; font-size:11px; color:var(--accent,#F73E1B);">−10 ≈ ½ as loud</span></div>
+          <div style="display:flex; align-items:baseline; gap:10px;"><span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:23px; letter-spacing:-0.01em;">dB</span><span style="font-family:'Space Mono',monospace; font-size:11px; color:var(--accent-safe,#C4300F);">−10 ≈ ½ as loud</span></div>
           <div style="font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#6E685C; margin-top:8px;">Decibel</div>
           <p style="font-size:14px; line-height:1.55; color:#46413A; margin:10px 0 0;">The unit of loudness. A drop of about 10 dB sounds roughly half as loud to the human ear.</p>
         </div>
         <div>
-          <div style="display:flex; align-items:baseline; gap:10px;"><span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:23px; letter-spacing:-0.01em;">RT60</span><span style="font-family:'Space Mono',monospace; font-size:11px; color:var(--accent,#F73E1B);">seconds</span></div>
+          <div style="display:flex; align-items:baseline; gap:10px;"><span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:23px; letter-spacing:-0.01em;">RT60</span><span style="font-family:'Space Mono',monospace; font-size:11px; color:var(--accent-safe,#C4300F);">seconds</span></div>
           <div style="font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#6E685C; margin-top:8px;">Reverberation time</div>
           <p style="font-size:14px; line-height:1.55; color:#46413A; margin:10px 0 0;">How long a sound lingers before fading away. Shorter times keep speech crisp and intelligible.</p>
         </div>
@@ -255,7 +255,7 @@
   <section id="materials" style="max-width:1340px; margin:0 auto; width:100%; padding:clamp(72px,11vh,150px) clamp(20px,5vw,64px);">
     <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:clamp(40px,6vh,72px);">
       <div>
-        <div style="font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent,#F73E1B);">04 / Materials</div>
+        <div style="font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent-safe,#C4300F);">04 / Materials</div>
         <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:clamp(30px,4.4vw,58px); line-height:1.02; letter-spacing:-0.03em; margin:18px 0 0; max-width:18ch;">Specified, never improvised.</h2>
       </div>
       <p style="max-width:340px; font-size:16px; line-height:1.55; color:#3A352D; margin:0;">A working palette of tested acoustic panels and soundproofing systems — chosen for the acoustic target, the fire code and the finish the architect wants.</p>
@@ -333,31 +333,31 @@
 
   <section id="process" style="border-top:1px solid rgba(22,20,15,0.16);">
     <div style="max-width:1340px; margin:0 auto; width:100%; padding:clamp(72px,11vh,150px) clamp(20px,5vw,64px);">
-      <div style="font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent,#F73E1B);">06 / Process</div>
+      <div style="font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent-safe,#C4300F);">06 / Process</div>
       <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:clamp(30px,4.4vw,58px); line-height:1.02; letter-spacing:-0.03em; margin:18px 0 clamp(40px,6vh,68px);">Five steps, every brief.</h2>
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:0; border-top:1px solid rgba(22,20,15,0.16);">
         <div style="padding:26px 22px 30px; border-bottom:1px solid rgba(22,20,15,0.16); border-right:1px solid rgba(22,20,15,0.16);">
-          <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:42px; color:var(--accent,#F73E1B); letter-spacing:-0.03em;">01</div>
+          <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:42px; color:var(--accent-safe,#C4300F); letter-spacing:-0.03em;">01</div>
           <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:19px; margin-top:14px;">Assess</div>
           <p style="font-size:14px; line-height:1.5; color:#46413A; margin:8px 0 0;">Site survey and baseline measurement.</p>
         </div>
         <div style="padding:26px 22px 30px; border-bottom:1px solid rgba(22,20,15,0.16); border-right:1px solid rgba(22,20,15,0.16);">
-          <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:42px; color:var(--accent,#F73E1B); letter-spacing:-0.03em;">02</div>
+          <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:42px; color:var(--accent-safe,#C4300F); letter-spacing:-0.03em;">02</div>
           <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:19px; margin-top:14px;">Model</div>
           <p style="font-size:14px; line-height:1.5; color:#46413A; margin:8px 0 0;">Simulate the room before it exists.</p>
         </div>
         <div style="padding:26px 22px 30px; border-bottom:1px solid rgba(22,20,15,0.16); border-right:1px solid rgba(22,20,15,0.16);">
-          <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:42px; color:var(--accent,#F73E1B); letter-spacing:-0.03em;">03</div>
+          <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:42px; color:var(--accent-safe,#C4300F); letter-spacing:-0.03em;">03</div>
           <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:19px; margin-top:14px;">Specify</div>
           <p style="font-size:14px; line-height:1.5; color:#46413A; margin:8px 0 0;">Detailed systems, drawings and budget.</p>
         </div>
         <div style="padding:26px 22px 30px; border-bottom:1px solid rgba(22,20,15,0.16); border-right:1px solid rgba(22,20,15,0.16);">
-          <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:42px; color:var(--accent,#F73E1B); letter-spacing:-0.03em;">04</div>
+          <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:42px; color:var(--accent-safe,#C4300F); letter-spacing:-0.03em;">04</div>
           <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:19px; margin-top:14px;">Build</div>
           <p style="font-size:14px; line-height:1.5; color:#46413A; margin:8px 0 0;">Supervise install with the trades.</p>
         </div>
         <div style="padding:26px 22px 30px; border-bottom:1px solid rgba(22,20,15,0.16);">
-          <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:42px; color:var(--accent,#F73E1B); letter-spacing:-0.03em;">05</div>
+          <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:42px; color:var(--accent-safe,#C4300F); letter-spacing:-0.03em;">05</div>
           <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:19px; margin-top:14px;">Verify</div>
           <p style="font-size:14px; line-height:1.5; color:#46413A; margin:8px 0 0;">Measure against the agreed target.</p>
         </div>
@@ -397,7 +397,7 @@
   <section id="studio" style="max-width:1340px; margin:0 auto; width:100%; padding:0 clamp(20px,5vw,64px) clamp(72px,11vh,150px);">
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(32px,5vw,72px); align-items:start;">
       <div>
-        <div style="font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent,#F73E1B);">08 / Studio</div>
+        <div style="font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent-safe,#C4300F);">08 / Studio</div>
         <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:clamp(28px,3.6vw,46px); line-height:1.05; letter-spacing:-0.03em; margin:18px 0 0; max-width:16ch;">A small studio with a single obsession.</h2>
         <p style="font-size:clamp(16px,1.5vw,18px); line-height:1.6; color:#3A352D; margin:24px 0 0; max-width:46ch;">B-Acoustics is a Singapore practice working at the seam between architecture and acoustic engineering. We take on a deliberately small number of projects so that the people who measure the room are the same people who detail it.</p>
       </div>
@@ -480,8 +480,8 @@
                 <textarea id="ba-contact-message" placeholder="Room type, size, and what you're hoping to control." rows="3" style="width:100%; background:transparent; border:none; border-bottom:1px solid rgba(241,237,228,0.3); color:#F1EDE4; font-size:16px; padding:12px 0; outline:none; margin-top:6px; resize:vertical; line-height:1.5;"></textarea>
                 <div id="ba-contact-err-message" style="display:none; font-family:'Space Mono',monospace; font-size:11px; color:var(--accent,#F73E1B); margin-top:7px;"></div>
               </div>
-                <button id="ba-contact-submit-btn" type="submit" class="ba-btn-solid" style="font-family:'Space Mono',monospace; font-size:13px; text-transform:uppercase; letter-spacing:0.08em; color:#F1EDE4; background:var(--accent,#F73E1B); border:none; padding:18px 26px; cursor:pointer; align-self:flex-start;">Send enquiry →</button>
-                <button id="ba-contact-sending-btn" type="button" class="ba-btn-solid" style="display:none; font-family:'Space Mono',monospace; font-size:13px; text-transform:uppercase; letter-spacing:0.08em; color:#F1EDE4; background:var(--accent,#F73E1B); border:none; padding:18px 26px; opacity:0.6; cursor:default; align-self:flex-start;">Sending…</button>
+                <button id="ba-contact-submit-btn" type="submit" class="ba-btn-solid" style="font-family:'Space Mono',monospace; font-size:13px; text-transform:uppercase; letter-spacing:0.08em; color:#F1EDE4; background:var(--accent-safe,#C4300F); border:none; padding:18px 26px; cursor:pointer; align-self:flex-start;">Send enquiry →</button>
+                <button id="ba-contact-sending-btn" type="button" class="ba-btn-solid" style="display:none; font-family:'Space Mono',monospace; font-size:13px; text-transform:uppercase; letter-spacing:0.08em; color:#F1EDE4; background:var(--accent-safe,#C4300F); border:none; padding:18px 26px; opacity:0.6; cursor:default; align-self:flex-start;">Sending…</button>
                 <div id="ba-contact-submit-error" style="display:none; font-family:'Space Mono',monospace; font-size:12px; color:var(--accent,#F73E1B); margin-top:4px;"></div>
             </form>
             <div id="ba-contact-success" style="display:none; border:1px solid rgba(241,237,228,0.25); padding:clamp(32px,4vw,48px);">
