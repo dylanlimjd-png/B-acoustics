@@ -72,6 +72,6 @@ in the codebase), not a live screenshot.
 |---|---|---|
 | High | Fix accent-orange contrast (darken for light-bg/button use) | **FIXED 2026-07-28** — commit `78799bf` |
 | High | Extend homepage visual language to the 3 service pages | **FIXED 2026-07-28** — commit `3352352` (hero photo, A/B/C step tags, FAQ dividers, dark closing CTA band, all reusing existing assets/copy) |
-| Medium | Add mobile nav (hamburger/collapse) | Not started |
+| Medium | Add mobile nav (hamburger/collapse) | **FIXED 2026-07-28** — commit `2f817d6` |
 | Medium | Surface real GBP reviews near "Selected Work" once they exist | Not started (blocked on `Photo request list.md` / GBP reviews) |
 | Low | Fix or remove the dead Instagram footer link | Not started |
