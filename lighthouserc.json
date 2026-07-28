@@ -1,0 +1,24 @@
+{
+  "ci": {
+    "collect": {
+      "staticDistDir": ".",
+      "url": [
+        "/index.html",
+        "/services/office-acoustics-singapore.html",
+        "/blog/stc-vs-nrc-explained.html"
+      ],
+      "numberOfRuns": 1
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["error", { "minScore": 0.85 }],
+        "largest-contentful-paint": ["error", { "maxNumericValue": 3500 }],
+        "cumulative-layout-shift": ["error", { "maxNumericValue": 0.1 }]
+      }
+    },
+    "upload": {
+      "target": "filesystem",
+      "outputDir": ".lighthouseci"
+    }
+  }
+}

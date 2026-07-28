@@ -1,0 +1,26 @@
+name: Worker uptime check
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check b-acoustics-api health endpoint
+        run: |
+          status=$(curl -s -o /tmp/body.txt -w "%{http_code}" https://b-acoustics-api.dylanlimjd.workers.dev/)
+          body=$(cat /tmp/body.txt)
+          echo "Status: $status"
+          echo "Body: $body"
+          if [ "$status" != "200" ]; then
+            echo "::error::Worker health check failed with HTTP status $status"
+            exit 1
+          fi
+          if [ "$body" != "B-Acoustics API" ]; then
+            echo "::error::Worker health check returned unexpected body: $body"
+            exit 1
+          fi
+          echo "Worker is healthy."
