@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEA Boundary Noise Limits in Singapore, Explained | B-Acoustics</title>
+<meta name="description" content="The real NEA boundary noise limits for factory premises in Singapore — dB(A) limits by premises type and time of day, how compliance is assessed, and what to do if you're over the limit.">
+<link rel="canonical" href="https://b-acoustics.com/blog/nea-boundary-noise-limits-singapore.html">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NEA Boundary Noise Limits in Singapore, Explained">
+<meta property="og:description" content="The real NEA boundary noise limits for factory premises in Singapore — dB(A) limits by premises type and time of day, and how compliance is assessed.">
+<meta property="og:url" content="https://b-acoustics.com/blog/nea-boundary-noise-limits-singapore.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NEA Boundary Noise Limits in Singapore, Explained">
+<meta name="twitter:description" content="The real NEA boundary noise limits for factory premises in Singapore — dB(A) limits by premises type and time of day, and how compliance is assessed.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"NEA Boundary Noise Limits in Singapore, Explained","description":"The real NEA boundary noise limits for factory premises in Singapore — dB(A) limits by premises type and time of day, and how compliance is assessed.","url":"https://b-acoustics.com/blog/nea-boundary-noise-limits-singapore.html","datePublished":"2026-07-28","dateModified":"2026-07-28","inLanguage":"en","author":{"@type":"Organization","name":"B-Acoustics","url":"https://b-acoustics.com"},"publisher":{"@type":"Organization","name":"B-Acoustics","logo":{"@type":"ImageObject","url":"https://b-acoustics.com/#logo"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://b-acoustics.com/blog/nea-boundary-noise-limits-singapore.html"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the actual regulation that sets these limits?","acceptedAnswer":{"@type":"Answer","text":"The Environmental Protection and Management (Boundary Noise Limits for Factory Premises) Regulations, enforced by NEA. It sets permissible noise levels measured at the boundary of the affected premises, not at the source."}},{"@type":"Question","name":"Do the limits change at night?","acceptedAnswer":{"@type":"Answer","text":"Yes — every premises category has a lower limit in the evening (7pm-11pm) and a lower limit again at night (11pm-7am) than during the day (7am-7pm), reflecting that the same noise level is more disruptive outside working hours."}},{"@type":"Question","name":"Which limit applies to my factory?","acceptedAnswer":{"@type":"Answer","text":"The limit that applies is set by the type of premises your noise affects, not by your own premises type — a factory whose noise reaches a residential boundary must meet the residential limit, not the (higher) factory-to-factory limit."}},{"@type":"Question","name":"What happens if a boundary measurement exceeds the limit?","acceptedAnswer":{"@type":"Answer","text":"NEA can issue directions to reduce the noise, and continued non-compliance can lead to enforcement action. The practical fix is source-level attenuation (duct silencers, enclosures, vibration isolation) verified by a follow-up boundary measurement, not a one-off adjustment."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Space Grotesk',sans-serif; background:#F1EDE4; color:#16140F; line-height:1.6; }
+  a { color:inherit; }
+  nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:16px clamp(20px,5vw,64px); background:rgba(241,237,228,0.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid rgba(22,20,15,0.12); }
+  nav a.home { display:flex; align-items:center; }
+  nav a.home img { height:34px; width:auto; display:block; }
+  nav .links a { font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:#46413A; text-decoration:none; margin-left:24px; }
+  nav .links a:hover { color:#C4300F; }
+  main { max-width:760px; margin:0 auto; padding:clamp(40px,8vh,80px) clamp(20px,5vw,24px) clamp(60px,8vh,100px); }
+  .eyebrow { font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:#C4300F; display:flex; align-items:center; gap:10px; }
+  .eyebrow span.dot { width:8px; height:8px; border-radius:50%; background:#F73E1B; display:inline-block; }
+  h1 { font-weight:600; font-size:clamp(32px,5vw,52px); line-height:1.05; letter-spacing:-0.02em; margin:20px 0 8px; }
+  .dek { font-size:clamp(16px,1.5vw,19px); color:#3A352D; max-width:640px; margin:0 0 40px; }
+  h2 { font-weight:600; font-size:clamp(22px,2.4vw,28px); letter-spacing:-0.01em; margin:48px 0 16px; }
+  h3 { font-weight:600; font-size:18px; margin:28px 0 10px; }
+  p { color:#3A352D; margin:0 0 16px; font-size:16px; }
+  ul, ol { color:#3A352D; margin:0 0 20px; padding-left:22px; }
+  li { margin-bottom:10px; }
+  strong { color:#16140F; }
+  table { width:100%; border-collapse:collapse; margin:8px 0 28px; font-size:14px; }
+  caption { text-align:left; font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#6E685C; margin-bottom:10px; }
+  th, td { text-align:left; padding:10px 12px; border-bottom:1px solid rgba(22,20,15,0.12); }
+  th { font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#6E685C; font-weight:600; }
+  td { color:#3A352D; }
+  .callout { background:#E4DECF; border-left:3px solid #F73E1B; padding:18px 22px; margin:32px 0; }
+  .callout p:last-child { margin-bottom:0; }
+  .cta-row { display:flex; gap:14px; flex-wrap:wrap; margin-top:44px; }
+  .cta-row a { font-family:'Space Mono',monospace; font-size:13px; text-transform:uppercase; letter-spacing:0.08em; padding:16px 26px; text-decoration:none; display:inline-block; }
+  .cta-primary { color:#F1EDE4; background:#C4300F; }
+  .cta-secondary { color:#16140F; background:transparent; border:1px solid rgba(22,20,15,0.3); }
+  .related { margin-top:60px; padding-top:32px; border-top:1px solid rgba(22,20,15,0.12); }
+  .related a { font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:#C4300F; text-decoration:none; }
+  footer { background:#16140F; color:#F1EDE4; border-top:1px solid rgba(241,237,228,0.14); }
+  footer .inner { max-width:1340px; margin:0 auto; width:100%; padding:clamp(40px,6vh,64px) clamp(20px,5vw,64px); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px; }
+  footer a.home img { height:42px; width:auto; display:block; }
+  footer .links { display:flex; flex-wrap:wrap; gap:22px; font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:#A8A294; }
+  footer .links a { text-decoration:none; }
+  footer .links a:hover { color:#F73E1B; }
+  footer .copy { font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:#6E685C; }
+  .step-tag { display:block; font-family:'Space Mono',monospace; font-size:12px; color:#C4300F; letter-spacing:0.1em; margin:48px 0 8px; }
+  .step-tag + h2 { margin-top:0; }
+  h3 { border-top:1px solid rgba(22,20,15,0.12); padding-top:22px; margin-top:32px; }
+  .closing { background:#16140F; margin-top:56px; }
+  .closing-inner { max-width:760px; margin:0 auto; padding:clamp(56px,9vh,88px) clamp(20px,5vw,24px); }
+  .closing .eyebrow { color:#F73E1B; }
+  .closing .eyebrow span.dot { background:#F73E1B; }
+  .closing h2 { color:#F1EDE4; }
+  .closing p { color:#D7D1C4; }
+  .closing .cta-secondary { color:#F1EDE4; border-color:rgba(241,237,228,0.4); }
+  .nav-toggle { display:none; background:none; border:none; cursor:pointer; padding:8px; color:#16140F; }
+  @media (max-width:640px) {
+    .nav-toggle { display:block; }
+    nav { position:relative; }
+    nav .links { display:none; position:absolute; top:100%; left:0; right:0; background:#F1EDE4; flex-direction:column; gap:0; padding:8px clamp(20px,5vw,64px) 16px; border-bottom:1px solid rgba(22,20,15,0.12); }
+    nav .links.open { display:flex; }
+    nav .links a { margin-left:0; padding:12px 0; border-top:1px solid rgba(22,20,15,0.08); }
+    nav .links a:first-child { border-top:none; }
+  }
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #C4300F;outline-offset:2px;}
+</style>
+</head>
+<body>
+<nav>
+  <a class="home" href="https://b-acoustics.com/" aria-label="B-Acoustics — home"><img src="https://b-acoustics.com/images/logo-dark.png" alt="B-Acoustics — acoustic engineering and soundproofing consultancy, Singapore"></a>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+  <div class="links">
+    <a href="https://b-acoustics.com/#services">Services</a>
+    <a href="https://b-acoustics.com/#work">Work</a>
+    <a href="https://b-acoustics.com/#contact">Enquire</a>
+  </div>
+</nav>
+<main>
+
+  <div class="eyebrow"><span class="dot"></span>Compliance guide</div>
+  <h1>NEA boundary noise limits in Singapore, explained</h1>
+  <p class="dek">Every industrial premises in Singapore has a legal noise limit measured at its property boundary, not at the machine. Here's what the regulation actually requires, and how it's assessed.</p>
+
+  <span class="step-tag">A</span>
+  <h2>What the regulation covers</h2>
+  <p>Boundary noise from factory premises is regulated under the <strong>Environmental Protection and Management (Boundary Noise Limits for Factory Premises) Regulations</strong>, administered by the National Environment Agency (NEA). The limit is set at the boundary of the <em>affected</em> premises — the property next door, not your own — and varies by what kind of premises that neighbour is and what time of day it is.</p>
+  <p>This is a different framework from construction noise control (which covers temporary works) and from workplace noise exposure (a worker-safety standard enforced separately) — boundary noise limits apply to the ongoing operating noise of a factory or industrial premises.</p>
+
+  <span class="step-tag">B</span>
+  <h2>The actual limits</h2>
+  <p>NEA publishes permissible noise levels as an equivalent continuous noise level over a 5-minute measurement, broken down by the type of premises affected and the time of day:</p>
+  <table>
+    <caption>Permissible boundary noise level, by affected premises and time of day</caption>
+    <thead>
+      <tr><th>Affected premises</th><th>Day (7am–7pm)</th><th>Evening (7pm–11pm)</th><th>Night (11pm–7am)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Noise-sensitive (e.g. hospitals, schools)</td><td>65 dBA</td><td>60 dBA</td><td>55 dBA</td></tr>
+      <tr><td>Residential</td><td>70 dBA</td><td>65 dBA</td><td>60 dBA</td></tr>
+      <tr><td>Commercial</td><td>75 dBA</td><td>70 dBA</td><td>65 dBA</td></tr>
+      <tr><td>Factory</td><td>75 dBA</td><td>70 dBA</td><td>65 dBA</td></tr>
+    </tbody>
+  </table>
+  <p>The lower limit at night reflects that the same physical noise level is more disruptive outside working hours — a factory backing onto a residential block has to control its noise significantly more tightly after 11pm than during the day. See <a href="https://www.nea.gov.sg/our-services/pollution-control/noise-pollution/industrial-noise-control" target="_blank" rel="noopener">NEA's own industrial noise control page</a> for the full regulatory detail.</p>
+
+  <span class="step-tag">C</span>
+  <h2>How compliance is assessed</h2>
+  <p>Compliance is checked by measuring actual sound pressure levels at the affected boundary, not by inspecting equipment specifications. That means the same machinery can be compliant on one site and non-compliant on another, depending on distance to the boundary, intervening structures, and what's on the other side of the fence. A desk-based estimate is not a substitute for a real measurement.</p>
+  <p>If a boundary measurement exceeds the applicable limit, NEA can issue directions requiring the operator to reduce the noise, with escalating enforcement for continued non-compliance.</p>
+
+  <div class="callout">
+    <p><strong>The limit that applies to you is set by your neighbour, not by you:</strong> a factory whose noise reaches a residential boundary must meet the residential limit — not the higher factory-to-factory limit — even if the site itself is zoned industrial.</p>
+  </div>
+
+  <h2>Frequently asked</h2>
+  <h3>What is the actual regulation that sets these limits?</h3>
+  <p>The Environmental Protection and Management (Boundary Noise Limits for Factory Premises) Regulations, enforced by NEA. It sets permissible noise levels measured at the boundary of the affected premises, not at the source.</p>
+  <h3>Do the limits change at night?</h3>
+  <p>Yes — every premises category has a lower limit in the evening (7pm-11pm) and a lower limit again at night (11pm-7am) than during the day (7am-7pm), reflecting that the same noise level is more disruptive outside working hours.</p>
+  <h3>Which limit applies to my factory?</h3>
+  <p>The limit that applies is set by the type of premises your noise affects, not by your own premises type — a factory whose noise reaches a residential boundary must meet the residential limit, not the (higher) factory-to-factory limit.</p>
+  <h3>What happens if a boundary measurement exceeds the limit?</h3>
+  <p>NEA can issue directions to reduce the noise, and continued non-compliance can lead to enforcement action. The practical fix is source-level attenuation (duct silencers, enclosures, vibration isolation) verified by a follow-up boundary measurement, not a one-off adjustment.</p>
+
+<div class="related">
+  <a href="https://b-acoustics.com/services/industrial-noise-compliance-singapore.html">See our industrial noise compliance service &rarr;</a>
+  <br>
+  <a href="https://b-acoustics.com/blog/hdb-vs-condo-soundproofing-singapore.html">Also: HDB vs Condo Soundproofing Rules in Singapore &rarr;</a>
+</div>
+</main>
+
+<section class="closing">
+  <div class="closing-inner">
+    <div class="eyebrow"><span class="dot"></span>Next step</div>
+    <h2>How B-Acoustics approaches boundary noise compliance</h2>
+    <p>We start with a real boundary measurement against the applicable NEA limit, identify which equipment is actually driving the exceedance, and propose attenuation sized to that gap — with verification testing where a compliance report is required.</p>
+    <div class="cta-row">
+      <a class="cta-primary" href="https://b-acoustics.com/#contact">Get a tailored quote</a>
+      <a class="cta-secondary" href="https://b-acoustics.com/#services">See our services</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="inner">
+    <a class="home" href="https://b-acoustics.com/" aria-label="B-Acoustics — home"><img src="https://b-acoustics.com/images/logo-light.png" alt="B-Acoustics — acoustic engineering and soundproofing consultancy, Singapore"></a>
+    <div class="links">
+      <a href="https://b-acoustics.com/#services">Services</a>
+      <a href="https://b-acoustics.com/#work">Work</a>
+      <a href="https://b-acoustics.com/blog/office-soundproofing-cost-singapore.html">Office Cost Guide</a>
+      <a href="https://b-acoustics.com/blog/stc-vs-nrc-explained.html">STC vs NRC</a>
+      <a href="https://b-acoustics.com/blog/nea-boundary-noise-limits-singapore.html">NEA Noise Limits</a>
+      <a href="https://b-acoustics.com/blog/hdb-vs-condo-soundproofing-singapore.html">HDB vs Condo</a>
+      <a href="https://b-acoustics.com/services/office-acoustics-singapore.html">Office Acoustics</a>
+      <a href="https://b-acoustics.com/services/party-wall-soundproofing-singapore.html">Party-Wall Soundproofing</a>
+      <a href="https://b-acoustics.com/services/industrial-noise-compliance-singapore.html">Industrial Noise Compliance</a>
+      <a href="https://b-acoustics.com/#contact">Enquire</a>
+    </div>
+    <div class="copy">&copy; 2026 B-Acoustics &middot; Singapore</div>
+  </div>
+</footer>
+<script>
+(function () {
+  var btn = document.querySelector('.nav-toggle');
+  var links = document.querySelector('nav .links');
+  if (!btn || !links) return;
+  btn.addEventListener('click', function () {
+    var open = links.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  Array.prototype.forEach.call(links.querySelectorAll('a'), function (a) {
+    a.addEventListener('click', function () {
+      links.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+</script>
+</body>
+</html>
