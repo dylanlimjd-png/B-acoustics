@@ -310,3 +310,19 @@ specifically to start tracking whether that fix moves the indexing gap.
 **Next week:** re-run this same query set and check specifically whether
 `site:b-acoustics.com` now includes the homepage — that's the concrete pass/fail
 signal for the 2026-07-28 re-platform fix.
+
+## Update — 2026-07-28 (2 new blog posts + backlink research)
+
+- **2 of the 4-6 recommended blog posts shipped**: `blog/nea-boundary-noise-limits-singapore.html`
+  and `blog/hdb-vs-condo-soundproofing-singapore.html`. Both grounded in real,
+  sourced facts fetched this session (NEA's actual dB(A) limit table; real HDB
+  renovation-permit timing rules) rather than invented figures, with their own
+  `FAQPage` schema, cross-linked to the relevant service page and each other,
+  and added to `sitemap.xml` and every page's footer. Commit `bd31a0c`.
+  Remaining candidate topics for a future batch: home theatre soundproofing
+  cost, and 1-2 more depending on what's converting.
+- **Off-page authority** — moved from "not started" to "researched." See
+  `Backlink Targets.md` (new file, commit `a302e1a`) for a sourced shortlist of
+  real SG business directories and architecture/interior-design industry
+  bodies. Actual submission still needs the user (account creation, association
+  outreach) — this only closes the research half of the item.

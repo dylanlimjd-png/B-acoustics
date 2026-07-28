@@ -56,6 +56,15 @@ root once drafted).
   local Lighthouse mobile: Performance 74→95, LCP 5.4s→2.4s. This was also the
   confirmed root cause of the homepage not being indexed by Google — see the
   2026-07-28 update in `SEO_RECOMMENDATIONS.md`. Pushed as commit `70de168`.
+- **Item 4 (Accessibility) — done 2026-07-28.** Direct audit (not a guess) found:
+  alt text already complete site-wide (no action needed); 6 instances of
+  `outline:none` on the homepage's contact-form/chat fields with no replacement
+  focus style (WCAG 2.4.7 failure); none of the 5 contact-form labels had a
+  `for`/`id` association (WCAG 1.3.1/4.1.2); the chat input had no accessible
+  name. Fixed all three — label/for pairing, a global `:focus-visible` outline,
+  and an `aria-label` on the chat input. Verified via Playwright: every field
+  reachable by keyboard shows a visible focus ring and resolves to its correct
+  label text. Pushed as commit `b570422`.
 
 **PARKED — unresolved bug, 2026-07-27:** user reports a spacing issue right before
 the "08 / Studio" section (on the live site) that **persists after two rounds of

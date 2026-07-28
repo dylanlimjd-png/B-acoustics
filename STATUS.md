@@ -21,14 +21,17 @@ outreach) and can't be started in a coding session.
 | 1 | First GBP reviews — solicit from real clients | Very High | Low (for you) | **No — needs you** | `CONTINUOUS_IMPROVEMENT.md` Item 3, `DESIGN_FEEDBACK.md` |
 | 2 | Real GBP photos — shot list ready, not yet taken/uploaded | High | Medium (for you) | **No — needs you** | `Photo request list.md` |
 | ~~3~~ | ~~Mobile nav has no hamburger/collapse~~ — **FIXED 2026-07-28**, commit `2f817d6` | High | Low-Medium | Done | `DESIGN_FEEDBACK.md` |
-| 4 | Broader WCAG 2.2 pass (focus states, form labeling, alt-text completeness) | Med-High | Medium | Yes | `CONTINUOUS_IMPROVEMENT.md` Item 4 |
-| 5 | 4-6 more blog posts | Medium | High (real research/writing per post) | Yes | `SEO_RECOMMENDATIONS.md` |
-| 6 | Off-page authority: SG directory listings, MIOA, outreach, press | High ceiling, slow | Very High, ongoing, partly needs your relationships | Partial | `SEO_RECOMMENDATIONS.md` |
+| ~~4~~ | ~~WCAG pass~~ — **FIXED 2026-07-28**, commit `b570422`: label/for association, focus-visible outlines, chat input accessible name (real failures found via direct audit — alt text was already complete, checked and confirmed) | Med-High | Medium | Done | `CONTINUOUS_IMPROVEMENT.md` Item 4 |
+| ~~5~~ | ~~2 of 4-6 more blog posts~~ — **DONE 2026-07-28**, commit `bd31a0c` (NEA boundary noise limits, HDB vs Condo). 2-4 more remain for a future batch. | Medium | High | Partially done | `SEO_RECOMMENDATIONS.md` |
+| 6 | Off-page authority: SG directory listings, MIOA, outreach, press | High ceiling, slow | Very High, ongoing, partly needs your relationships | **Research done** (`Backlink Targets.md`, commit `a302e1a`) — actual submission needs you | `SEO_RECOMMENDATIONS.md` |
 | 7 | `AggregateRating`/`Review` schema | Low until #1 exists | Low | Blocked on #1 | `SEO_RECOMMENDATIONS.md` |
-| 8 | Dead Instagram footer link (`href="#"`) | Trivial | Trivial | Yes, anytime | `DESIGN_FEEDBACK.md` |
+| ~~8~~ | ~~Dead Instagram footer link~~ — **FIXED 2026-07-28**, commit `b570422` (removed until a real profile URL exists) | Trivial | Trivial | Done | `DESIGN_FEEDBACK.md` |
 | 9 | Optional H1 A/B test | Low, needs analytics infra we don't have | Medium | No — no infra | `SEO_RECOMMENDATIONS.md` |
 
-**Next up: #3, mobile nav** — highest-impact item actually startable right now.
+**Remaining fully-actionable-by-me item: 2-4 more blog posts** (see
+`SEO_RECOMMENDATIONS.md` for candidate topics). Everything else left open
+either needs you (#1, #2, actual directory/association submissions from
+#6) or is blocked on something outside this session's control (#7, #9).
 
 ## Watch items (not actionable yet, just checking periodically)
 
@@ -44,6 +47,9 @@ outreach) and can't be started in a coding session.
 - Accent-orange WCAG contrast failure on light backgrounds, site-wide (2026-07-28, `78799bf`).
 - Service-page visual consistency — hero photos, step tags, FAQ dividers, dark closing CTA band (2026-07-28, `3352352`).
 - Mobile hamburger nav across all 6 pages (2026-07-28, `2f817d6`).
+- WCAG fixes on the homepage contact form + dead Instagram link removed (2026-07-28, `b570422`).
+- 2 new blog posts (NEA boundary noise limits, HDB vs Condo) + cross-linking (2026-07-28, `bd31a0c`).
+- Backlink Targets.md research doc (2026-07-28, `a302e1a`).
 - Contact form + AI chat agent backend (2026-07-27).
 - AEO/GEO: `FAQPage` JSON-LD site-wide (2026-07-27).
 - Registered address added to schema + NAP (2026-07-27).
