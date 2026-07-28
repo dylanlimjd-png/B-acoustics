@@ -53,6 +53,14 @@
 .ba-btn-ghost-light:hover{background:#16140F !important;color:#F1EDE4 !important;}
 .ba-btn-ghost-dark{transition:background .15s,color .15s;}
 .ba-btn-ghost-dark:hover{background:#F1EDE4 !important;color:#16140F !important;}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;color:#16140F;}
+@media (max-width:640px){
+.nav-toggle{display:block;}
+.nav-links{display:none !important;position:absolute;top:100%;left:0;right:0;background:#F1EDE4;flex-direction:column !important;align-items:stretch !important;gap:0 !important;padding:8px clamp(20px,5vw,64px) 16px;border-bottom:1px solid rgba(22,20,15,0.12);}
+.nav-links.open{display:flex !important;}
+.nav-links a{margin:0;padding:12px 0;border-top:1px solid rgba(22,20,15,0.08);}
+.nav-links a:first-child{border-top:none;}
+}
 </style>
 
 </head>
@@ -64,7 +72,10 @@
     <a href="#top" style="display:flex; align-items:center;" aria-label="B-Acoustics — home">
       <img src="images/logo-dark.png" alt="B-Acoustics — acoustic engineering and soundproofing consultancy, Singapore" style="height:34px; width:auto; display:block;">
     </a>
-    <div style="display:flex; align-items:center; gap:28px; flex-wrap:wrap;">
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+    <div class="nav-links" style="display:flex; align-items:center; gap:28px; flex-wrap:wrap;">
       <a href="#services" class="ba-nav-link" style="font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:#46413A;">Services</a>
       <a href="#approach" class="ba-nav-link" style="font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:#46413A;">Approach</a>
       <a href="#work" class="ba-nav-link" style="font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:#46413A;">Work</a>
@@ -730,6 +741,24 @@
         appendMessage('assistant', "Something went wrong on my end — please try again, or use the enquiry form below.");
       })
       .then(function () { setSending(false); });
+  });
+})();
+</script>
+
+<script>
+(function () {
+  var btn = document.querySelector('.nav-toggle');
+  var links = document.querySelector('.nav-links');
+  if (!btn || !links) return;
+  btn.addEventListener('click', function () {
+    var open = links.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  Array.prototype.forEach.call(links.querySelectorAll('a'), function (a) {
+    a.addEventListener('click', function () {
+      links.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
   });
 })();
 </script>
