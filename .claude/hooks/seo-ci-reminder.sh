@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
-# SessionStart reminder for two weekly-cadence recurring activities on this project:
-# the "SEO ranking check" and the continuous-improvement weekly idea generation.
-# Neither can be run unattended (SEO check needs claude-in-chrome), so this hook
-# only injects a reminder for Claude to check whether either is due (~7+ days since
-# the last logged entry) and, if so, proactively suggest running it with the user.
+# SessionStart hook for this project. Two jobs:
+# 1. Always surface STATUS.md's "Open items" table (the consolidated rollup
+#    across SEO_RECOMMENDATIONS.md, CONTINUOUS_IMPROVEMENT.md,
+#    DESIGN_FEEDBACK.md, and Photo request list.md) so a fresh session gets
+#    the current punch list without needing to ask or open 4 files.
+# 2. Keep the original cadence check for two weekly-cadence recurring
+#    activities ("SEO ranking check" and the continuous-improvement weekly
+#    idea generation) -- neither can run unattended (the SEO check needs
+#    claude-in-chrome), so this flags when either is ~7+ days stale.
 set -uo pipefail
 
 today_epoch=$(date +%s)
@@ -14,21 +18,18 @@ today_epoch=$(date +%s)
 seo_date=$(grep -oE '## SEO ranking check.*[0-9]{4}-[0-9]{2}-[0-9]{2}' SEO_RECOMMENDATIONS.md 2>/dev/null | tail -1 | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}' | head -1)
 ci_date=$(grep -oE '## Week of [0-9]{4}-[0-9]{2}-[0-9]{2}' CONTINUOUS_IMPROVEMENT.md 2>/dev/null | tail -1 | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}')
 
-msg=""
-due_any=0
+cadence_msg=""
 
 if [ -n "$seo_date" ]; then
   seo_epoch=$(date -d "$seo_date" +%s 2>/dev/null || true)
   if [ -n "$seo_epoch" ]; then
     days=$(( (today_epoch - seo_epoch) / 86400 ))
     if [ "$days" -ge 7 ]; then
-      msg="$msg SEO ranking check is due (last run $seo_date, ${days}d ago; method in seo-ranking-routine-2026-07 memory)."
-      due_any=1
+      cadence_msg="$cadence_msg SEO ranking check is due (last run $seo_date, ${days}d ago; method in seo-ranking-routine-2026-07 memory)."
     fi
   fi
 else
-  msg="$msg No SEO ranking check has been logged yet (see seo-ranking-routine-2026-07 memory)."
-  due_any=1
+  cadence_msg="$cadence_msg No SEO ranking check has been logged yet (see seo-ranking-routine-2026-07 memory)."
 fi
 
 if [ -n "$ci_date" ]; then
@@ -36,16 +37,21 @@ if [ -n "$ci_date" ]; then
   if [ -n "$ci_epoch" ]; then
     days=$(( (today_epoch - ci_epoch) / 86400 ))
     if [ "$days" -ge 7 ]; then
-      msg="$msg Continuous-improvement weekly idea generation is due (last run $ci_date, ${days}d ago; see continuous_improvement_stream_2026-07 memory)."
-      due_any=1
+      cadence_msg="$cadence_msg Continuous-improvement weekly idea generation is due (last run $ci_date, ${days}d ago; see continuous_improvement_stream_2026-07 memory)."
     fi
   fi
 fi
 
-if [ "$due_any" -eq 1 ]; then
-  msg="B-Acoustics project reminder:$msg Both require an interactive session with the user (the SEO check needs claude-in-chrome browser automation). Proactively surface this near the start of the conversation, and mention any other pending/parked action items noted in SEO_RECOMMENDATIONS.md or CONTINUOUS_IMPROVEMENT.md."
-  esc=$(printf '%s' "$msg" | sed 's/\\/\\\\/g; s/"/\\"/g')
-  printf '{"hookSpecificOutput":{"hookEventName":"SessionStart","additionalContext":"%s"}}' "$esc"
-else
-  printf '{}'
+if [ -n "$cadence_msg" ]; then
+  cadence_msg="Cadence reminder:$cadence_msg (Both need an interactive session with claude-in-chrome for the SEO check.)"
 fi
+
+open_items=$(awk '/^## Open items/{flag=1; next} /^## /{flag=0} flag' STATUS.md 2>/dev/null)
+
+full_msg="B-Acoustics project status (from STATUS.md, the consolidated tracker across all trackers -- read that file directly for full detail/history, this is just the current punch list):
+${open_items}
+${cadence_msg}
+Proactively surface anything from this list that's relevant to what the user asks for this session."
+
+esc=$(printf '%s' "$full_msg" | sed 's/\\/\\\\/g; s/"/\\"/g' | awk '{printf "%s\\n", $0}')
+printf '{"hookSpecificOutput":{"hookEventName":"SessionStart","additionalContext":"%s"}}' "$esc"
