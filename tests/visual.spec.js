@@ -21,6 +21,17 @@ for (const { name, path } of PAGES) {
     // that can catch two consecutive captures mid-transition. Force instant
     // scrolling for the capture only; doesn't touch the live site's behavior.
     await page.addStyleTag({ content: 'html{scroll-behavior:auto !important;}' });
+    // loading="lazy" images (below-the-fold hero photos on the homepage) can
+    // start loading mid-capture as the full-page screenshot scrolls through
+    // them, so one attempt catches them blank and the retry catches them
+    // loaded — a real pixel diff between "two consecutive screenshots" that
+    // has nothing to do with an actual regression. Force everything eager
+    // and decoded before the screenshot is taken.
+    await page.evaluate(async () => {
+      const imgs = Array.from(document.images);
+      imgs.forEach((img) => { img.loading = 'eager'; });
+      await Promise.all(imgs.map((img) => img.decode().catch(() => {})));
+    });
     await expect(page).toHaveScreenshot(`${name}.png`, { fullPage: true });
   });
 }
