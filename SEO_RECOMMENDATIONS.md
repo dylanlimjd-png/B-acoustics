@@ -258,3 +258,55 @@ live on b-acoustics.com.
 (the homepage) appearing in `site:b-acoustics.com`**, which it did not as of
 2026-07-27 — this is the signal that the fix actually resolved indexing, not just
 the technical symptom.
+
+## SEO ranking check — 2026-07-28
+
+Live organic Google search via browser (Singapore locale `gl=sg`, no account/login
+used — see `seo-ranking-routine-2026-07` project memory). Run the day after the
+homepage re-platform shipped (commit `70de168`, see the update directly above),
+specifically to start tracking whether that fix moves the indexing gap.
+
+### Findings
+
+1. **`site:b-acoustics.com` still shows only the 2 blog posts** — homepage and all
+   3 service pages still not indexed, unchanged from 2026-07-27. Expected at this
+   point: the fix was pushed less than 24 hours before this check, and Google's
+   re-crawl/re-index cycle takes longer than that. Not a sign the fix failed —
+   just too soon to see an effect yet.
+2. **Still no organic visibility** for "acoustic consultant Singapore" (checked
+   page 1 and page 2), "soundproofing Singapore", "office soundproofing cost
+   Singapore" (the exact blog post's own target term), or "office acoustics
+   Singapore" (the office service page's own target term). Unchanged from last
+   week.
+3. **Brand-name collision persists** for the bare "b-acoustics" query — still
+   crowded out by the same unrelated audio-equipment brands (BS Acoustic, SB
+   Acoustics, BE Acoustics) plus dB Acoustics (a real competitor). **Small
+   positive signal:** the quoted query `"B-Acoustics" acoustic consultant` now
+   surfaces *both* blog posts in web results (last week only one ranked) —
+   direction is right, just early.
+4. **GBP still has no local-pack visibility.** Local results for "office
+   acoustics Singapore" and `"B-Acoustics" acoustic consultant` show only
+   competitors (Advanced Acoustics, dB Acoustics, Aural-Aid, NoiseStop, TC
+   Acoustic) — consistent with the listing still lacking reviews/citations. No
+   change from last week; still blocked on the open GBP photo/review action item
+   (see `Photo request list.md`).
+
+### Resolution plans
+
+1. **Indexing gap** — the structural cause is now fixed (see the 2026-07-28
+   update above), so this is now purely a matter of waiting for Google's next
+   crawl of these URLs. Re-check specifically on this next week; if
+   `site:b-acoustics.com` still doesn't show the homepage after ~2 weeks post-fix,
+   that would be the point to consider manually requesting indexing (needs GSC
+   access, still blocked — see `continuous_improvement_stream_2026-07` memory).
+2. **No organic visibility / brand collision** — same as 2026-07-27: expected
+   this early, primary lever is backlinks (still zero known inbound links) and
+   time. No new action this week.
+3. **GBP local-pack visibility** — same open item as last week: needs the real
+   photos from `Photo request list.md` shot and uploaded, plus first reviews.
+   Nothing to do here from this session; flagged as the actionable next step for
+   whenever those photos are taken.
+
+**Next week:** re-run this same query set and check specifically whether
+`site:b-acoustics.com` now includes the homepage — that's the concrete pass/fail
+signal for the 2026-07-28 re-platform fix.
