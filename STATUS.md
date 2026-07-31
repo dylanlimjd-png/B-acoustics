@@ -7,15 +7,7 @@ and `Photo request list.md` separately — those remain the detailed logs
 (method, findings, reasoning) for their respective activities; this file is
 just the rollup of what's still open, updated whenever any of them change.
 
-Last updated: 2026-07-28.
-
-**Session paused here for the night.** Everything below is committed and
-live on `main`, CI confirmed stable (3 consecutive clean runs). Nothing is
-mid-flight or left broken. Pick up next session with:
-1. Item #10 below (service/blog page Lighthouse scores, 0.78–0.83) — the
-   next actionable-by-me item, if you want it addressed.
-2. The remaining 2-4 blog posts (see `SEO_RECOMMENDATIONS.md`).
-3. Anything from the "Watch items" section that's come due.
+Last updated: 2026-07-31.
 
 ## Open items — ranked 2026-07-28
 
@@ -35,7 +27,7 @@ outreach) and can't be started in a coding session.
 | 7 | `AggregateRating`/`Review` schema | Low until #1 exists | Low | Blocked on #1 | `SEO_RECOMMENDATIONS.md` |
 | ~~8~~ | ~~Dead Instagram footer link~~ — **FIXED 2026-07-28**, commit `b570422` (removed until a real profile URL exists) | Trivial | Trivial | Done | `DESIGN_FEEDBACK.md` |
 | 9 | Optional H1 A/B test | Low, needs analytics infra we don't have | Medium | No — no infra | `SEO_RECOMMENDATIONS.md` |
-| 10 | Service/blog page performance — Lighthouse CI (mobile, throttled) measures 0.78–0.83 performance score and up to 4.1s LCP on `services/*.html`/`blog/*.html`, vs. the homepage's 0.85+/2.4s post-`70de168`. These page types never got the same optimization pass. | Medium | Medium | Not started — surfaced by the new Lighthouse CI budget, see below | This session |
+| ~~10~~ | ~~Service/blog page performance~~ — **FIXED 2026-07-31**: root cause was two oversized logo PNGs embedded as inline base64 in every `services/*.html`/`blog/*.html` page (~350KB of dead weight per page, invisible to `check-site.js` since it skips `data:` URIs) plus the hero photo on service pages being `loading="lazy"` and fetched from an absolute production URL instead of the local static file. Replaced with the same relative-path + eager-hero pattern the homepage already used. Local Lighthouse: office-acoustics page 0.86 perf/2.6s LCP (was 0.78–0.83/up to 4.1s), stc-vs-nrc blog page 0.96 perf/2.3s LCP. `lighthouserc.json`'s generic budget tightened (0.72→0.78 min score, 4500→3800ms max LCP). | Medium | Medium | Done | This session |
 
 **Remaining fully-actionable-by-me item: 2-4 more blog posts** (see
 `SEO_RECOMMENDATIONS.md` for candidate topics). Everything else left open
@@ -54,13 +46,14 @@ either needs you (#1, #2, actual directory/association submissions from
 
 Four pieces of build-time tooling, all wired up and confirmed green on `main` this session — see `.github/workflows/` and root `package.json`/`playwright.config.js`/`lighthouserc.json`:
 
-- **`ci.yml`** (runs on push/PR to `main`, plus manual `workflow_dispatch`; advisory — doesn't gate the GitHub Pages deploy): `scripts/check-site.js` validates JSON-LD and internal links/anchors across all 8 pages; `html-validate` checks HTML structure (`.htmlvalidate.json` turns off rules that just reflect this site's real conventions — inline styles, implicit input/button types, etc.); a Playwright visual-regression suite screenshots all 8 pages at desktop + mobile; Lighthouse CI enforces a performance budget (strict on the homepage, calibrated to current measurements on service/blog pages — see open item #10 above), using `numberOfRuns: 3` (median) since GitHub's shared runners showed enough single-run variance (~0.82–0.95 on the same unchanged commit) to fail on noise alone.
+- **`ci.yml`** (runs on push/PR to `main`, plus manual `workflow_dispatch`; advisory — doesn't gate the GitHub Pages deploy): `scripts/check-site.js` validates JSON-LD and internal links/anchors across all 8 pages; `html-validate` checks HTML structure (`.htmlvalidate.json` turns off rules that just reflect this site's real conventions — inline styles, implicit input/button types, etc.); a Playwright visual-regression suite screenshots all 8 pages at desktop + mobile; Lighthouse CI enforces a performance budget (strict on the homepage; the generic budget for service/blog pages was tightened 2026-07-31 once those pages were brought up to the same standard — see Recently resolved below), using `numberOfRuns: 3` (median) since GitHub's shared runners showed enough single-run variance (~0.82–0.95 on the same unchanged commit) to fail on noise alone.
 - **`update-visual-baseline.yml`** (manual trigger only) — regenerates the 16 committed baseline screenshots in `tests/visual.spec.js-snapshots/`. Run this deliberately after any *intentional* visual change; otherwise a real regression should make `ci.yml`'s visual-regression job fail red.
 - **`worker-uptime.yml`** — pings the Cloudflare Worker's health route every 30 min; a failure surfaces via GitHub's default scheduled-workflow-failure notification (no new alerting infra).
 - Verified end-to-end: deliberately reintroduced the exact Studio-section padding bug fixed below and confirmed the visual-regression suite catches it (93px height diff, ~3-4% pixel diff) before reverting. The homepage screenshot was itself intermittently flaky at first — two real causes found and fixed: `html{scroll-behavior:smooth}` animating the scroll steps used to stitch a full-page capture, and `loading="lazy"` hero images loading mid-capture. Confirmed stable across 3 consecutive clean CI runs after both fixes.
 
 ## Recently resolved (kept briefly for continuity, drop once confirmed stable)
 
+- Service/blog page Lighthouse performance — removed ~350KB of inline base64 logo images per page, fixed the service-page hero photo to load eagerly from a relative path instead of lazily from an absolute production URL, tightened `lighthouserc.json`'s generic budget accordingly (2026-07-31).
 - Studio section (08) had zero top padding, jamming its heading against the dark FAQ section above it — a copy/paste slip from the 70de168 re-platform, not a new bug. **Fixed 2026-07-28**, commit `5a14df8`; user-verified live.
 - While wiring up the new HTML checkers: fixed unescaped `&` in two service-page `<title>` tags and one blog paragraph, a `<style>` block incorrectly placed under `<body>` instead of `<head>` in `index.html`, and a couple of trivial whitespace/attribute nits (2026-07-28, PR #2).
 - Homepage bundler-format → plain static HTML re-platform (2026-07-28, `70de168`) — fixed the indexing-gap root cause and a 6.6s LCP render delay (Lighthouse: 74→95, LCP 5.4s→2.4s).

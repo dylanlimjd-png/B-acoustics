@@ -22,8 +22,8 @@
         {
           "matchingUrlPattern": ".*",
           "assertions": {
-            "categories:performance": ["error", { "minScore": 0.72 }],
-            "largest-contentful-paint": ["error", { "maxNumericValue": 4500 }],
+            "categories:performance": ["error", { "minScore": 0.78 }],
+            "largest-contentful-paint": ["error", { "maxNumericValue": 3800 }],
             "cumulative-layout-shift": ["error", { "maxNumericValue": 0.1 }]
           }
         }
