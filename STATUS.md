@@ -9,6 +9,19 @@ just the rollup of what's still open, updated whenever any of them change.
 
 Last updated: 2026-07-31.
 
+**Session paused here for the night.** Everything below is committed and
+pushed to `main`. Nothing is mid-flight or left broken. Pick up next session
+with:
+1. **Remaining fully-actionable-by-me item: 2-4 more blog posts** (see
+   `SEO_RECOMMENDATIONS.md` for candidate topics) — the only open item that
+   doesn't need you or wait on external data.
+2. The weekly SEO ranking check is current as of tonight (see
+   `SEO_RECOMMENDATIONS.md`'s 2026-07-31 entry) — no need to re-run
+   immediately; due again in ~1 week.
+3. Everything else open either needs you (#1, #2, actual directory/association
+   submissions from #6) or is blocked on something outside a coding session's
+   control (#7, #9).
+
 ## Open items — ranked 2026-07-28
 
 Ranked by impact vs. effort (same method as `CONTINUOUS_IMPROVEMENT.md`'s
@@ -36,7 +49,7 @@ either needs you (#1, #2, actual directory/association submissions from
 
 ## Watch items (not actionable yet, just checking periodically)
 
-- **Homepage indexing gap** — structural fix shipped 2026-07-28 (commit `70de168`). `site:b-acoustics.com` still didn't show the homepage as of the 2026-07-28 SEO ranking check (expected — too soon after the fix). **Re-check on the next SEO ranking run**; that's the real pass/fail signal.
+- **Homepage indexing gap** — structural fix shipped 2026-07-28 (commit `70de168`). `site:b-acoustics.com` still didn't show the homepage or any service page as of the 2026-07-31 SEO ranking check, 3 days post-fix (still expected — normal re-crawl windows run longer than this). **Re-check on the next SEO ranking run**; if still absent by ~2026-08-11 (~2 weeks post-fix), consider a manual indexing request (needs GSC access, still blocked). On the positive side, the quoted branded query `"B-Acoustics" acoustic consultant` now returns both blog posts as the top two organic results, up from further down the page last week.
 - **GSC-capable MCP connector** — not connected as of last check. Would unblock real daily/weekly SEO data automation. Ask "is a Search-Console connector available now?" next session.
 - **GitHub App install on `dylanlimjd-png/B-acoustics`** — not verified as of last check. Needed before the weekly tracker doc can be committed by an unattended cloud routine.
 - **Blank favicon in Google search results** — not due for a recheck until ~2026-08-13 (one month after it shipped).

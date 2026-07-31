@@ -326,3 +326,61 @@ signal for the 2026-07-28 re-platform fix.
   real SG business directories and architecture/interior-design industry
   bodies. Actual submission still needs the user (account creation, association
   outreach) — this only closes the research half of the item.
+
+## SEO ranking check — 2026-07-31
+
+Live organic Google search via browser (Singapore locale `gl=sg`, no account/login
+used — see `seo-ranking-routine-2026-07` project memory). Ran 3 days after the
+homepage re-platform (`70de168`) and the service/blog Lighthouse performance fix
+(`5f8dc50`, same session). Query set expanded per last run's note: added
+"party-wall soundproofing Singapore" and "industrial noise compliance Singapore"
+(the two remaining service pages' own target terms) — full rotation now covers
+all 3 service pages and both indexed blog posts.
+
+### Findings
+
+1. **`site:b-acoustics.com` still shows only the 2 blog posts** — homepage and
+   all 3 service pages still not indexed, unchanged from 2026-07-28. Only 3 days
+   post-fix; still within a normal re-crawl window, not a signal the fix failed.
+2. **Still no organic visibility** on page 1 for "acoustic consultant Singapore",
+   "soundproofing Singapore", "office soundproofing cost Singapore", or "office
+   acoustics Singapore" — unchanged from last week. (Page 2 not re-checked this
+   run; long-running zero-visibility trend made it low-value to repeat.)
+3. **Both new query terms show zero visibility too** — "party-wall soundproofing
+   Singapore" and "industrial noise compliance Singapore" (the party-wall and
+   industrial service pages' own target terms) don't surface b-acoustics.com
+   anywhere on page 1, organic or local pack. Expected given those pages aren't
+   indexed yet (see #1) — same root cause, not a separate problem.
+4. **Brand-name collision persists** for the bare "b-acoustics" query — same
+   unrelated audio-equipment brands (BS Acoustic, SB Acoustics, BE Acoustics)
+   plus dB Acoustics crowd out every result; b-acoustics.com doesn't appear at
+   all, not even as a "missing" partial match.
+5. **Positive signal continues to strengthen**: the quoted query `"B-Acoustics"
+   acoustic consultant` now returns *both* blog posts as the top two organic
+   web results (previously they appeared further down the results). Direction
+   is right and improving for exact-brand-match queries specifically.
+6. **GBP still has zero local-pack visibility** — checked across "soundproofing
+   Singapore", "office soundproofing cost Singapore", "office acoustics
+   Singapore", "party-wall soundproofing Singapore", and the branded query; every
+   local pack shows only competitors (NoiseStop, JD Acoustic, Aural-Aid, TC
+   Acoustic, ArteCoustic, Advanced Acoustics, dB Acoustics). No change — still
+   blocked on the open GBP photo/review action item.
+
+### Resolution plans
+
+1. **Indexing gap** — no new action; same wait as documented 2026-07-28. If
+   `site:b-acoustics.com` still excludes the homepage by roughly 2026-08-11
+   (~2 weeks post-fix), that's the point to consider a manual indexing request
+   (needs GSC access, still blocked).
+2. **No organic visibility / brand collision / new query terms** — same as
+   prior runs: expected this early, primary lever is backlinks (still zero
+   known inbound links) and time. No new action this week.
+3. **Branded-query improvement** — no action needed, just keep tracking; if this
+   keeps strengthening while generic-term visibility stays flat, it's a useful
+   signal that content quality isn't the blocker, indexing/authority is.
+4. **GBP local-pack visibility** — same open item: needs the real photos from
+   `Photo request list.md` shot and uploaded, plus first reviews. Nothing to do
+   here from this session.
+
+**Next run:** re-check `site:b-acoustics.com` for the homepage specifically —
+now the single concrete pass/fail signal being tracked across runs.
