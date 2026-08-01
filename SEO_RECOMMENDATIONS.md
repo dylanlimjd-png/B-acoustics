@@ -384,3 +384,30 @@ all 3 service pages and both indexed blog posts.
 
 **Next run:** re-check `site:b-acoustics.com` for the homepage specifically —
 now the single concrete pass/fail signal being tracked across runs.
+
+## Update — 2026-08-01 (2 more blog posts + GBP existence check)
+
+- **2 more of the recommended blog posts shipped**, closing out the "2-4 more
+  blog posts" item: `blog/home-theatre-soundproofing-cost-singapore.html` (the
+  named candidate topic from 2026-07-28) and `blog/neighbour-noise-singapore.html`
+  (new — fills a real content gap, since `services/party-wall-soundproofing-singapore.html`
+  had no dedicated blog companion before this). Both grounded in real, sourced
+  facts (STC targets and the room-within-a-room/low-frequency principles for
+  home theatres; the Community Disputes Resolution Act's Nov 2024 amendment,
+  Community Mediation Centre, the piloted Community Relations Unit, and the
+  ~2,500/month neighbour-noise complaint volume for the second), each with its
+  own `Article`+`FAQPage` schema, cross-linked to the relevant service page(s)
+  and other posts, and added to `sitemap.xml` and every page's footer.
+  `party-wall-soundproofing-singapore.html`'s "related" section now leads with
+  the new neighbour-noise post instead of the STC vs NRC link. Verified clean
+  with `npm run check-site` and `npm run validate-html` before committing.
+- **GBP existence check** (requested this session, not a scheduled item): live
+  Google Search and Google Maps search for "B-Acoustics Singapore" returns zero
+  results named B-Acoustics — only unrelated businesses (SB Acoustics, dB
+  Acoustics, TC Acoustic, Advanced Acoustics, NoiseStop Systems, etc.). This is
+  a stronger finding than "no reviews yet" — it suggests **no Google Business
+  Profile exists for B-Acoustics at all**, or it exists but isn't verified/live,
+  rather than merely lacking reviews. Updates the framing of Open Item #1: the
+  first actionable step may be creating/verifying the GBP listing itself, not
+  just soliciting reviews on an existing one. Needs the user to check Google
+  Business Profile Manager directly.

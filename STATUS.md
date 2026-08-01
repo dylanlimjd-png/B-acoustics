@@ -7,20 +7,19 @@ and `Photo request list.md` separately — those remain the detailed logs
 (method, findings, reasoning) for their respective activities; this file is
 just the rollup of what's still open, updated whenever any of them change.
 
-Last updated: 2026-07-31.
+Last updated: 2026-08-01.
 
-**Session paused here for the night.** Everything below is committed and
-pushed to `main`. Nothing is mid-flight or left broken. Pick up next session
-with:
-1. **Remaining fully-actionable-by-me item: 2-4 more blog posts** (see
-   `SEO_RECOMMENDATIONS.md` for candidate topics) — the only open item that
-   doesn't need you or wait on external data.
-2. The weekly SEO ranking check is current as of tonight (see
-   `SEO_RECOMMENDATIONS.md`'s 2026-07-31 entry) — no need to re-run
-   immediately; due again in ~1 week.
-3. Everything else open either needs you (#1, #2, actual directory/association
-   submissions from #6) or is blocked on something outside a coding session's
-   control (#7, #9).
+**2026-08-01 session:** shipped the final 2 of the "2-4 more blog posts" item
+(home theatre soundproofing cost + a new neighbour-noise/party-wall guide —
+see `SEO_RECOMMENDATIONS.md`'s 2026-08-01 entry), closing out the last item
+that was fully actionable without the user. Also ran a live GBP existence
+check at the user's request: **no Google Business Profile named B-Acoustics
+is findable on Google Search or Maps at all** — a stronger/different finding
+than "no reviews yet" (open item #1 below updated accordingly). Everything
+else open either needs the user (#1, #2, actual directory/association
+submissions from #6) or is blocked on something outside a coding session's
+control (#7, #9) — there is currently **no remaining item on this list
+actionable without the user**.
 
 ## Open items — ranked 2026-07-28
 
@@ -31,21 +30,22 @@ outreach) and can't be started in a coding session.
 
 | Rank | Item | Impact | Effort | Actionable by me now? | Source |
 |---|---|---|---|---|---|
-| 1 | First GBP reviews — solicit from real clients | Very High | Low (for you) | **No — needs you** | `CONTINUOUS_IMPROVEMENT.md` Item 3, `DESIGN_FEEDBACK.md` |
+| 1 | First GBP reviews — solicit from real clients | Very High | Low (for you) | **No — needs you.** Updated 2026-08-01: a live Google Search/Maps check found no GBP listing named B-Acoustics at all — check whether one exists/is verified in Google Business Profile Manager before soliciting reviews on it | `CONTINUOUS_IMPROVEMENT.md` Item 3, `DESIGN_FEEDBACK.md`, `SEO_RECOMMENDATIONS.md` 2026-08-01 entry |
 | 2 | Real GBP photos — shot list ready, not yet taken/uploaded | High | Medium (for you) | **No — needs you** | `Photo request list.md` |
 | ~~3~~ | ~~Mobile nav has no hamburger/collapse~~ — **FIXED 2026-07-28**, commit `2f817d6` | High | Low-Medium | Done | `DESIGN_FEEDBACK.md` |
 | ~~4~~ | ~~WCAG pass~~ — **FIXED 2026-07-28**, commit `b570422`: label/for association, focus-visible outlines, chat input accessible name (real failures found via direct audit — alt text was already complete, checked and confirmed) | Med-High | Medium | Done | `CONTINUOUS_IMPROVEMENT.md` Item 4 |
-| ~~5~~ | ~~2 of 4-6 more blog posts~~ — **DONE 2026-07-28**, commit `bd31a0c` (NEA boundary noise limits, HDB vs Condo). 2-4 more remain for a future batch. | Medium | High | Partially done | `SEO_RECOMMENDATIONS.md` |
+| ~~5~~ | ~~4-6 more blog posts~~ — **DONE**: 2026-07-28 commit `bd31a0c` (NEA boundary noise limits, HDB vs Condo) + 2026-08-01 (home theatre soundproofing cost, neighbour-noise/party-wall guide). Item fully closed. | Medium | High | Done | `SEO_RECOMMENDATIONS.md` |
 | 6 | Off-page authority: SG directory listings, MIOA, outreach, press | High ceiling, slow | Very High, ongoing, partly needs your relationships | **Research done** (`Backlink Targets.md`, commit `a302e1a`) — actual submission needs you | `SEO_RECOMMENDATIONS.md` |
 | 7 | `AggregateRating`/`Review` schema | Low until #1 exists | Low | Blocked on #1 | `SEO_RECOMMENDATIONS.md` |
 | ~~8~~ | ~~Dead Instagram footer link~~ — **FIXED 2026-07-28**, commit `b570422` (removed until a real profile URL exists) | Trivial | Trivial | Done | `DESIGN_FEEDBACK.md` |
 | 9 | Optional H1 A/B test | Low, needs analytics infra we don't have | Medium | No — no infra | `SEO_RECOMMENDATIONS.md` |
 | ~~10~~ | ~~Service/blog page performance~~ — **FIXED 2026-07-31**, commit `5f8dc50`: root cause was two oversized logo PNGs embedded as inline base64 in every `services/*.html`/`blog/*.html` page (~350KB of dead weight per page, invisible to `check-site.js` since it skips `data:` URIs) plus the hero photo on service pages being `loading="lazy"` and fetched from an absolute production URL instead of the local static file. Replaced with the same relative-path + eager-hero pattern the homepage already used. Local Lighthouse: office-acoustics page 0.86 perf/2.6s LCP (was 0.78–0.83/up to 4.1s), stc-vs-nrc blog page 0.96 perf/2.3s LCP. `lighthouserc.json`'s generic budget tightened (0.72→0.78 min score, 4500→3800ms max LCP). | Medium | Medium | Done | This session |
 
-**Remaining fully-actionable-by-me item: 2-4 more blog posts** (see
-`SEO_RECOMMENDATIONS.md` for candidate topics). Everything else left open
-either needs you (#1, #2, actual directory/association submissions from
-#6) or is blocked on something outside this session's control (#7, #9).
+**No item on this table is currently actionable without the user.** The
+last fully-actionable-by-me item (#5, more blog posts) closed out 2026-08-01.
+Everything left open needs you (#1, #2, actual directory/association
+submissions from #6) or is blocked on something outside this session's
+control (#7, #9).
 
 ## Watch items (not actionable yet, just checking periodically)
 
@@ -66,6 +66,12 @@ Four pieces of build-time tooling, all wired up and confirmed green on `main` th
 
 ## Recently resolved (kept briefly for continuity, drop once confirmed stable)
 
+- Final 2 blog posts of the "4-6 more" item — home theatre soundproofing cost
+  and a new neighbour-noise/party-wall guide, both cross-linked and added to
+  `sitemap.xml`/every footer (2026-08-01, not yet committed as of this
+  writing — see `SEO_RECOMMENDATIONS.md`'s 2026-08-01 entry).
+- GBP existence check (2026-08-01) — live Search/Maps confirm no B-Acoustics
+  listing is findable; reframes open item #1 above.
 - Service/blog page Lighthouse performance — removed ~350KB of inline base64 logo images per page, fixed the service-page hero photo to load eagerly from a relative path instead of lazily from an absolute production URL, tightened `lighthouserc.json`'s generic budget accordingly (2026-07-31, commit `5f8dc50`).
 - Studio section (08) had zero top padding, jamming its heading against the dark FAQ section above it — a copy/paste slip from the 70de168 re-platform, not a new bug. **Fixed 2026-07-28**, commit `5a14df8`; user-verified live.
 - While wiring up the new HTML checkers: fixed unescaped `&` in two service-page `<title>` tags and one blog paragraph, a `<style>` block incorrectly placed under `<body>` instead of `<head>` in `index.html`, and a couple of trivial whitespace/attribute nits (2026-07-28, PR #2).
