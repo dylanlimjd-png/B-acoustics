@@ -10,6 +10,8 @@ const PAGES = [
   { name: 'blog-stc-vs-nrc', path: '/blog/stc-vs-nrc-explained.html' },
   { name: 'blog-hdb-vs-condo', path: '/blog/hdb-vs-condo-soundproofing-singapore.html' },
   { name: 'blog-nea-boundary-noise', path: '/blog/nea-boundary-noise-limits-singapore.html' },
+  { name: 'blog-home-theatre-cost', path: '/blog/home-theatre-soundproofing-cost-singapore.html' },
+  { name: 'blog-neighbour-noise', path: '/blog/neighbour-noise-singapore.html' },
 ];
 
 for (const { name, path } of PAGES) {
