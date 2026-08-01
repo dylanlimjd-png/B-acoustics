@@ -41,6 +41,9 @@
   strong { color:#16140F; }
   .callout { background:#E4DECF; border-left:3px solid #F73E1B; padding:18px 22px; margin:32px 0; }
   .callout p:last-child { margin-bottom:0; }
+  .diagram { margin:8px 0 44px; }
+  .diagram svg { width:100%; height:auto; display:block; background:#EAE5D9; border:1px solid rgba(22,20,15,0.1); }
+  .diagram figcaption { font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#6E685C; margin-top:10px; }
   .cta-row { display:flex; gap:14px; flex-wrap:wrap; margin-top:44px; }
   .cta-row a { font-family:'Space Mono',monospace; font-size:13px; text-transform:uppercase; letter-spacing:0.08em; padding:16px 26px; text-decoration:none; display:inline-block; }
   .cta-primary { color:#F1EDE4; background:#C4300F; }
@@ -83,6 +86,7 @@
   <div class="links">
     <a href="https://b-acoustics.com/#services">Services</a>
     <a href="https://b-acoustics.com/#work">Work</a>
+    <a href="https://b-acoustics.com/blog/">Guides</a>
     <a href="https://b-acoustics.com/#contact">Enquire</a>
   </div>
 </nav>
@@ -91,6 +95,41 @@
   <div class="eyebrow"><span class="dot"></span>Resource guide</div>
   <h1>What drives home theatre soundproofing cost in Singapore</h1>
   <p class="dek">A home theatre isn't loud because of volume alone — bass frequencies travel through structure that a standard wall was never built to stop. Here's what actually sets the price of doing it properly, rather than a per-square-metre guess.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 700 350" role="img" aria-labelledby="wallSectionTitle wallSectionDesc">
+      <title id="wallSectionTitle">Standard partition vs a decoupled home theatre wall assembly, in cross-section</title>
+      <desc id="wallSectionDesc">A standard single-stud partition is drywall, a stud cavity, and drywall, typically around STC 35-40. A decoupled home theatre assembly adds an air gap, a resilient channel or isolation clip, an independent second stud frame, and a double drywall layer, targeting STC 50 or higher.</desc>
+      <text x="175" y="34" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-weight="600" font-size="14" fill="#16140F">Standard partition</text>
+      <rect x="120" y="60" width="10" height="180" fill="#16140F"/>
+      <rect x="130" y="60" width="90" height="180" fill="#D8D0BE"/>
+      <rect x="220" y="60" width="10" height="180" fill="#16140F"/>
+      <text x="175" y="270" text-anchor="middle" font-family="'Space Mono',monospace" font-size="12" fill="#3A352D">~STC 35&ndash;40</text>
+
+      <text x="525" y="24" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-weight="600" font-size="14" fill="#16140F">Decoupled home theatre assembly</text>
+      <text x="525" y="40" text-anchor="middle" font-family="'Space Mono',monospace" font-size="11" fill="#6E685C">(room-within-a-room)</text>
+      <rect x="420" y="60" width="10" height="180" fill="#16140F"/>
+      <rect x="430" y="60" width="70" height="180" fill="#D8D0BE"/>
+      <rect x="500" y="60" width="10" height="180" fill="#16140F"/>
+      <rect x="510" y="60" width="25" height="180" fill="none" stroke="#6E685C" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <rect x="535" y="60" width="6" height="180" fill="#C4300F"/>
+      <rect x="541" y="60" width="70" height="180" fill="#D8D0BE"/>
+      <rect x="611" y="60" width="10" height="180" fill="#16140F"/>
+      <rect x="621" y="60" width="10" height="180" fill="#16140F"/>
+      <line x1="621" y1="60" x2="621" y2="240" stroke="#EAE5D9" stroke-width="1"/>
+      <text x="525" y="270" text-anchor="middle" font-family="'Space Mono',monospace" font-size="12" fill="#3A352D">STC 50+ target</text>
+
+      <rect x="70" y="296" width="12" height="12" fill="#16140F"/>
+      <text x="86" y="306" font-family="'Space Mono',monospace" font-size="11" fill="#16140F">Drywall (mass)</text>
+      <rect x="280" y="296" width="12" height="12" fill="#D8D0BE"/>
+      <text x="296" y="306" font-family="'Space Mono',monospace" font-size="11" fill="#16140F">Stud frame cavity</text>
+      <rect x="480" y="296" width="12" height="12" fill="none" stroke="#6E685C" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <text x="496" y="306" font-family="'Space Mono',monospace" font-size="11" fill="#16140F">Air gap (decoupling)</text>
+      <rect x="70" y="324" width="12" height="12" fill="#C4300F"/>
+      <text x="86" y="334" font-family="'Space Mono',monospace" font-size="11" fill="#16140F">Resilient channel / isolation clip</text>
+    </svg>
+    <figcaption>Decoupling and an independent frame do more for STC than a thicker standard wall</figcaption>
+  </figure>
 
   <span class="step-tag">A</span>
   <h2>1. The STC target you're actually aiming for</h2>
@@ -154,6 +193,7 @@
     <div class="links">
       <a href="https://b-acoustics.com/#services">Services</a>
       <a href="https://b-acoustics.com/#work">Work</a>
+      <a href="https://b-acoustics.com/blog/">All Guides</a>
       <a href="https://b-acoustics.com/blog/office-soundproofing-cost-singapore.html">Office Cost Guide</a>
       <a href="https://b-acoustics.com/blog/home-theatre-soundproofing-cost-singapore.html">Home Theatre Cost Guide</a>
       <a href="https://b-acoustics.com/blog/stc-vs-nrc-explained.html">STC vs NRC</a>

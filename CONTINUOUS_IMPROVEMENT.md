@@ -12,6 +12,33 @@ first, bigger/strategic bets later even if their absolute impact ceiling is high
 
 ---
 
+## Week of 2026-08-01
+
+Brainstormed with the user off the back of a specific observation: blog posts had zero
+imagery, just unbroken text. Ranked by impact vs. effort:
+
+| # | Topic | Impact | Effort | Why now |
+|---|---|---|---|---|
+| 1 | **Original diagrams for blog posts** | Med-High | Low-Med | User's own observation — every blog post was pure text (the NEA post's table was the one exception). A wall of text hurts dwell time and shareability, and a technical-diagram-heavy niche like acoustics is well-suited to Google Images traffic. Decided against stock/AI photos for the same authenticity reason flagged for GBP — original inline SVG/CSS diagrams in the site's existing flat style instead, no photography dependency. |
+| 2 | **A `/blog/` index/hub page** | Med-High | Med | The site had zero page listing all posts — Google could only discover them via footer links. Reinforces topical clustering ("soundproofing Singapore") and directly supports the still-open homepage/service-page indexing gap. |
+| 3 | **`BreadcrumbList` schema** on blog/service pages | Low-Med | Low | Cheap structured-data add, helps rich results and crawl clarity, no design changes needed. |
+| 4 | **Re-run Lighthouse after the new posts/images land** | Med | Low | Sanity check — content and inline SVGs were just added; confirm the perf budget (tightened 2026-07-31) still holds before it drifts. |
+| 5 | **Content freshness pass** on the oldest posts (office cost guide, STC vs NRC — both dated 2026-07-02) | Low-Med | Low | `dateModified` hasn't moved since publish; a light review/refresh signals freshness to crawlers without a full rewrite. |
+
+**Progress:**
+- **Items 1 and 2 — done 2026-08-01, same session.** 6 original SVG diagrams added (one
+  per blog post, each with a title/desc for accessibility and matched to the post's actual
+  content — a cost-vs-target curve, an STC/NRC room comparison, a grouped bar chart of the
+  real NEA dB(A) table, an HDB-vs-condo approval flowchart, a wall-assembly cross-section,
+  and a noise flanking-path diagram). New `blog/index.html` hub page lists all 6 posts,
+  added to every page's nav (new "Guides" link) and footer ("All Guides" link), and to
+  `sitemap.xml`. All verified locally via a live browser render (not just check-site/
+  html-validate) before committing — caught and fixed one real bug this way (a legend
+  label clipped off the edge of the home-theatre diagram's viewBox).
+- **Items 3-5 — queued, not started this session.** See `STATUS.md`'s open items table.
+
+---
+
 ## Week of 2026-07-26
 
 | # | Topic | Impact | Effort | Why now |

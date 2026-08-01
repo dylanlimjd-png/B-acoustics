@@ -41,6 +41,9 @@
   strong { color:#16140F; }
   .callout { background:#E4DECF; border-left:3px solid #F73E1B; padding:18px 22px; margin:32px 0; }
   .callout p:last-child { margin-bottom:0; }
+  .diagram { margin:8px 0 44px; }
+  .diagram svg { width:100%; height:auto; display:block; background:#EAE5D9; border:1px solid rgba(22,20,15,0.1); }
+  .diagram figcaption { font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#6E685C; margin-top:10px; }
   .cta-row { display:flex; gap:14px; flex-wrap:wrap; margin-top:44px; }
   .cta-row a { font-family:'Space Mono',monospace; font-size:13px; text-transform:uppercase; letter-spacing:0.08em; padding:16px 26px; text-decoration:none; display:inline-block; }
   .cta-primary { color:#F1EDE4; background:#C4300F; }
@@ -72,6 +75,7 @@
   <div class="links">
     <a href="https://b-acoustics.com/#services">Services</a>
     <a href="https://b-acoustics.com/#work">Work</a>
+    <a href="https://b-acoustics.com/blog/">Guides</a>
     <a href="https://b-acoustics.com/#contact">Enquire</a>
   </div>
 </nav>
@@ -80,6 +84,36 @@
   <div class="eyebrow"><span class="dot"></span>Resource guide</div>
   <h1>STC vs NRC: which rating actually matters for your space?</h1>
   <p class="dek">These two ratings get used almost interchangeably in briefs, and they measure completely different things. Specifying the wrong one is the most common reason an acoustic fit-out doesn't solve the problem it was meant to solve.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 700 300" role="img" aria-labelledby="stcNrcTitle stcNrcDesc">
+      <title id="stcNrcTitle">STC blocks sound between rooms; NRC absorbs sound within a room</title>
+      <desc id="stcNrcDesc">Left: two rooms separated by a wall, with sound waves from a source in Room A mostly stopped at the wall, leaving Room B quiet — illustrating STC. Right: a single room where sound reflects off a hard wall but is absorbed by an acoustic panel on the opposite wall — illustrating NRC.</desc>
+      <line x1="350" y1="10" x2="350" y2="290" stroke="#3A352D" stroke-width="1" stroke-dasharray="4 5"/>
+      <text x="175" y="28" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-weight="600" font-size="15" fill="#16140F">STC — blocks sound between rooms</text>
+      <rect x="40" y="60" width="100" height="150" fill="none" stroke="#16140F" stroke-width="2"/>
+      <rect x="145" y="60" width="16" height="150" fill="#16140F"/>
+      <rect x="166" y="60" width="100" height="150" fill="none" stroke="#16140F" stroke-width="2"/>
+      <circle cx="90" cy="135" r="4" fill="#C4300F"/>
+      <circle cx="90" cy="135" r="14" fill="none" stroke="#C4300F" stroke-width="2" opacity="0.8"/>
+      <circle cx="90" cy="135" r="26" fill="none" stroke="#C4300F" stroke-width="2" opacity="0.5"/>
+      <circle cx="90" cy="135" r="38" fill="none" stroke="#C4300F" stroke-width="2" opacity="0.3"/>
+      <circle cx="185" cy="135" r="10" fill="none" stroke="#C4300F" stroke-width="2" opacity="0.12"/>
+      <text x="90" y="232" text-anchor="middle" font-family="'Space Mono',monospace" font-size="12" fill="#3A352D">Room A — loud</text>
+      <text x="216" y="232" text-anchor="middle" font-family="'Space Mono',monospace" font-size="12" fill="#3A352D">Room B — quiet</text>
+      <text x="525" y="28" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-weight="600" font-size="15" fill="#16140F">NRC — absorbs sound within a room</text>
+      <rect x="400" y="60" width="250" height="150" fill="none" stroke="#16140F" stroke-width="2"/>
+      <rect x="404" y="64" width="6" height="142" fill="#3A352D"/>
+      <rect x="640" y="64" width="6" height="142" fill="#C4300F"/>
+      <circle cx="500" cy="135" r="4" fill="#C4300F"/>
+      <circle cx="500" cy="135" r="16" fill="none" stroke="#C4300F" stroke-width="2" opacity="0.7"/>
+      <circle cx="500" cy="135" r="30" fill="none" stroke="#C4300F" stroke-width="2" opacity="0.45"/>
+      <circle cx="500" cy="135" r="44" fill="none" stroke="#C4300F" stroke-width="2" opacity="0.2"/>
+      <text x="407" y="232" text-anchor="middle" font-family="'Space Mono',monospace" font-size="11" fill="#3A352D">reflective wall</text>
+      <text x="643" y="232" text-anchor="middle" font-family="'Space Mono',monospace" font-size="11" fill="#3A352D">absorptive panel</text>
+    </svg>
+    <figcaption>STC keeps sound from crossing a wall; NRC keeps sound from bouncing around inside a room</figcaption>
+  </figure>
 
   <h2>Sound Transmission Class (STC): keeping sound out of a room</h2>
   <p>STC rates how effectively a wall, door, window, or floor/ceiling assembly blocks airborne sound from passing between two separate spaces. It's a single number derived from how the assembly performs across a range of frequencies — the higher the number, the more sound it blocks.</p>
@@ -127,6 +161,7 @@
     <div class="links">
       <a href="https://b-acoustics.com/#services">Services</a>
       <a href="https://b-acoustics.com/#work">Work</a>
+      <a href="https://b-acoustics.com/blog/">All Guides</a>
       <a href="https://b-acoustics.com/blog/office-soundproofing-cost-singapore.html">Office Cost Guide</a>
       <a href="https://b-acoustics.com/blog/stc-vs-nrc-explained.html">STC vs NRC</a>
       <a href="https://b-acoustics.com/blog/nea-boundary-noise-limits-singapore.html">NEA Noise Limits</a>

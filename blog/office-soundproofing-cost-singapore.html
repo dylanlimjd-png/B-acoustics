@@ -41,6 +41,9 @@
   strong { color:#16140F; }
   .callout { background:#E4DECF; border-left:3px solid #F73E1B; padding:18px 22px; margin:32px 0; }
   .callout p:last-child { margin-bottom:0; }
+  .diagram { margin:8px 0 44px; }
+  .diagram svg { width:100%; height:auto; display:block; background:#EAE5D9; border:1px solid rgba(22,20,15,0.1); }
+  .diagram figcaption { font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#6E685C; margin-top:10px; }
   .cta-row { display:flex; gap:14px; flex-wrap:wrap; margin-top:44px; }
   .cta-row a { font-family:'Space Mono',monospace; font-size:13px; text-transform:uppercase; letter-spacing:0.08em; padding:16px 26px; text-decoration:none; display:inline-block; }
   .cta-primary { color:#F1EDE4; background:#C4300F; }
@@ -72,6 +75,7 @@
   <div class="links">
     <a href="https://b-acoustics.com/#services">Services</a>
     <a href="https://b-acoustics.com/#work">Work</a>
+    <a href="https://b-acoustics.com/blog/">Guides</a>
     <a href="https://b-acoustics.com/#contact">Enquire</a>
   </div>
 </nav>
@@ -80,6 +84,26 @@
   <div class="eyebrow"><span class="dot"></span>Resource guide</div>
   <h1>What actually drives the cost of office soundproofing</h1>
   <p class="dek">Every fit-out enquiry starts with the same question: how much will this cost? The honest answer is that office soundproofing is priced on a handful of variables, not a flat rate per square metre. Understanding them helps you brief a contractor accurately and avoid scope surprises later.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 700 340" role="img" aria-labelledby="costCurveTitle costCurveDesc">
+      <title id="costCurveTitle">How installed cost scales with the target acoustic rating</title>
+      <desc id="costCurveDesc">Illustrative chart showing installed cost rising as the target STC or NRC rating increases, with a steeper curve when retrofitting onto a lightweight partition than onto an existing solid masonry wall or slab.</desc>
+      <line x1="60" y1="20" x2="60" y2="280" stroke="#16140F" stroke-width="2"/>
+      <line x1="60" y1="280" x2="650" y2="280" stroke="#16140F" stroke-width="2"/>
+      <polygon points="60,14 53,27 67,27" fill="#16140F"/>
+      <polygon points="658,280 645,273 645,287" fill="#16140F"/>
+      <path d="M60,258 C 260,248 460,150 640,42" fill="none" stroke="#C4300F" stroke-width="3"/>
+      <path d="M60,270 C 260,266 460,224 640,158" fill="none" stroke="#3A352D" stroke-width="3" stroke-dasharray="7 5"/>
+      <circle cx="80" cy="34" r="5" fill="#C4300F"/>
+      <text x="94" y="39" font-family="'Space Mono',monospace" font-size="12" fill="#16140F">Retrofitting onto a lightweight partition</text>
+      <line x1="66" y1="58" x2="90" y2="58" stroke="#3A352D" stroke-width="3" stroke-dasharray="7 5"/>
+      <text x="94" y="62" font-family="'Space Mono',monospace" font-size="12" fill="#16140F">Retrofitting onto solid masonry / an existing slab</text>
+      <text x="355" y="316" text-anchor="middle" font-family="'Space Mono',monospace" font-size="12" fill="#6E685C">Target acoustic rating (STC / NRC) — low to high &rarr;</text>
+      <text transform="translate(22,230) rotate(-90)" text-anchor="middle" font-family="'Space Mono',monospace" font-size="12" fill="#6E685C">Relative installed cost &rarr;</text>
+    </svg>
+    <figcaption>Illustrative — cost rises with the target rating, and the existing base build shifts the whole curve up or down</figcaption>
+  </figure>
 
   <h2>1. What's already there</h2>
   <p>A lightweight drywall partition, a solid masonry wall, and an exposed concrete slab all start from a different baseline. Retrofitting mass or damping onto an existing lightweight partition — resilient channels, additional layers of drywall, mass-loaded vinyl — takes more labour and material than treating a surface that's already dense. The condition of the base build is usually the single biggest swing factor in any quote.</p>
@@ -140,6 +164,7 @@
     <div class="links">
       <a href="https://b-acoustics.com/#services">Services</a>
       <a href="https://b-acoustics.com/#work">Work</a>
+      <a href="https://b-acoustics.com/blog/">All Guides</a>
       <a href="https://b-acoustics.com/blog/office-soundproofing-cost-singapore.html">Office Cost Guide</a>
       <a href="https://b-acoustics.com/blog/stc-vs-nrc-explained.html">STC vs NRC</a>
       <a href="https://b-acoustics.com/blog/nea-boundary-noise-limits-singapore.html">NEA Noise Limits</a>

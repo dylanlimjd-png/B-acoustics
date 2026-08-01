@@ -41,6 +41,9 @@
   strong { color:#16140F; }
   .callout { background:#E4DECF; border-left:3px solid #F73E1B; padding:18px 22px; margin:32px 0; }
   .callout p:last-child { margin-bottom:0; }
+  .diagram { margin:8px 0 44px; }
+  .diagram svg { width:100%; height:auto; display:block; background:#EAE5D9; border:1px solid rgba(22,20,15,0.1); }
+  .diagram figcaption { font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:#6E685C; margin-top:10px; }
   .cta-row { display:flex; gap:14px; flex-wrap:wrap; margin-top:44px; }
   .cta-row a { font-family:'Space Mono',monospace; font-size:13px; text-transform:uppercase; letter-spacing:0.08em; padding:16px 26px; text-decoration:none; display:inline-block; }
   .cta-primary { color:#F1EDE4; background:#C4300F; }
@@ -83,6 +86,7 @@
   <div class="links">
     <a href="https://b-acoustics.com/#services">Services</a>
     <a href="https://b-acoustics.com/#work">Work</a>
+    <a href="https://b-acoustics.com/blog/">Guides</a>
     <a href="https://b-acoustics.com/#contact">Enquire</a>
   </div>
 </nav>
@@ -91,6 +95,57 @@
   <div class="eyebrow"><span class="dot"></span>Resource guide</div>
   <h1>HDB vs condo soundproofing rules in Singapore</h1>
   <p class="dek">The acoustic problem is often similar — a shared wall, a noisy floor above, a home theatre that needs isolating. The approval process to actually do the work is not. Here's how HDB and condo rules actually differ.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 700 410" role="img" aria-labelledby="hdbCondoTitle hdbCondoDesc">
+      <title id="hdbCondoTitle">HDB and condo soundproofing approval paths, side by side</title>
+      <desc id="hdbCondoDesc">HDB path: agree the acoustic target, a DRC-listed contractor applies for an HDB permit, work is scheduled within weekday hours with no Sunday or public holiday work and a daily quiet hour, then install and verify. Condo path: agree the acoustic target, obtain MCST house-rules approval and pay a security deposit, the contractor registers with the management office, then install and verify.</desc>
+      <text x="175" y="24" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-weight="600" font-size="16" fill="#C4300F">HDB</text>
+      <text x="525" y="24" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-weight="600" font-size="16" fill="#C4300F">Condo</text>
+      <line x1="350" y1="10" x2="350" y2="400" stroke="#3A352D" stroke-width="1" stroke-dasharray="4 5"/>
+
+      <rect x="45" y="40" width="260" height="68" fill="none" stroke="#16140F" stroke-width="2"/>
+      <text x="175" y="79" text-anchor="middle" font-family="'Space Mono',monospace" font-size="12" fill="#16140F">Agree acoustic target</text>
+      <line x1="175" y1="108" x2="175" y2="132" stroke="#16140F" stroke-width="2"/>
+      <polygon points="175,132 170,120 180,120" fill="#16140F"/>
+
+      <rect x="45" y="132" width="260" height="68" fill="none" stroke="#16140F" stroke-width="2"/>
+      <text x="175" y="160" text-anchor="middle" font-family="'Space Mono',monospace" font-size="12" fill="#16140F">DRC-listed contractor applies</text>
+      <text x="175" y="178" text-anchor="middle" font-family="'Space Mono',monospace" font-size="12" fill="#16140F">for an HDB permit (APEX)</text>
+      <line x1="175" y1="200" x2="175" y2="224" stroke="#16140F" stroke-width="2"/>
+      <polygon points="175,224 170,212 180,212" fill="#16140F"/>
+
+      <rect x="45" y="224" width="260" height="68" fill="none" stroke="#16140F" stroke-width="2"/>
+      <text x="175" y="252" text-anchor="middle" font-family="'Space Mono',monospace" font-size="12" fill="#16140F">Work scheduled: weekdays only,</text>
+      <text x="175" y="270" text-anchor="middle" font-family="'Space Mono',monospace" font-size="12" fill="#16140F">no Sun/PH, 1&ndash;2pm quiet hour</text>
+      <line x1="175" y1="292" x2="175" y2="316" stroke="#16140F" stroke-width="2"/>
+      <polygon points="175,316 170,304 180,304" fill="#16140F"/>
+
+      <rect x="45" y="316" width="260" height="68" fill="none" stroke="#C4300F" stroke-width="2"/>
+      <text x="175" y="357" text-anchor="middle" font-family="'Space Mono',monospace" font-size="12" fill="#16140F">Install &amp; verify</text>
+
+      <rect x="395" y="40" width="260" height="68" fill="none" stroke="#16140F" stroke-width="2"/>
+      <text x="525" y="79" text-anchor="middle" font-family="'Space Mono',monospace" font-size="12" fill="#16140F">Agree acoustic target</text>
+      <line x1="525" y1="108" x2="525" y2="132" stroke="#16140F" stroke-width="2"/>
+      <polygon points="525,132 520,120 530,120" fill="#16140F"/>
+
+      <rect x="395" y="132" width="260" height="68" fill="none" stroke="#16140F" stroke-width="2"/>
+      <text x="525" y="160" text-anchor="middle" font-family="'Space Mono',monospace" font-size="12" fill="#16140F">MCST house rules, approval</text>
+      <text x="525" y="178" text-anchor="middle" font-family="'Space Mono',monospace" font-size="12" fill="#16140F">&amp; security deposit</text>
+      <line x1="525" y1="200" x2="525" y2="224" stroke="#16140F" stroke-width="2"/>
+      <polygon points="525,224 520,212 530,212" fill="#16140F"/>
+
+      <rect x="395" y="224" width="260" height="68" fill="none" stroke="#16140F" stroke-width="2"/>
+      <text x="525" y="252" text-anchor="middle" font-family="'Space Mono',monospace" font-size="12" fill="#16140F">Contractor registers with</text>
+      <text x="525" y="270" text-anchor="middle" font-family="'Space Mono',monospace" font-size="12" fill="#16140F">the management office</text>
+      <line x1="525" y1="292" x2="525" y2="316" stroke="#16140F" stroke-width="2"/>
+      <polygon points="525,316 520,304 530,304" fill="#16140F"/>
+
+      <rect x="395" y="316" width="260" height="68" fill="none" stroke="#C4300F" stroke-width="2"/>
+      <text x="525" y="357" text-anchor="middle" font-family="'Space Mono',monospace" font-size="12" fill="#16140F">Install &amp; verify</text>
+    </svg>
+    <figcaption>Same acoustic discipline, two different approval paths — HDB controls timing, MCST controls both timing and structural scope</figcaption>
+  </figure>
 
   <span class="step-tag">A</span>
   <h2>HDB: permits, timing, and no fixed acoustic spec</h2>
@@ -147,6 +202,7 @@
     <div class="links">
       <a href="https://b-acoustics.com/#services">Services</a>
       <a href="https://b-acoustics.com/#work">Work</a>
+      <a href="https://b-acoustics.com/blog/">All Guides</a>
       <a href="https://b-acoustics.com/blog/office-soundproofing-cost-singapore.html">Office Cost Guide</a>
       <a href="https://b-acoustics.com/blog/stc-vs-nrc-explained.html">STC vs NRC</a>
       <a href="https://b-acoustics.com/blog/nea-boundary-noise-limits-singapore.html">NEA Noise Limits</a>

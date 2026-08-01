@@ -11,15 +11,18 @@ Last updated: 2026-08-01.
 
 **2026-08-01 session:** shipped the final 2 of the "2-4 more blog posts" item
 (home theatre soundproofing cost + a new neighbour-noise/party-wall guide —
-see `SEO_RECOMMENDATIONS.md`'s 2026-08-01 entry), closing out the last item
-that was fully actionable without the user. Also ran a live GBP existence
+see `SEO_RECOMMENDATIONS.md`'s 2026-08-01 entry). Ran a live GBP existence
 check at the user's request: **no Google Business Profile named B-Acoustics
 is findable on Google Search or Maps at all** — a stronger/different finding
-than "no reviews yet" (open item #1 below updated accordingly). Everything
-else open either needs the user (#1, #2, actual directory/association
-submissions from #6) or is blocked on something outside a coding session's
-control (#7, #9) — there is currently **no remaining item on this list
-actionable without the user**.
+than "no reviews yet" (open item #1 below updated accordingly). Then ran a
+brainstorm session with the user (`CONTINUOUS_IMPROVEMENT.md` Week of
+2026-08-01) off a specific observation: blog posts had no imagery. Built and
+shipped 2 of that brainstorm's 5 items same session — 6 original SVG
+diagrams (one per blog post) and a new `/blog/` index hub page, linked into
+every page's nav/footer and `sitemap.xml`. The other 3 brainstorm items
+(`BreadcrumbList` schema, a post-change Lighthouse re-check, a content
+freshness pass on the two oldest posts) are queued below as the next
+actionable-by-me work.
 
 ## Open items — ranked 2026-07-28
 
@@ -40,12 +43,15 @@ outreach) and can't be started in a coding session.
 | ~~8~~ | ~~Dead Instagram footer link~~ — **FIXED 2026-07-28**, commit `b570422` (removed until a real profile URL exists) | Trivial | Trivial | Done | `DESIGN_FEEDBACK.md` |
 | 9 | Optional H1 A/B test | Low, needs analytics infra we don't have | Medium | No — no infra | `SEO_RECOMMENDATIONS.md` |
 | ~~10~~ | ~~Service/blog page performance~~ — **FIXED 2026-07-31**, commit `5f8dc50`: root cause was two oversized logo PNGs embedded as inline base64 in every `services/*.html`/`blog/*.html` page (~350KB of dead weight per page, invisible to `check-site.js` since it skips `data:` URIs) plus the hero photo on service pages being `loading="lazy"` and fetched from an absolute production URL instead of the local static file. Replaced with the same relative-path + eager-hero pattern the homepage already used. Local Lighthouse: office-acoustics page 0.86 perf/2.6s LCP (was 0.78–0.83/up to 4.1s), stc-vs-nrc blog page 0.96 perf/2.3s LCP. `lighthouserc.json`'s generic budget tightened (0.72→0.78 min score, 4500→3800ms max LCP). | Medium | Medium | Done | This session |
+| ~~11~~ | ~~Blog posts had no visuals~~ — **DONE 2026-08-01**: 6 original SVG diagrams (one per post) + new `/blog/` index hub page, wired into nav/footer/sitemap sitewide. | Med-High | Low-Med | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-01 |
+| 12 | `BreadcrumbList` schema on blog/service pages | Low-Med | Low | **Yes** — queued next | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-01 |
+| 13 | Re-run Lighthouse now that new posts + inline SVG diagrams have landed | Med | Low | **Yes** — queued next | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-01 |
+| 14 | Content freshness pass on the 2 oldest posts (office cost guide, STC vs NRC — both dated 2026-07-02) | Low-Med | Low | **Yes** — queued next | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-01 |
 
-**No item on this table is currently actionable without the user.** The
-last fully-actionable-by-me item (#5, more blog posts) closed out 2026-08-01.
-Everything left open needs you (#1, #2, actual directory/association
-submissions from #6) or is blocked on something outside this session's
-control (#7, #9).
+**Remaining actionable-by-me items: #12, #13, #14** (all from this session's
+brainstorm — cheap, low-risk follow-ups). Everything else open needs you
+(#1, #2, actual directory/association submissions from #6) or is blocked on
+something outside this session's control (#7, #9).
 
 ## Watch items (not actionable yet, just checking periodically)
 

@@ -12,6 +12,7 @@ const PAGES = [
   { name: 'blog-nea-boundary-noise', path: '/blog/nea-boundary-noise-limits-singapore.html' },
   { name: 'blog-home-theatre-cost', path: '/blog/home-theatre-soundproofing-cost-singapore.html' },
   { name: 'blog-neighbour-noise', path: '/blog/neighbour-noise-singapore.html' },
+  { name: 'blog-index', path: '/blog/' },
 ];
 
 for (const { name, path } of PAGES) {
