@@ -22,7 +22,16 @@ diagrams (one per blog post) and a new `/blog/` index hub page, linked into
 every page's nav/footer and `sitemap.xml`. The other 3 brainstorm items
 (`BreadcrumbList` schema, a post-change Lighthouse re-check, a content
 freshness pass on the two oldest posts) are queued below as the next
-actionable-by-me work.
+actionable-by-me work. Finally, compiled `Pending Assets - B-Acoustics.pdf`
+(committed, root of repo) — a consolidated, detailed checklist of every
+real-world asset (GBP setup/photos, reviews, testimonials/case studies)
+still needed from the user, gathered from every tracker into one document.
+
+**Session paused here — user is stopping for the day.** Everything above is
+committed and pushed to `main` (`98193eb`), CI green. Nothing mid-flight.
+Pick up next session with items #12-14 below (all fully actionable without
+the user), or check whether the user has made progress on #1/#2/#6/the new
+PDF's checklist in the meantime.
 
 ## Open items — ranked 2026-07-28
 
