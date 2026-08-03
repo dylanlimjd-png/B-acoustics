@@ -7,7 +7,24 @@ and `Photo request list.md` separately — those remain the detailed logs
 (method, findings, reasoning) for their respective activities; this file is
 just the rollup of what's still open, updated whenever any of them change.
 
-Last updated: 2026-08-01.
+Last updated: 2026-08-03.
+
+**2026-08-03 session:** ran the two recurring check-in activities. SEO ranking
+check (full 9-query rotation): indexing gap unchanged (`site:` still shows
+only the original 2 blog posts), organic/GBP visibility still zero everywhere,
+and a new watch item — the quoted branded query `"B-Acoustics" acoustic
+consultant` regressed from 2 organic results last run to 1, now outranked by
+an unrelated same-initial competitor ("a/b acoustics", Brisbane); see
+`SEO_RECOMMENDATIONS.md`'s 2026-08-03 entry. Continuous-improvement weekly
+idea generation produced a new ranked 5-item list (`CONTINUOUS_IMPROVEMENT.md`
+Week of 2026-08-03) — items 3-5 from last week's list carried forward since
+they were never started, plus 2 new items (complete `FAQPage`/AEO schema
+coverage; a structured-data validation pass). Idea generation only, nothing
+built yet. Also found and fixed a real bug in the SessionStart reminder hook
+(`.claude/hooks/seo-ci-reminder.sh`): it was reading the *oldest* `## Week of`
+heading in `CONTINUOUS_IMPROVEMENT.md` instead of the newest, because that
+file prepends new entries at the top while the hook assumed the same
+append-at-bottom order `SEO_RECOMMENDATIONS.md` uses. Fixed and verified.
 
 **2026-08-01 session:** shipped the final 2 of the "2-4 more blog posts" item
 (home theatre soundproofing cost + a new neighbour-noise/party-wall guide —
@@ -27,11 +44,10 @@ actionable-by-me work. Finally, compiled `Pending Assets - B-Acoustics.pdf`
 real-world asset (GBP setup/photos, reviews, testimonials/case studies)
 still needed from the user, gathered from every tracker into one document.
 
-**Session paused here — user is stopping for the day.** Everything above is
-committed and pushed to `main` (`98193eb`), CI green. Nothing mid-flight.
-Pick up next session with items #12-14 below (all fully actionable without
-the user), or check whether the user has made progress on #1/#2/#6/the new
-PDF's checklist in the meantime.
+**Pick up next with items #12-16 below** (all fully actionable without the
+user — idea generation done 2026-08-03, none built yet), or check whether the
+user has made progress on #1/#2/#6/the `Pending Assets` PDF's checklist in the
+meantime.
 
 ## Open items — ranked 2026-07-28
 
@@ -53,18 +69,21 @@ outreach) and can't be started in a coding session.
 | 9 | Optional H1 A/B test | Low, needs analytics infra we don't have | Medium | No — no infra | `SEO_RECOMMENDATIONS.md` |
 | ~~10~~ | ~~Service/blog page performance~~ — **FIXED 2026-07-31**, commit `5f8dc50`: root cause was two oversized logo PNGs embedded as inline base64 in every `services/*.html`/`blog/*.html` page (~350KB of dead weight per page, invisible to `check-site.js` since it skips `data:` URIs) plus the hero photo on service pages being `loading="lazy"` and fetched from an absolute production URL instead of the local static file. Replaced with the same relative-path + eager-hero pattern the homepage already used. Local Lighthouse: office-acoustics page 0.86 perf/2.6s LCP (was 0.78–0.83/up to 4.1s), stc-vs-nrc blog page 0.96 perf/2.3s LCP. `lighthouserc.json`'s generic budget tightened (0.72→0.78 min score, 4500→3800ms max LCP). | Medium | Medium | Done | This session |
 | ~~11~~ | ~~Blog posts had no visuals~~ — **DONE 2026-08-01**: 6 original SVG diagrams (one per post) + new `/blog/` index hub page, wired into nav/footer/sitemap sitewide. | Med-High | Low-Med | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-01 |
-| 12 | `BreadcrumbList` schema on blog/service pages | Low-Med | Low | **Yes** — queued next | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-01 |
-| 13 | Re-run Lighthouse now that new posts + inline SVG diagrams have landed | Med | Low | **Yes** — queued next | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-01 |
-| 14 | Content freshness pass on the 2 oldest posts (office cost guide, STC vs NRC — both dated 2026-07-02) | Low-Med | Low | **Yes** — queued next | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-01 |
+| 12 | `BreadcrumbList` schema on blog/service pages | Low-Med | Low | **Yes** — queued next | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-01, carried to Week of 2026-08-03 |
+| 13 | Re-run Lighthouse now that new posts + inline SVG diagrams have landed | Med | Low | **Yes** — queued next | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-01, carried to Week of 2026-08-03 |
+| 14 | Content freshness pass on the 2 oldest posts (office cost guide, STC vs NRC — both dated 2026-07-02) | Low-Med | Low | **Yes** — queued next | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-01, carried to Week of 2026-08-03 |
+| 15 | Complete `FAQPage`/AEO schema coverage (homepage + any blog posts still missing it) | Med-High | Low | **Yes** — queued next | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-03 |
+| 16 | Structured-data validation pass (Rich Results Test) across every page type | Med | Low | **Yes** — queued next | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-03 |
 
-**Remaining actionable-by-me items: #12, #13, #14** (all from this session's
-brainstorm — cheap, low-risk follow-ups). Everything else open needs you
+**Remaining actionable-by-me items: #12-16** (cheap, low-risk follow-ups —
+idea generation only so far, none built yet). Everything else open needs you
 (#1, #2, actual directory/association submissions from #6) or is blocked on
 something outside this session's control (#7, #9).
 
 ## Watch items (not actionable yet, just checking periodically)
 
-- **Homepage indexing gap** — structural fix shipped 2026-07-28 (commit `70de168`). `site:b-acoustics.com` still didn't show the homepage or any service page as of the 2026-07-31 SEO ranking check, 3 days post-fix (still expected — normal re-crawl windows run longer than this). **Re-check on the next SEO ranking run**; if still absent by ~2026-08-11 (~2 weeks post-fix), consider a manual indexing request (needs GSC access, still blocked). On the positive side, the quoted branded query `"B-Acoustics" acoustic consultant` now returns both blog posts as the top two organic results, up from further down the page last week.
+- **Homepage indexing gap** — structural fix shipped 2026-07-28 (commit `70de168`). `site:b-acoustics.com` still didn't show the homepage or any service page as of the 2026-08-03 SEO ranking check, ~6 days post-fix (still expected — normal re-crawl windows run longer than this). **Re-check on the next SEO ranking run**; if still absent by ~2026-08-11 (~2 weeks post-fix), consider a manual indexing request (needs GSC access, still blocked).
+- **Branded-query regression** — the quoted query `"B-Acoustics" acoustic consultant` returned 2 organic results (both blog posts, top 2 slots) on 2026-07-31, but only 1 on 2026-08-03, now outranked by an unrelated same-initial competitor ("a/b acoustics", Brisbane). Likely SERP noise from one data point, not confirmed as a trend — re-check on the next run before acting.
 - **GSC-capable MCP connector** — not connected as of last check. Would unblock real daily/weekly SEO data automation. Ask "is a Search-Console connector available now?" next session.
 - **GitHub App install on `dylanlimjd-png/B-acoustics`** — not verified as of last check. Needed before the weekly tracker doc can be committed by an unattended cloud routine.
 - **Blank favicon in Google search results** — not due for a recheck until ~2026-08-13 (one month after it shipped).

@@ -12,6 +12,27 @@ first, bigger/strategic bets later even if their absolute impact ceiling is high
 
 ---
 
+## Week of 2026-08-03
+
+Items 3-5 from last week (2026-08-01) were queued but not started, so this
+week's ranking carries them forward rather than duplicating them, plus 2 new
+items surfaced by this week's SEO ranking check (see `SEO_RECOMMENDATIONS.md`).
+Ranked by impact vs. effort:
+
+| # | Topic | Impact | Effort | Why now |
+|---|---|---|---|---|
+| 1 | **Complete `FAQPage`/AEO schema coverage** — homepage and any blog posts still missing it | Med-High | Low | The 2026-07-27 AEO pass covered all 3 service pages but flagged the homepage and (at the time) both blog posts as gaps. 4 more posts have shipped since; audit which pages actually have `FAQPage` schema now and close the remainder. AI-answer-engine citation (AEO/GEO) increasingly keys off this. |
+| 2 | **Structured-data validation pass** (Google Rich Results Test) across every page type | Med | Low | Schema has accumulated fast (`FAQPage`, `Article`, `ProfessionalService`, `BreadcrumbList` once #4 lands) with no single validation pass across all of it — cheap insurance against a silent markup error blocking rich results right as indexing is the active bottleneck. |
+| 3 | **Re-run Lighthouse** now that the 2 new blog posts + inline SVG diagrams have landed | Med | Low | Carried over from last week (item 4) — sanity-check the perf budget (tightened 2026-07-31) still holds. |
+| 4 | **`BreadcrumbList` schema** on blog/service pages | Low-Med | Low | Carried over from last week (item 3) — cheap structured-data add, no design changes needed. |
+| 5 | **Content freshness pass** on the 2 oldest posts (office cost guide, STC vs NRC — both dated 2026-07-02) | Low-Med | Low | Carried over from last week (item 5) — `dateModified` hasn't moved since publish. |
+
+**Status:** not started this session — idea generation only, per this week's
+request. All 5 items are cheap/low-risk and actionable without user input;
+good candidates for the next execution session.
+
+---
+
 ## Week of 2026-08-01
 
 Brainstormed with the user off the back of a specific observation: blog posts had zero

@@ -16,7 +16,10 @@ today_epoch=$(date +%s)
 # anywhere in the file) so template/placeholder lines like "## Week of YYYY-MM-DD"
 # in the format-instructions footer are excluded, not mistaken for the latest entry.
 seo_date=$(grep -oE '## SEO ranking check.*[0-9]{4}-[0-9]{2}-[0-9]{2}' SEO_RECOMMENDATIONS.md 2>/dev/null | tail -1 | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}' | head -1)
-ci_date=$(grep -oE '## Week of [0-9]{4}-[0-9]{2}-[0-9]{2}' CONTINUOUS_IMPROVEMENT.md 2>/dev/null | tail -1 | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}')
+# CONTINUOUS_IMPROVEMENT.md prepends new weeks at the top (newest first) --
+# the opposite convention from SEO_RECOMMENDATIONS.md's append-at-bottom, so
+# this one needs head -1, not tail -1, to find the most recent entry.
+ci_date=$(grep -oE '## Week of [0-9]{4}-[0-9]{2}-[0-9]{2}' CONTINUOUS_IMPROVEMENT.md 2>/dev/null | head -1 | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}')
 
 cadence_msg=""
 

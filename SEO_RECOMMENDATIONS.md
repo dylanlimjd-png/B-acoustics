@@ -411,3 +411,59 @@ now the single concrete pass/fail signal being tracked across runs.
   first actionable step may be creating/verifying the GBP listing itself, not
   just soliciting reviews on an existing one. Needs the user to check Google
   Business Profile Manager directly.
+
+## SEO ranking check — 2026-08-03
+
+Full query rotation re-run (all 3 service-page terms, 2 broad terms, `site:`,
+both brand-name variants) — 3 days after the 2026-07-31 run and 2 days after
+the 2 new blog posts shipped (2026-08-01).
+
+### Findings
+
+1. **`site:b-acoustics.com` unchanged** — still only the same 2 original blog
+   posts (STC vs NRC, office soundproofing cost). Homepage, all 3 service
+   pages, and both of the 2026-08-01 posts (home-theatre cost, neighbour-noise)
+   are still not indexed. The 2 newest posts are only 2 days old so that part
+   is expected; the homepage/service-page gap is now ~6 days post-fix
+   (`70de168`, 2026-07-28) with zero movement.
+2. **Zero organic page-1 visibility**, unchanged: "acoustic consultant
+   Singapore", "soundproofing Singapore", "office soundproofing cost
+   Singapore", "office acoustics Singapore", "party-wall soundproofing
+   Singapore", "industrial noise compliance Singapore" — b-acoustics.com
+   doesn't appear in any of them.
+3. **GBP local-pack visibility still zero** — checked every query that
+   surfaced a local pack ("soundproofing Singapore", "office acoustics
+   Singapore", "party-wall soundproofing Singapore", the branded query); same
+   competitor set as prior runs (NoiseStop, TC Acoustic, Aural-Aid, ArteCoustic,
+   Advanced Acoustics, dB Acoustics). Consistent with the 2026-08-01 finding
+   that no GBP listing may exist at all.
+4. **Bare "b-acoustics" query** — same brand collision as every prior run
+   (SB Acoustics, BE Acoustics, BS Acoustic dominate); b-acoustics.com absent
+   entirely.
+5. **Regression on the quoted branded query** — `"B-Acoustics" acoustic
+   consultant` previously (2026-07-31) returned *both* blog posts as the top
+   two organic web results, read as a strengthening signal. This run it
+   returns only **one** result (the office-soundproofing-cost post), ranked
+   *below* an unrelated Australian competitor confusingly named "a/b
+   acoustics" (Brisbane) that now occupies the top organic slot and both
+   "People also ask" entries. Net visibility for this exact-brand query went
+   down, not up. Likely just SERP volatility/re-ranking noise given the small
+   sample (one query, one snapshot), not a real trend yet — but worth
+   confirming on the next run before concluding anything.
+
+### Resolution plans
+
+1. **Indexing gap** — the 2026-08-11 checkpoint from the last run still
+   stands (~2 weeks post `70de168`). No new action yet.
+2. **Zero organic visibility** — unchanged root cause (no backlinks, low
+   domain age/authority) and unchanged plan: this is a backlink/time problem,
+   not a content problem. No action this run.
+3. **GBP** — still fully blocked on the user (Item #1/#2 in `STATUS.md`).
+4. **Branded-query regression** — no action; flagged to re-check specifically
+   next run. If "a/b acoustics" keeps outranking b-acoustics.com on its own
+   brand-adjacent query across multiple runs, that's a signal worth a closer
+   look (e.g. whether it's worth clarifying the brand name in title tags), but
+   one data point isn't enough to act on.
+
+**Next run:** re-check the branded-query ranking specifically (item 5) in
+addition to the standing `site:b-acoustics.com` homepage-indexing watch.
