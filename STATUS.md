@@ -48,10 +48,10 @@ actionable-by-me work. Finally, compiled `Pending Assets - B-Acoustics.pdf`
 real-world asset (GBP setup/photos, reviews, testimonials/case studies)
 still needed from the user, gathered from every tracker into one document.
 
-**Pick up next with items #12-16 below** (all fully actionable without the
-user — idea generation done 2026-08-03, none built yet), or check whether the
-user has made progress on #1/#2/#6/the `Pending Assets` PDF's checklist in the
-meantime.
+**Pick up next with items #12 and #14 below** (both cheap and fully
+actionable without the user — #13/#15/#16 were built out 2026-08-03), or
+check whether the user has made progress on #1/#2/#6/the `Pending Assets`
+PDF's checklist in the meantime.
 
 ## Open items — ranked 2026-07-28
 
