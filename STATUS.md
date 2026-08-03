@@ -7,7 +7,7 @@ and `Photo request list.md` separately — those remain the detailed logs
 (method, findings, reasoning) for their respective activities; this file is
 just the rollup of what's still open, updated whenever any of them change.
 
-Last updated: 2026-08-03.
+Last updated: 2026-08-03 (items #12 and #14 built out — see below).
 
 **2026-08-03 session:** ran the two recurring check-in activities. SEO ranking
 check (full 9-query rotation): indexing gap unchanged (`site:` still shows
@@ -48,10 +48,10 @@ actionable-by-me work. Finally, compiled `Pending Assets - B-Acoustics.pdf`
 real-world asset (GBP setup/photos, reviews, testimonials/case studies)
 still needed from the user, gathered from every tracker into one document.
 
-**Pick up next with items #12 and #14 below** (both cheap and fully
-actionable without the user — #13/#15/#16 were built out 2026-08-03), or
-check whether the user has made progress on #1/#2/#6/the `Pending Assets`
-PDF's checklist in the meantime.
+**All of items #12-16 are now built out** (see the ranked table below) — the
+2026-08-01/08-03 brainstorm queue is fully closed. Pick up next by checking
+whether the user has made progress on #1/#2/#6/the `Pending Assets` PDF's
+checklist, or run a fresh continuous-improvement idea-generation pass.
 
 ## Open items — ranked 2026-07-28
 
@@ -73,16 +73,18 @@ outreach) and can't be started in a coding session.
 | 9 | Optional H1 A/B test | Low, needs analytics infra we don't have | Medium | No — no infra | `SEO_RECOMMENDATIONS.md` |
 | ~~10~~ | ~~Service/blog page performance~~ — **FIXED 2026-07-31**, commit `5f8dc50`: root cause was two oversized logo PNGs embedded as inline base64 in every `services/*.html`/`blog/*.html` page (~350KB of dead weight per page, invisible to `check-site.js` since it skips `data:` URIs) plus the hero photo on service pages being `loading="lazy"` and fetched from an absolute production URL instead of the local static file. Replaced with the same relative-path + eager-hero pattern the homepage already used. Local Lighthouse: office-acoustics page 0.86 perf/2.6s LCP (was 0.78–0.83/up to 4.1s), stc-vs-nrc blog page 0.96 perf/2.3s LCP. `lighthouserc.json`'s generic budget tightened (0.72→0.78 min score, 4500→3800ms max LCP). | Medium | Medium | Done | This session |
 | ~~11~~ | ~~Blog posts had no visuals~~ — **DONE 2026-08-01**: 6 original SVG diagrams (one per post) + new `/blog/` index hub page, wired into nav/footer/sitemap sitewide. | Med-High | Low-Med | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-01 |
-| 12 | `BreadcrumbList` schema on blog/service pages | Low-Med | Low | **Yes** — queued next | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-01, carried to Week of 2026-08-03 |
+| ~~12~~ | ~~`BreadcrumbList` schema on blog/service pages~~ — **DONE 2026-08-03**: added to all 6 blog posts, the blog hub index, and all 3 service pages (Home > Guides > post for blog; Home > service for service pages). Homepage deliberately excluded — root page, no breadcrumb needed. `check-site`/`html-validate` clean. | Low-Med | Low | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-01, carried to Week of 2026-08-03 |
 | ~~13~~ | ~~Re-run Lighthouse~~ — **DONE 2026-08-03**: all budgets still clear comfortably (homepage 0.92 perf/2.8s LCP, office-acoustics 0.93/2.7s, STC-vs-NRC blog 0.94/2.5s). `lhci autorun` hit a Windows-only `chrome-launcher` cleanup bug (EPERM, unrelated to site changes, CI's Linux runners unaffected); worked around via direct `lighthouse` CLI calls. | Med | Low | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-03 |
-| 14 | Content freshness pass on the 2 oldest posts (office cost guide, STC vs NRC — both dated 2026-07-02) | Low-Med | Low | **Yes** — queued next | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-01, carried to Week of 2026-08-03 |
+| ~~14~~ | ~~Content freshness pass on the 2 oldest posts~~ — **DONE 2026-08-03**: both posts predated 2 newer topically-relevant posts (NEA boundary noise limits, home theatre cost) that didn't exist when they were written, so added real cross-links rather than just bumping a date — STC-vs-NRC gained a new section clarifying STC/NRC vs. NEA's dB(A) boundary limits (a genuine, common point of confusion) plus 2 new related-reading links; office-cost guide gained a sentence + link pointing industrial readers to the NEA limits guide. `dateModified` and `sitemap.xml` `lastmod` both bumped to 2026-08-03 to reflect the real edit. | Low-Med | Low | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-01, carried to Week of 2026-08-03 |
 | ~~15~~ | ~~Complete `FAQPage`/AEO schema coverage~~ — **turned out already done**: homepage + all 6 blog posts + all 3 service pages already have matching visible-FAQ + schema (fixed in an earlier, unlogged session). No action needed. | Med-High | Low | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-03 |
 | ~~16~~ | ~~Structured-data validation pass~~ — **DONE 2026-08-03**: found and fixed 3 real defects — broken `Article.publisher.logo.url` (URL fragment, not an image) on all 6 blog posts; missing `image` field on `Article`/`ProfessionalService` schema site-wide; zero pages had `og:image`/`twitter:image` despite `twitter:card=summary_large_image` (no link-preview image anywhere). Fixed with the real logo (not AI-placeholder photos). Also fixed a mismatched headline in `blog/index.html`'s `hasPart` array. | Med | Low | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-03 |
 
-**Remaining actionable-by-me items: #12, #14** (cheap, low-risk follow-ups).
-Everything else open needs you (#1, #2, actual directory/association
-submissions from #6) or is blocked on something outside this session's
-control (#7, #9).
+**All actionable-by-me items from the 2026-08-01/08-03 brainstorms are now
+done (#12-16).** Everything remaining open needs you (#1, #2, actual
+directory/association submissions from #6) or is blocked on something
+outside this session's control (#7, #9). Next session: check whether the
+user has made progress on those, or run a fresh continuous-improvement
+idea-generation pass for new candidates.
 
 ## Watch items (not actionable yet, just checking periodically)
 

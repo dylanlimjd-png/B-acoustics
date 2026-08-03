@@ -52,7 +52,21 @@ Ranked by impact vs. effort:
   `chrome-launcher` temp-dir cleanup bug (EPERM after each run, unrelated to
   site changes) — worked around by invoking the `lighthouse` CLI directly
   per-URL instead. CI's Linux runners aren't affected.
-- **Items 4-5** — not started this session.
+- **Items 4-5 — done 2026-08-03, later same day.** Item 4 (`BreadcrumbList`):
+  added to all 6 blog posts, the blog hub index, and all 3 service pages —
+  `Home > Guides > [post]` for blog content, `Home > [service]` for service
+  pages. Homepage deliberately skipped (root page, no breadcrumb needed).
+  Item 5 (content freshness): rather than just bumping `dateModified`, found
+  real value to add — both of the 2 oldest posts predate 2 newer,
+  topically-relevant posts (NEA boundary noise limits, home theatre cost)
+  that didn't exist when they were written. Added a new section to the STC-
+  vs-NRC post clarifying how STC/NRC (assembly performance ratings) differ
+  from NEA's boundary noise limits (an absolute dB(A) level) — a real,
+  common point of confusion — plus 2 new related-reading links; added a
+  sentence + link in the office-cost guide pointing industrial readers to
+  the NEA limits guide. `dateModified` (both posts) and `sitemap.xml`
+  `lastmod` bumped to 2026-08-03 to reflect the actual edit made, not an
+  artificial freshness signal. `check-site`/`html-validate` clean after both.
 
 ---
 
