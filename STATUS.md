@@ -19,8 +19,12 @@ an unrelated same-initial competitor ("a/b acoustics", Brisbane); see
 idea generation produced a new ranked 5-item list (`CONTINUOUS_IMPROVEMENT.md`
 Week of 2026-08-03) — items 3-5 from last week's list carried forward since
 they were never started, plus 2 new items (complete `FAQPage`/AEO schema
-coverage; a structured-data validation pass). Idea generation only, nothing
-built yet. Also found and fixed a real bug in the SessionStart reminder hook
+coverage; a structured-data validation pass). Then built out items 1-3
+from that new list same session: fixed 3 real structured-data defects (broken
+`publisher.logo.url`, missing `image` fields, missing `og:image`/
+`twitter:image` site-wide — see `CONTINUOUS_IMPROVEMENT.md`'s 2026-08-03
+entry) and confirmed Lighthouse budgets still hold after the new content.
+Also found and fixed a real bug in the SessionStart reminder hook
 (`.claude/hooks/seo-ci-reminder.sh`): it was reading the *oldest* `## Week of`
 heading in `CONTINUOUS_IMPROVEMENT.md` instead of the newest, because that
 file prepends new entries at the top while the hook assumed the same
@@ -70,15 +74,15 @@ outreach) and can't be started in a coding session.
 | ~~10~~ | ~~Service/blog page performance~~ — **FIXED 2026-07-31**, commit `5f8dc50`: root cause was two oversized logo PNGs embedded as inline base64 in every `services/*.html`/`blog/*.html` page (~350KB of dead weight per page, invisible to `check-site.js` since it skips `data:` URIs) plus the hero photo on service pages being `loading="lazy"` and fetched from an absolute production URL instead of the local static file. Replaced with the same relative-path + eager-hero pattern the homepage already used. Local Lighthouse: office-acoustics page 0.86 perf/2.6s LCP (was 0.78–0.83/up to 4.1s), stc-vs-nrc blog page 0.96 perf/2.3s LCP. `lighthouserc.json`'s generic budget tightened (0.72→0.78 min score, 4500→3800ms max LCP). | Medium | Medium | Done | This session |
 | ~~11~~ | ~~Blog posts had no visuals~~ — **DONE 2026-08-01**: 6 original SVG diagrams (one per post) + new `/blog/` index hub page, wired into nav/footer/sitemap sitewide. | Med-High | Low-Med | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-01 |
 | 12 | `BreadcrumbList` schema on blog/service pages | Low-Med | Low | **Yes** — queued next | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-01, carried to Week of 2026-08-03 |
-| 13 | Re-run Lighthouse now that new posts + inline SVG diagrams have landed | Med | Low | **Yes** — queued next | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-01, carried to Week of 2026-08-03 |
+| ~~13~~ | ~~Re-run Lighthouse~~ — **DONE 2026-08-03**: all budgets still clear comfortably (homepage 0.92 perf/2.8s LCP, office-acoustics 0.93/2.7s, STC-vs-NRC blog 0.94/2.5s). `lhci autorun` hit a Windows-only `chrome-launcher` cleanup bug (EPERM, unrelated to site changes, CI's Linux runners unaffected); worked around via direct `lighthouse` CLI calls. | Med | Low | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-03 |
 | 14 | Content freshness pass on the 2 oldest posts (office cost guide, STC vs NRC — both dated 2026-07-02) | Low-Med | Low | **Yes** — queued next | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-01, carried to Week of 2026-08-03 |
-| 15 | Complete `FAQPage`/AEO schema coverage (homepage + any blog posts still missing it) | Med-High | Low | **Yes** — queued next | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-03 |
-| 16 | Structured-data validation pass (Rich Results Test) across every page type | Med | Low | **Yes** — queued next | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-03 |
+| ~~15~~ | ~~Complete `FAQPage`/AEO schema coverage~~ — **turned out already done**: homepage + all 6 blog posts + all 3 service pages already have matching visible-FAQ + schema (fixed in an earlier, unlogged session). No action needed. | Med-High | Low | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-03 |
+| ~~16~~ | ~~Structured-data validation pass~~ — **DONE 2026-08-03**: found and fixed 3 real defects — broken `Article.publisher.logo.url` (URL fragment, not an image) on all 6 blog posts; missing `image` field on `Article`/`ProfessionalService` schema site-wide; zero pages had `og:image`/`twitter:image` despite `twitter:card=summary_large_image` (no link-preview image anywhere). Fixed with the real logo (not AI-placeholder photos). Also fixed a mismatched headline in `blog/index.html`'s `hasPart` array. | Med | Low | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-03 |
 
-**Remaining actionable-by-me items: #12-16** (cheap, low-risk follow-ups —
-idea generation only so far, none built yet). Everything else open needs you
-(#1, #2, actual directory/association submissions from #6) or is blocked on
-something outside this session's control (#7, #9).
+**Remaining actionable-by-me items: #12, #14** (cheap, low-risk follow-ups).
+Everything else open needs you (#1, #2, actual directory/association
+submissions from #6) or is blocked on something outside this session's
+control (#7, #9).
 
 ## Watch items (not actionable yet, just checking periodically)
 

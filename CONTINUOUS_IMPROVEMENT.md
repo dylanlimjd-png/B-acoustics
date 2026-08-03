@@ -27,9 +27,32 @@ Ranked by impact vs. effort:
 | 4 | **`BreadcrumbList` schema** on blog/service pages | Low-Med | Low | Carried over from last week (item 3) — cheap structured-data add, no design changes needed. |
 | 5 | **Content freshness pass** on the 2 oldest posts (office cost guide, STC vs NRC — both dated 2026-07-02) | Low-Med | Low | Carried over from last week (item 5) — `dateModified` hasn't moved since publish. |
 
-**Status:** not started this session — idea generation only, per this week's
-request. All 5 items are cheap/low-risk and actionable without user input;
-good candidates for the next execution session.
+**Progress:**
+- **Items 1-3 — done 2026-08-03, same session.** Item 1 turned out to already
+  be satisfied (homepage `FAQPage` schema was added in a prior session not
+  reflected in memory — verified all 10 content pages now have matching
+  visible-FAQ + schema, only the blog hub index correctly has none). The
+  actual audit for item 2 surfaced 3 real defects instead: (a) every blog
+  post's `Article.publisher.logo.url` pointed at `https://b-acoustics.com/#logo`
+  — a URL fragment, not a real image, invalid per Google's structured-data
+  guidelines; (b) `Article`/`ProfessionalService` schema had no `image` field
+  anywhere (a recommended/required property for rich results); (c) zero pages
+  set `og:image`/`twitter:image` despite `twitter:card` being
+  `summary_large_image` site-wide, so every shared link (WhatsApp, Slack,
+  LinkedIn, X) showed no preview image at all. Fixed all three using the real
+  brand logo (`images/logo-dark.png`) — deliberately not the AI-placeholder
+  project photos, consistent with the site's existing no-fake-imagery stance
+  (see `Photo request list.md`). Also caught and fixed a mismatched headline
+  in `blog/index.html`'s `hasPart` array (office-cost post) while auditing.
+  `check-site`/`html-validate` clean after. Item 3 (Lighthouse re-run): all
+  budget thresholds still cleared comfortably — homepage 0.92 perf/2.8s LCP,
+  office-acoustics service page 0.93/2.7s, STC-vs-NRC blog 0.94/2.5s (budget:
+  ≥0.8/≤4.0s homepage, ≥0.78/≤3.8s generic). Note: `npm run lighthouse`
+  (`lhci autorun`) currently crashes on this Windows machine due to a
+  `chrome-launcher` temp-dir cleanup bug (EPERM after each run, unrelated to
+  site changes) — worked around by invoking the `lighthouse` CLI directly
+  per-URL instead. CI's Linux runners aren't affected.
+- **Items 4-5** — not started this session.
 
 ---
 
