@@ -27,7 +27,26 @@ the risky part) — only exact figures/dates/fines got hedged. Added a new
 sitewide `disclaimer.html` page (linked from every page's footer: "General
 information, not legal advice") laying out the general-information/no-liability
 position in full. `check-site.js` and `html-validate` both pass clean across
-all 12 pages including the new one. Not yet committed.
+all 12 pages including the new one. **Committed** (`5f65aa8`), not yet pushed.
+
+Also this session: the user added real completed-project photos to the repo
+root (`Project 1 - 1.jpeg` through `Project 1 - 6.jpeg`, `Project 2 - 1.jpeg`
+through `Project 2 - 9.jpg` — both projects office/commercial). These are
+**not yet usable on GBP or the website — client consent to publish them
+publicly has not been confirmed yet.** See
+`gbp_photo_files_still_placeholders_2026-08` in memory for the full plan once
+consent is confirmed (replace the 3 generic stock photos in `index.html`'s
+"Selected work" section; add to GBP gallery once the listing itself exists).
+Item #2 below updated to reflect this.
+
+**Session paused here — user is stopping for the day.** The legal-liability
+commit above is done but not pushed (ask before pushing next time). One
+thing was still mid-flight at pause time: the SEO ranking check (9-query
+rotation, kicked off this session) was running in the background and had not
+reported results yet — **pick this up first next session**, check
+`SEO_RECOMMENDATIONS.md`/this file for whether it completed unattended, and
+if not, re-run it. Also check whether the user has confirmed client consent
+on the Project 1/2 photos in the meantime.
 
 **2026-08-03 session:** ran the two recurring check-in activities. SEO ranking
 check (full 9-query rotation): indexing gap unchanged (`site:` still shows
@@ -83,7 +102,7 @@ outreach) and can't be started in a coding session.
 | Rank | Item | Impact | Effort | Actionable by me now? | Source |
 |---|---|---|---|---|---|
 | 1 | First GBP reviews — solicit from real clients | Very High | Low (for you) | **No — needs you.** Updated 2026-08-01: a live Google Search/Maps check found no GBP listing named B-Acoustics at all — check whether one exists/is verified in Google Business Profile Manager before soliciting reviews on it | `CONTINUOUS_IMPROVEMENT.md` Item 3, `DESIGN_FEEDBACK.md`, `SEO_RECOMMENDATIONS.md` 2026-08-01 entry |
-| 2 | Real GBP photos — shot list ready, not yet taken/uploaded | High | Medium (for you) | **No — needs you** | `Photo request list.md` |
+| 2 | Real GBP photos — 2 real office/commercial projects now on hand (2026-08-05), but blocked on client consent to publish | High | Low (just need consent confirmed) | **No — needs you** | `Photo request list.md`, memory `gbp_photo_files_still_placeholders_2026-08` |
 | ~~3~~ | ~~Mobile nav has no hamburger/collapse~~ — **FIXED 2026-07-28**, commit `2f817d6` | High | Low-Medium | Done | `DESIGN_FEEDBACK.md` |
 | ~~4~~ | ~~WCAG pass~~ — **FIXED 2026-07-28**, commit `b570422`: label/for association, focus-visible outlines, chat input accessible name (real failures found via direct audit — alt text was already complete, checked and confirmed) | Med-High | Medium | Done | `CONTINUOUS_IMPROVEMENT.md` Item 4 |
 | ~~5~~ | ~~4-6 more blog posts~~ — **DONE**: 2026-07-28 commit `bd31a0c` (NEA boundary noise limits, HDB vs Condo) + 2026-08-01 (home theatre soundproofing cost, neighbour-noise/party-wall guide). Item fully closed. | Medium | High | Done | `SEO_RECOMMENDATIONS.md` |
