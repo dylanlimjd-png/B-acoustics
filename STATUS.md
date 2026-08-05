@@ -7,7 +7,27 @@ and `Photo request list.md` separately — those remain the detailed logs
 (method, findings, reasoning) for their respective activities; this file is
 just the rollup of what's still open, updated whenever any of them change.
 
-Last updated: 2026-08-03 (items #12 and #14 built out — see below).
+Last updated: 2026-08-05 (legal-liability content pass — see below).
+
+**2026-08-05 session:** at the user's request, reduced legal/liability exposure
+in the guide content: the blog posts and service pages state real Singapore
+laws/regulations (Community Disputes Resolution Act, NEA boundary noise
+limits, HDB/MCST approval rules) and, in one case, a specific fine amount
+(S$1,500) — risky to assert as settled fact since these can change and the
+business could be implicated if a reader relied on stale figures. Added a
+"general information, not legal/compliance/cost advice" callout to all 6 blog
+posts and all 3 service pages, softened the highest-risk specific claims
+(removed the stated S$1,500 fine figure and a specific "November 2024
+amendment" date in the neighbour-noise post, added "confirm current limits
+with NEA" caveats around the NEA dB(A) table and HDB permit hours), and kept
+project cost-range figures as-is (user's call — those are our own business
+estimates, not legal facts, and are the reason those two pages exist). Named
+laws/regulations themselves were kept (naming what something is called isn't
+the risky part) — only exact figures/dates/fines got hedged. Added a new
+sitewide `disclaimer.html` page (linked from every page's footer: "General
+information, not legal advice") laying out the general-information/no-liability
+position in full. `check-site.js` and `html-validate` both pass clean across
+all 12 pages including the new one. Not yet committed.
 
 **2026-08-03 session:** ran the two recurring check-in activities. SEO ranking
 check (full 9-query rotation): indexing gap unchanged (`site:` still shows
