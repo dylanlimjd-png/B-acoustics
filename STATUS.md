@@ -27,7 +27,7 @@ the risky part) — only exact figures/dates/fines got hedged. Added a new
 sitewide `disclaimer.html` page (linked from every page's footer: "General
 information, not legal advice") laying out the general-information/no-liability
 position in full. `check-site.js` and `html-validate` both pass clean across
-all 12 pages including the new one. **Committed** (`5f65aa8`), not yet pushed.
+all 12 pages including the new one. **Committed and pushed** (`5f65aa8`).
 
 Also this session: the user added real completed-project photos to the repo
 root (`Project 1 - 1.jpeg` through `Project 1 - 6.jpeg`, `Project 2 - 1.jpeg`
@@ -40,13 +40,13 @@ consent is confirmed (replace the 3 generic stock photos in `index.html`'s
 Item #2 below updated to reflect this.
 
 **Session paused here — user is stopping for the day.** The legal-liability
-commit above is done but not pushed (ask before pushing next time). One
-thing was still mid-flight at pause time: the SEO ranking check (9-query
-rotation, kicked off this session) was running in the background and had not
-reported results yet — **pick this up first next session**, check
-`SEO_RECOMMENDATIONS.md`/this file for whether it completed unattended, and
-if not, re-run it. Also check whether the user has confirmed client consent
-on the Project 1/2 photos in the meantime.
+work above is committed and pushed to `main` (`d06dd97`). One thing was still
+mid-flight at pause time: the SEO ranking check (9-query rotation, kicked off
+this session) was running in the background and had not reported results yet
+— **pick this up first next session**, check `SEO_RECOMMENDATIONS.md`/this
+file for whether it completed unattended, and if not, re-run it. Also check
+whether the user has confirmed client consent on the Project 1/2 photos in
+the meantime.
 
 **2026-08-03 session:** ran the two recurring check-in activities. SEO ranking
 check (full 9-query rotation): indexing gap unchanged (`site:` still shows
