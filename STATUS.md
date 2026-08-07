@@ -102,7 +102,7 @@ outreach) and can't be started in a coding session.
 | Rank | Item | Impact | Effort | Actionable by me now? | Source |
 |---|---|---|---|---|---|
 | 1 | First GBP reviews — solicit from real clients | Very High | Low (for you) | **No — needs you.** Updated 2026-08-01: a live Google Search/Maps check found no GBP listing named B-Acoustics at all — check whether one exists/is verified in Google Business Profile Manager before soliciting reviews on it | `CONTINUOUS_IMPROVEMENT.md` Item 3, `DESIGN_FEEDBACK.md`, `SEO_RECOMMENDATIONS.md` 2026-08-01 entry |
-| 2 | Real GBP photos — 2 real office/commercial projects now on hand (2026-08-05), but blocked on client consent to publish | High | Low (just need consent confirmed) | **No — needs you** | `Photo request list.md`, memory `gbp_photo_files_still_placeholders_2026-08` |
+| ~~2~~ | ~~Real GBP photos~~ — **PARTIALLY DONE 2026-08-07**: client consent confirmed (both branding/name visibility and individuals in-frame). Website side shipped, commit `a6c4a9d` — the homepage's "Selected Work" grid now shows a real completed installation (Ultra Studio, a recording/rehearsal studio) instead of a stock photo. GBP-side still blocked on item #1 (no verified listing exists yet to add photos to). All 14 raw originals archived under `photos/` for that future use. | High | Low (just need consent confirmed) | Done (website); GBP side blocked on #1 | `Photo request list.md`, memory `gbp_photo_files_still_placeholders_2026-08` |
 | ~~3~~ | ~~Mobile nav has no hamburger/collapse~~ — **FIXED 2026-07-28**, commit `2f817d6` | High | Low-Medium | Done | `DESIGN_FEEDBACK.md` |
 | ~~4~~ | ~~WCAG pass~~ — **FIXED 2026-07-28**, commit `b570422`: label/for association, focus-visible outlines, chat input accessible name (real failures found via direct audit — alt text was already complete, checked and confirmed) | Med-High | Medium | Done | `CONTINUOUS_IMPROVEMENT.md` Item 4 |
 | ~~5~~ | ~~4-6 more blog posts~~ — **DONE**: 2026-07-28 commit `bd31a0c` (NEA boundary noise limits, HDB vs Condo) + 2026-08-01 (home theatre soundproofing cost, neighbour-noise/party-wall guide). Item fully closed. | Medium | High | Done | `SEO_RECOMMENDATIONS.md` |
@@ -117,13 +117,16 @@ outreach) and can't be started in a coding session.
 | ~~14~~ | ~~Content freshness pass on the 2 oldest posts~~ — **DONE 2026-08-03**: both posts predated 2 newer topically-relevant posts (NEA boundary noise limits, home theatre cost) that didn't exist when they were written, so added real cross-links rather than just bumping a date — STC-vs-NRC gained a new section clarifying STC/NRC vs. NEA's dB(A) boundary limits (a genuine, common point of confusion) plus 2 new related-reading links; office-cost guide gained a sentence + link pointing industrial readers to the NEA limits guide. `dateModified` and `sitemap.xml` `lastmod` both bumped to 2026-08-03 to reflect the real edit. | Low-Med | Low | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-01, carried to Week of 2026-08-03 |
 | ~~15~~ | ~~Complete `FAQPage`/AEO schema coverage~~ — **turned out already done**: homepage + all 6 blog posts + all 3 service pages already have matching visible-FAQ + schema (fixed in an earlier, unlogged session). No action needed. | Med-High | Low | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-03 |
 | ~~16~~ | ~~Structured-data validation pass~~ — **DONE 2026-08-03**: found and fixed 3 real defects — broken `Article.publisher.logo.url` (URL fragment, not an image) on all 6 blog posts; missing `image` field on `Article`/`ProfessionalService` schema site-wide; zero pages had `og:image`/`twitter:image` despite `twitter:card=summary_large_image` (no link-preview image anywhere). Fixed with the real logo (not AI-placeholder photos). Also fixed a mismatched headline in `blog/index.html`'s `hasPart` array. | Med | Low | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-03 |
+| ~~17~~ | ~~Phone number field on the enquiry form~~ — **DONE 2026-08-07**, commits `5d634e7`/`d337f99`. Added to `index.html` form + `worker/src/index.js` (now included in the notification email). Verified end-to-end live (real browser submission + API call). | Med | Low | Done | This session |
+| ~~18~~ | ~~PDPA privacy policy page~~ — **DONE 2026-08-07**, commit `4110f6a`. New `privacy.html` (data collected, why, third-party processors — Resend/Anthropic, retention, PDPA rights), linked from every page footer + a consent line under the enquiry form submit button. Timely given item 17 expanded the PII the form collects. | Med-High | Low | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-07 |
+| ~~19~~ | ~~`llms.txt` + custom 404 page~~ — **DONE 2026-08-07**, commit `4110f6a`. Both confirmed missing before adding. | Med | Low | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-07 |
+| ~~20~~ | ~~Internal cross-link gaps~~ — **DONE 2026-08-07**, commit `4110f6a`. `industrial-noise-compliance` service page now links to the NEA boundary noise limits guide (previously missing, despite that guide linking back); `office-acoustics` service page gained a second related link. | Low-Med | Low | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-07 |
 
-**All actionable-by-me items from the 2026-08-01/08-03 brainstorms are now
-done (#12-16).** Everything remaining open needs you (#1, #2, actual
-directory/association submissions from #6) or is blocked on something
-outside this session's control (#7, #9). Next session: check whether the
-user has made progress on those, or run a fresh continuous-improvement
-idea-generation pass for new candidates.
+**All actionable-by-me items through 2026-08-07 are done (#12-20), plus #2 partially
+(website side).** Everything remaining open needs you (#1, the GBP-gallery half of #2,
+actual directory/association submissions from #6) or is blocked on something outside
+this session's control (#7, #9). Next session: check whether the user has made progress
+on those, or run a fresh continuous-improvement idea-generation pass for new candidates.
 
 ## Watch items (not actionable yet, just checking periodically)
 
