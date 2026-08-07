@@ -5,7 +5,7 @@
   "description": "CI tooling for b-acoustics.com — the shipped site is plain static HTML with no build step.",
   "scripts": {
     "check-site": "node scripts/check-site.js",
-    "validate-html": "html-validate \"index.html\" \"disclaimer.html\" \"blog/*.html\" \"services/*.html\"",
+    "validate-html": "html-validate \"index.html\" \"disclaimer.html\" \"privacy.html\" \"404.html\" \"blog/*.html\" \"services/*.html\"",
     "test:visual": "playwright test",
     "lighthouse": "lhci autorun"
   },

@@ -1,0 +1,27 @@
+# B-Acoustics
+
+> B-Acoustics is an acoustic engineering and soundproofing consultancy based in Singapore. We design, model, and build noise control for commercial, residential, and industrial spaces — from open-office acoustic panels and party-wall sound isolation to industrial boundary-noise compliance.
+
+Singapore-only, B2B and B2C. We do not quote firm pricing without a site survey. We do not publish named client case studies (client confidentiality). Every acoustic claim we make is backed by on-site measurement (Class 1 sound-level meters, impulse-response capture, tapping-machine testing), not estimates.
+
+## Services
+
+- [Office Acoustics](https://b-acoustics.com/services/office-acoustics-singapore.html): Acoustic treatment for open-plan and commercial offices — reverberation control, speech privacy, ceiling/wall panel systems.
+- [Party-Wall Soundproofing](https://b-acoustics.com/services/party-wall-soundproofing-singapore.html): Sound isolation between units — home theatres, HDB/condo party walls, staggered-stud and resilient-channel construction.
+- [Industrial Noise Compliance](https://b-acoustics.com/services/industrial-noise-compliance-singapore.html): Boundary noise reduction and NEA compliance for industrial plant — duct silencers, enclosures, vibration isolation.
+
+## Guides
+
+- [Guides index](https://b-acoustics.com/blog/): All published guides.
+- [STC vs NRC Explained](https://b-acoustics.com/blog/stc-vs-nrc-explained.html): The difference between Sound Transmission Class (blocking sound) and Noise Reduction Coefficient (absorbing sound), and how each relates to NEA's dB(A) boundary limits.
+- [Office Soundproofing Cost in Singapore](https://b-acoustics.com/blog/office-soundproofing-cost-singapore.html): What drives the cost of a commercial acoustic project.
+- [HDB vs Condo Soundproofing](https://b-acoustics.com/blog/hdb-vs-condo-soundproofing-singapore.html): How approval processes and construction differ between HDB and condo/MCST projects.
+- [NEA Boundary Noise Limits in Singapore](https://b-acoustics.com/blog/nea-boundary-noise-limits-singapore.html): NEA's dB(A) limits for industrial and commercial premises, explained.
+- [Home Theatre Soundproofing Cost](https://b-acoustics.com/blog/home-theatre-soundproofing-cost-singapore.html): What a residential home-theatre isolation build typically costs and why.
+- [Neighbour Noise in Singapore: Your Options](https://b-acoustics.com/blog/neighbour-noise-singapore.html): Mediation, complaint channels, and construction options for noisy-neighbour disputes.
+
+## Other
+
+- [Homepage](https://b-acoustics.com/): Services overview, approach, materials, FAQ, and enquiry form.
+- [Disclaimer](https://b-acoustics.com/disclaimer.html): What our guides are (general information) and aren't (legal/regulatory advice).
+- [Privacy Policy](https://b-acoustics.com/privacy.html): How we handle personal data submitted through the enquiry form and chat assistant.

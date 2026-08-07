@@ -12,6 +12,29 @@ first, bigger/strategic bets later even if their absolute impact ceiling is high
 
 ---
 
+## Week of 2026-08-07
+
+The 2026-08-01/08-03 batch (items 12-16 in `STATUS.md`) is fully closed, so this
+week's ranking is a fresh pass rather than carried-over items. Grounded in a direct
+inspection of the live site (not guessed) plus current AEO/AI-crawler trends. Ranked
+by impact vs. effort:
+
+| # | Topic | Impact | Effort | Why now |
+|---|---|---|---|---|
+| 1 | **PDPA-compliant Privacy Policy page + consent microcopy on the enquiry form** | Med-High | Low | Direct inspection found no privacy/data-handling page anywhere on the site — only `disclaimer.html` (content-accuracy disclaimer, unrelated to data collection). The enquiry form collects name, email, and (as of this session) phone — 3 PII fields with zero stated basis, retention, or contact point for a data-protection query, which is a real Singapore PDPA gap for a live form actively collecting data, not a hypothetical one. Cheap to add: one page following the existing `disclaimer.html` template + a one-line consent note under the submit button. |
+| 2 | **`llms.txt` at site root** | Med | Low | 2026 AEO/GEO trend: ChatGPT, Perplexity, and Claude increasingly consult a site's `llms.txt` (plain-Markdown index of key pages) to decide what to cite/summarize, the same way `sitemap.xml` targets traditional crawlers. The site has strong existing FAQ/schema coverage to point to — this is a low-effort way to make that legible to LLM crawlers specifically. Doesn't exist yet — checked. |
+| 3 | **Custom 404 page** | Med | Low | GitHub Pages serves its own generic 404 for any broken/old link — doesn't exist as a repo file yet, checked. A branded 404 with links back to services/blog/contact recovers otherwise-lost traffic (old backlinks, typos, removed pages) and is trivial to add once `services/*.html`'s nav/footer pattern is reused. |
+| 4 | **Internal cross-linking completeness pass** across all 6 blog posts + 3 service pages | Med | Low-Med | The 2026-08-03 freshness pass added cross-links to only 2 of 6 posts (the 2 oldest). The other 4 posts and the 3 service pages haven't been audited for whether they link to topically-related posts/services — cheap topical-authority and dwell-time win, mostly editing existing pages rather than new content. |
+| 5 | **Security response headers (CSP/Referrer-Policy/Permissions-Policy/HSTS)** | Low-Med | Low (partial) / higher (full) | Checked live response headers — none of these are set. GitHub Pages doesn't support custom HTTP headers, and DNS resolves directly to GitHub's IPs (not proxied through Cloudflare, confirmed via `nslookup`), so a *full* fix needs a hosting/DNS change — that's an infra decision for the user, not something to do unilaterally. A partial mitigation (CSP via `<meta http-equiv>`) is possible without infra changes and worth doing regardless. |
+
+**Suggested next action:** items 1-4 are all low-effort content/file additions that
+don't touch hosting — worth doing together in one session. Item 5's partial (meta-tag
+CSP) can ride along; the full version needs the user's call on whether to proxy DNS
+through Cloudflare (bigger, unrelated to this ranking) — flag it but don't act on the
+full version without asking.
+
+---
+
 ## Week of 2026-08-03
 
 Items 3-5 from last week (2026-08-01) were queued but not started, so this
