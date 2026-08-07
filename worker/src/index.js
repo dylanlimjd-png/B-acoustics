@@ -54,6 +54,7 @@ async function handleEnquiry(request, env) {
   const name = (body.name || '').trim();
   const company = (body.company || '').trim();
   const email = (body.email || '').trim();
+  const phone = (body.phone || '').trim();
   const type = (body.type || 'Not sure yet').trim();
   const message = (body.message || '').trim();
 
@@ -67,6 +68,7 @@ async function handleEnquiry(request, env) {
     `Name: ${name}`,
     `Company: ${company || '(none given)'}`,
     `Email: ${email}`,
+    `Phone: ${phone || '(none given)'}`,
     `Setting: ${type}`,
     ``,
     `Message:`,

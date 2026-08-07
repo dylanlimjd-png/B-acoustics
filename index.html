@@ -488,6 +488,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
                 <div id="ba-contact-err-email" style="display:none; font-family:'Space Mono',monospace; font-size:11px; color:var(--accent,#F73E1B); margin-top:7px;"></div>
               </div>
               <div>
+                <label for="ba-contact-phone" style="font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:#A8A294;">Phone</label>
+                <input id="ba-contact-phone" type="tel" placeholder="Optional" style="width:100%; background:transparent; border:none; border-bottom:1px solid rgba(241,237,228,0.3); color:#F1EDE4; font-size:16px; padding:12px 0; margin-top:6px;">
+              </div>
+              <div>
                 <label for="ba-contact-type" style="font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:#A8A294;">Setting</label>
                 <select id="ba-contact-type" style="width:100%; background:#16140F; border:none; border-bottom:1px solid rgba(241,237,228,0.3); color:#F1EDE4; font-size:16px; padding:12px 0; margin-top:6px;">
                   <option>Commercial</option>
@@ -548,6 +552,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   var nameInput = document.getElementById('ba-contact-name');
   var companyInput = document.getElementById('ba-contact-company');
   var emailInput = document.getElementById('ba-contact-email');
+  var phoneInput = document.getElementById('ba-contact-phone');
   var typeInput = document.getElementById('ba-contact-type');
   var messageInput = document.getElementById('ba-contact-message');
   var errName = document.getElementById('ba-contact-err-name');
@@ -581,6 +586,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
       name: nameInput.value,
       company: companyInput.value,
       email: emailInput.value,
+      phone: phoneInput.value,
       type: typeInput.value,
       message: messageInput.value
     };
