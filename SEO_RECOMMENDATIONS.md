@@ -467,3 +467,58 @@ the 2 new blog posts shipped (2026-08-01).
 
 **Next run:** re-check the branded-query ranking specifically (item 5) in
 addition to the standing `site:b-acoustics.com` homepage-indexing watch.
+
+---
+
+## SEO ranking check — 2026-08-07
+
+Requested directly (check GBP listing status), not the full weekly rotation —
+ran the brand-name queries plus a direct Google Maps lookup.
+
+### Findings
+
+1. **A GBP listing now exists — this reverses the 2026-08-01/08-03 finding.**
+   `https://www.google.com/maps/place/B-Acoustics/...` is live: name
+   "B-Acoustics", category "Acoustical consultant", correctly linked to
+   `b-acoustics.com`, marked Open with hours set (closes 6pm). It already has
+   **3 owner-uploaded photos** (posted 11 days ago, i.e. ~2026-07-27) and
+   **1 five-star review** (Ivan Cheong, Local Guide · 6 reviews · 11 photos,
+   posted 6 days ago, no written text) — average rating shows as 5.0.
+2. **Phone number mismatch (NAP inconsistency) — new, real finding.** The GBP
+   listing shows **8784 7481**. The live site (`tel:` link, JSON-LD schema,
+   on-page contact block) shows **+65 9641 6999**. These don't match. NAP
+   (Name-Address-Phone) consistency is a known local-SEO ranking factor, and
+   a customer calling the number shown on Search/Maps would reach a different
+   number than the one on the website — needs the user to confirm which
+   number is actually current and correct the other side (GBP dashboard or
+   the website, whichever is stale). Not something to guess/fix without
+   asking, since I don't know which number is real.
+3. **No address shown on the GBP listing** — likely configured as a
+   service-area business (hidden address), unlike the website's own JSON-LD
+   which publishes the full studio address. Not necessarily wrong (a valid
+   choice), but worth the user confirming it's the intended GBP setup.
+4. **Still zero organic web-result visibility on brand queries** — bare
+   `b-acoustics` and `"B-Acoustics" acoustic consultant` both show zero
+   b-acoustics.com results (same brand-collision competitors as prior runs;
+   the quoted-brand query has now gone from 2 results (2026-07-31) → 1
+   (2026-08-03) → 0 (today), continuing the regression flagged last run).
+   Did not check whether the local pack now surfaces the GBP listing for
+   non-brand local-intent queries this run — worth doing on the next full
+   rotation.
+
+### Resolution plans
+
+1. **GBP existing** — updates `STATUS.md` item #1 from "blocked, unclear if
+   listing exists" to "listing exists and is accumulating organic signal on
+   its own." Reviews are still worth actively soliciting (1 isn't many), but
+   this is no longer a "does it even exist" blocker.
+2. **Phone mismatch** — flagged to the user; needs their confirmation of the
+   correct number, not something to silently pick a side on.
+3. **Hidden address** — flagged to the user to confirm intentional.
+4. **Zero organic/brand-query regression** — same standing root cause
+   (backlinks/domain authority, see prior runs); no new action, continue
+   watching.
+
+**Next run:** full weekly rotation (all target keywords) to check whether
+the local pack now surfaces B-Acoustics for non-brand local-intent queries
+now that the listing is confirmed live.
