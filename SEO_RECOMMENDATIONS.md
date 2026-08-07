@@ -512,9 +512,22 @@ ran the brand-name queries plus a direct Google Maps lookup.
    listing exists" to "listing exists and is accumulating organic signal on
    its own." Reviews are still worth actively soliciting (1 isn't many), but
    this is no longer a "does it even exist" blocker.
-2. **Phone mismatch** — flagged to the user; needs their confirmation of the
-   correct number, not something to silently pick a side on.
-3. **Hidden address** — flagged to the user to confirm intentional.
+2. **Phone mismatch — RESOLVED same session.** User confirmed 8784 7481 (the
+   GBP number) is correct. Updated the website (`index.html`'s `telephone`
+   JSON-LD field + visible `tel:` link in the Enquire/contact block) and the
+   chat-assistant Worker's system prompt (`worker/src/index.js`) to match;
+   Worker redeployed. NAP is now consistent between GBP and the website.
+3. **Hidden address — confirmed intentional.** User confirmed: no physical
+   studio exists, so the GBP service-area setup (no public address) is
+   correct as-is. **New follow-up, not yet resolved:** the website itself
+   still has a "Studio" section (`id="contact"`) displaying
+   `228 Changi Road #03-02, Singapore 419741` in a way that could read as a
+   visitable physical location, plus the same address is in the
+   `ProfessionalService` JSON-LD `PostalAddress`. Now that we know there's no
+   physical studio, this is worth the user deciding whether to relabel/adjust
+   that on-page copy (e.g. "Registered Office" instead of "Studio," or
+   removing the implication of a visitable location) — flagged, not changed
+   without their input since it's an editorial/business call.
 4. **Zero organic/brand-query regression** — same standing root cause
    (backlinks/domain authority, see prior runs); no new action, continue
    watching.

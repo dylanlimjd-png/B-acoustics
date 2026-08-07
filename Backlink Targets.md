@@ -22,8 +22,10 @@ but real, indexed, and free to start with.
 
 Practical note: NAP (name/address/phone) consistency matters more than
 volume here — use exactly `228 Changi Road #03-02, Singapore 419741` and
-`+65 9641 6999` on every listing, matching the site's own schema (see
-`business-legal-entity-2026-07` memory for why the address form matters).
+`+65 8784 7481` (matching the GBP listing's number, corrected 2026-08-07 —
+see `SEO_RECOMMENDATIONS.md`'s 2026-08-07 entry) on every listing, matching
+the site's own schema (see `business-legal-entity-2026-07` memory for why
+the address form matters).
 
 ## Acoustic / engineering professional bodies
 
