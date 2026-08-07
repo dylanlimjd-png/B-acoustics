@@ -107,7 +107,7 @@ outreach) and can't be started in a coding session.
 | ~~4~~ | ~~WCAG pass~~ — **FIXED 2026-07-28**, commit `b570422`: label/for association, focus-visible outlines, chat input accessible name (real failures found via direct audit — alt text was already complete, checked and confirmed) | Med-High | Medium | Done | `CONTINUOUS_IMPROVEMENT.md` Item 4 |
 | ~~5~~ | ~~4-6 more blog posts~~ — **DONE**: 2026-07-28 commit `bd31a0c` (NEA boundary noise limits, HDB vs Condo) + 2026-08-01 (home theatre soundproofing cost, neighbour-noise/party-wall guide). Item fully closed. | Medium | High | Done | `SEO_RECOMMENDATIONS.md` |
 | 6 | Off-page authority: SG directory listings, MIOA, outreach, press | High ceiling, slow | Very High, ongoing, partly needs your relationships | **Research done** (`Backlink Targets.md`, commit `a302e1a`) — actual submission needs you | `SEO_RECOMMENDATIONS.md` |
-| 7 | `AggregateRating`/`Review` schema | Low until #1 exists | Low | Blocked on #1 | `SEO_RECOMMENDATIONS.md` |
+| 7 | `AggregateRating`/`Review` schema | Low until #1 exists | Low | **Unblocked 2026-08-07** — GBP now has 1 real review (5.0★, Ivan Cheong). Technically addable now, but 1 review is thin to publish as `AggregateRating` — worth waiting for a couple more, or ask the user whether to add it now anyway. | `SEO_RECOMMENDATIONS.md` |
 | ~~8~~ | ~~Dead Instagram footer link~~ — **FIXED 2026-07-28**, commit `b570422` (removed until a real profile URL exists) | Trivial | Trivial | Done | `DESIGN_FEEDBACK.md` |
 | 9 | Optional H1 A/B test | Low, needs analytics infra we don't have | Medium | No — no infra | `SEO_RECOMMENDATIONS.md` |
 | ~~10~~ | ~~Service/blog page performance~~ — **FIXED 2026-07-31**, commit `5f8dc50`: root cause was two oversized logo PNGs embedded as inline base64 in every `services/*.html`/`blog/*.html` page (~350KB of dead weight per page, invisible to `check-site.js` since it skips `data:` URIs) plus the hero photo on service pages being `loading="lazy"` and fetched from an absolute production URL instead of the local static file. Replaced with the same relative-path + eager-hero pattern the homepage already used. Local Lighthouse: office-acoustics page 0.86 perf/2.6s LCP (was 0.78–0.83/up to 4.1s), stc-vs-nrc blog page 0.96 perf/2.3s LCP. `lighthouserc.json`'s generic budget tightened (0.72→0.78 min score, 4500→3800ms max LCP). | Medium | Medium | Done | This session |
@@ -121,12 +121,18 @@ outreach) and can't be started in a coding session.
 | ~~18~~ | ~~PDPA privacy policy page~~ — **DONE 2026-08-07**, commit `4110f6a`. New `privacy.html` (data collected, why, third-party processors — Resend/Anthropic, retention, PDPA rights), linked from every page footer + a consent line under the enquiry form submit button. Timely given item 17 expanded the PII the form collects. | Med-High | Low | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-07 |
 | ~~19~~ | ~~`llms.txt` + custom 404 page~~ — **DONE 2026-08-07**, commit `4110f6a`. Both confirmed missing before adding. | Med | Low | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-07 |
 | ~~20~~ | ~~Internal cross-link gaps~~ — **DONE 2026-08-07**, commit `4110f6a`. `industrial-noise-compliance` service page now links to the NEA boundary noise limits guide (previously missing, despite that guide linking back); `office-acoustics` service page gained a second related link. | Low-Med | Low | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-08-07 |
+| ~~21~~ | ~~Phone NAP mismatch (GBP vs. website)~~ — **DONE 2026-08-07**, commit `c98d77a`. User confirmed 8784 7481 is correct; website + chat-assistant Worker updated to match, redeployed. | Med | Low | Done | This session |
+| ~~22~~ | ~~"Studio" address label implied a walk-in physical location~~ — **DONE 2026-08-07**, commit `f020eb2`. User confirmed no physical studio exists; relabeled to "Registered Office" on the homepage contact block. | Low | Low | Done | This session |
+| ~~23~~ | ~~Text-overlap spacing bug on `/blog/` guides index~~ — **DONE 2026-08-07**, commit `f020eb2`. User-reported (screenshot) — a hardcoded `-24px` negative margin under the dek paragraph overlapped its last line whenever it wrapped to 4 lines. Fixed with normal non-negative margins; reproduced and confirmed fixed locally. Audited the rest of the site for the same pattern — it was the only instance. | Med | Low | Done | This session |
 
-**All actionable-by-me items through 2026-08-07 are done (#12-20), plus #2 partially
-(website side).** Everything remaining open needs you (#1, the GBP-gallery half of #2,
-actual directory/association submissions from #6) or is blocked on something outside
-this session's control (#7, #9). Next session: check whether the user has made progress
-on those, or run a fresh continuous-improvement idea-generation pass for new candidates.
+**All actionable-by-me items through 2026-08-07 are done (#12-23), plus #2 partially
+(website side) and #7 now technically unblocked (thin on review count).** Everything
+remaining open needs you (#1's ongoing review solicitation, the GBP-gallery half of #2,
+actual directory/association submissions from #6) or is a judgment call worth asking
+about (#7 — add `AggregateRating` now with just 1 review, or wait) or blocked on
+something outside this session's control (#9). Next session: check whether the user
+has made progress on those, or run a fresh continuous-improvement idea-generation pass
+for new candidates.
 
 ## Watch items (not actionable yet, just checking periodically)
 
