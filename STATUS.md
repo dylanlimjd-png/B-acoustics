@@ -7,7 +7,31 @@ and `Photo request list.md` separately — those remain the detailed logs
 (method, findings, reasoning) for their respective activities; this file is
 just the rollup of what's still open, updated whenever any of them change.
 
-Last updated: 2026-08-05 (legal-liability content pass — see below).
+Last updated: 2026-08-11 (Google tag install + conversion tracking — see below).
+
+**2026-08-11 session:** installed the Google Ads base tag (`gtag.js`, `AW-18350815493`)
+in `<head>` on all 14 pages, per a screenshot the user saved of Google Ads' manual-install
+instructions (commit `c9d944c`). Verified live on the deployed site (not just committed) —
+polled the GitHub Pages build API until the deploy finished, then confirmed the tag renders
+correctly on the homepage, privacy page, blog index, a service page, and 404. `check-site`/
+`html-validate` both clean. Google Ads dashboard-side "tag detected" status wasn't checked
+(requires being logged into the user's Google Ads account — standing preference from
+[[seo_ranking_routine_2026-07]] is no Google account logins by Claude; user needs to confirm
+that side themselves).
+
+**Session paused here — user is stopping for the day, mid-task on the next item.**
+User then asked to add conversion-action tracking for the enquiry-form submission
+(the exact JS hook point is already identified: `index.html` lines ~634-636, right
+after a successful `/api/enquiry` POST where the form is hidden and the success
+message shown — just needs one `gtag('event', 'conversion', {'send_to': '...'})`
+call inserted there). **Blocked on getting the real per-conversion label from the
+user** — they pasted three different wrong values in a row (the placeholder example
+text verbatim, the account-level `AW-18350815493` ID we already have, and a `GT-`
+prefixed container ID) rather than the actual label. Asked the user to screenshot
+the conversion action's "Tag setup" panel (same method as the original tag
+screenshot) instead of retyping it, to stop the mix-ups. **Next session: check the
+working directory for a new screenshot before asking again** — if one's there, read
+the label off it directly and wire in the event snippet.
 
 **2026-08-05 session:** at the user's request, reduced legal/liability exposure
 in the guide content: the blog posts and service pages state real Singapore
@@ -124,6 +148,8 @@ outreach) and can't be started in a coding session.
 | ~~21~~ | ~~Phone NAP mismatch (GBP vs. website)~~ — **DONE 2026-08-07**, commit `c98d77a`. User confirmed 8784 7481 is correct; website + chat-assistant Worker updated to match, redeployed. | Med | Low | Done | This session |
 | ~~22~~ | ~~"Studio" address label implied a walk-in physical location~~ — **DONE 2026-08-07**, commit `f020eb2`. User confirmed no physical studio exists; relabeled to "Registered Office" on the homepage contact block. | Low | Low | Done | This session |
 | ~~23~~ | ~~Text-overlap spacing bug on `/blog/` guides index~~ — **DONE 2026-08-07**, commit `f020eb2`. User-reported (screenshot) — a hardcoded `-24px` negative margin under the dek paragraph overlapped its last line whenever it wrapped to 4 lines. Fixed with normal non-negative margins; reproduced and confirmed fixed locally. Audited the rest of the site for the same pattern — it was the only instance. | Med | Low | Done | This session |
+| ~~24~~ | ~~Google Ads base tag (`gtag.js`, `AW-18350815493`) install~~ — **DONE 2026-08-11**, commit `c9d944c`. Added to all 14 pages, verified live post-deploy. | Med | Low | Done | This session |
+| 25 | Google Ads conversion action for enquiry-form submission | Med | Low (once label is known) | **Blocked** — hook point identified (`index.html` ~line 634-636), just need the real per-conversion label from Google Ads. User pasted 3 wrong values in a row; asked for a screenshot instead. Check the folder for a new one next session before asking again. | This session |
 
 **All actionable-by-me items through 2026-08-07 are done (#12-23), plus #2 partially
 (website side) and #7 now technically unblocked (thin on review count).** Everything
