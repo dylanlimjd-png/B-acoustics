@@ -39,6 +39,25 @@ instructions.png`, is the same base-tag screenshot from 2026-08-11, already
 handled). User said they'll get the right screenshot later; no change to
 this item's status below.
 
+**Also this session — CI housekeeping.** After pushing the above, `ci.yml`'s
+`visual-regression` job failed red (22/22 checks) on both the initial push
+and a rerun with byte-identical diffs, across every page including ones
+untouched this session. Investigated rather than assuming a real bug:
+`tests/visual.spec.js-snapshots/` was last regenerated 2026-08-01
+(`126ec42`), but 10 real content-visible commits shipped since then (PDPA
+privacy page, phone field, `BreadcrumbList` schema, legal-liability
+callouts, real project photos, NAP fix, Google tag, plus this session's new
+tile) — each adds height, so every page's live render had simply outgrown
+the stale baseline. Confirmed via `git log` on the snapshots path before
+acting. Triggered `update-visual-baseline.yml` (user-confirmed, since it
+pushes to `main` under `github-actions[bot]`) — 22/22 passed, new baselines
+committed (`5d4cf1d`). Note: bot pushes using the default `GITHUB_TOKEN`
+don't auto-trigger further workflow runs (GitHub's anti-recursion
+protection), so `ci.yml` had to be manually re-dispatched
+(`workflow_dispatch`) to confirm green — it came back all-clear
+(`lint-and-links`, `visual-regression` 22 passed, `lighthouse`). No code
+changes resulted; this was a re-baseline, not a fix.
+
 **2026-08-11 session:** installed the Google Ads base tag (`gtag.js`, `AW-18350815493`)
 in `<head>` on all 14 pages, per a screenshot the user saved of Google Ads' manual-install
 instructions (commit `c9d944c`). Verified live on the deployed site (not just committed) —
