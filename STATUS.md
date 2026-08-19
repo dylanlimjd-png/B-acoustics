@@ -7,56 +7,46 @@ and `Photo request list.md` separately — those remain the detailed logs
 (method, findings, reasoning) for their respective activities; this file is
 just the rollup of what's still open, updated whenever any of them change.
 
-Last updated: 2026-08-19 (continuous-improvement Week of 2026-08-19, 5 items shipped).
+Last updated: 2026-08-19 (full session recap below; all work committed, pushed, and CI green).
 
-**2026-08-19 session:** user saved 10 new project photos (`images/`, dated
-2026-08-17/18) from a completed commercial office fit-out — a conference
-room with fabric acoustic panels and a second room with panels plus a wood
-pegboard-style acoustic feature wall. Consent to use publicly confirmed by
-user (no client name — generic "Corporate Office" descriptor only, per
-user's choice). Picked the cleanest shot (conference room, no clutter/boxes
-visible), converted to `.webp` via the already-installed `sharp` package
-(`images/commercial-office-acoustic-panels.webp`, 53KB, in line with other
-site images), and added as a **new 4th tile** in the homepage's work grid
-(`#work` section) rather than replacing either of the two remaining
-generic/stock tiles (Home Theatre, Industrial Plant) — those are a category
-mismatch for office photos. All 10 raw originals archived under
-`photos/project-3/` (following the existing `project-1`/`project-2`
-convention) and removed from `images/`. `check-site`/`html-validate` both
-clean. **Not yet committed** — do that this session if the user confirms.
+**2026-08-19 session (full recap):** four pieces of work, all committed and
+deployed:
+1. **New real project photo.** User provided 10 photos of a completed
+   commercial office fit-out (consent confirmed, no client name — generic
+   "Corporate Office" descriptor). Cleanest shot converted to `.webp`
+   (`images/commercial-office-acoustic-panels.webp`) and added as a **new
+   4th tile** in the homepage work grid, alongside Ultra Studio (the only
+   other real photo — Home Theatre/Industrial Plant tiles are still
+   generic/stock). All 10 raw originals archived `photos/project-3/`.
+   Commit `bcb1a75`.
+2. **Team listing rename** — "Ivan Cheong" → "Mr Cheong" in the homepage
+   Studio section, same commit. (Historical GBP-reviewer references to
+   "Ivan Cheong" elsewhere left as-is — factual record of who reviewed, not
+   the team roster.)
+3. **CI housekeeping** — `visual-regression` failed sitewide after the
+   above push. Root cause: baselines hadn't been regenerated since
+   2026-08-01 despite 10 real content commits since (not a bug — see
+   [[ci_visual_baseline_maintenance_2026-08]] in memory for the full
+   diagnostic method). Re-baselined twice this session (once after the
+   photo/rename push, again after item 4 below added a WhatsApp link);
+   `ci.yml` manually re-dispatched both times to confirm green (bot pushes
+   don't auto-trigger workflows).
+4. **Continuous-improvement Week of 2026-08-19, all 5 items shipped**
+   (commit `99dfde6`): `sitemap.xml` lastmod fix, `/api/enquiry` spam
+   protection (honeypot + rate limit — **Worker deployed live**), `llms.txt`
+   false-claim fix, WhatsApp click-to-chat CTA, partial CSP via `<meta>` on
+   all 14 pages (a naive allowlist would have silently broken the Google
+   Ads conversion pixel — caught via a real headless-browser test before
+   shipping, not guessed). Full detail in `CONTINUOUS_IMPROVEMENT.md`'s
+   2026-08-19 entry.
 
-Also this session: renamed the "Lead Architect" team member on the homepage
-Studio section from "Ivan Cheong" to "Mr Cheong" at user's request (privacy/
-formality — reason not stated). Only touched the live site's team listing;
-left the historical GBP-reviewer references to "Ivan Cheong" in
-`SEO_RECOMMENDATIONS.md`/this file's older entries as-is since those are a
-factual record of who left the review, not the team roster.
+Item #25 (Google Ads conversion-action label) checked again this session —
+still no new screenshot in the working directory (only file present is the
+already-handled base-tag one from 08-11). User will provide it later; no
+change to that item's status below.
 
-Item #25 (Google Ads conversion-action label) is still blocked — checked for
-a new screenshot in the working directory per last session's note, found
-none (the only Google-tag-related file present, `google tag setup
-instructions.png`, is the same base-tag screenshot from 2026-08-11, already
-handled). User said they'll get the right screenshot later; no change to
-this item's status below.
-
-**Also this session — CI housekeeping.** After pushing the above, `ci.yml`'s
-`visual-regression` job failed red (22/22 checks) on both the initial push
-and a rerun with byte-identical diffs, across every page including ones
-untouched this session. Investigated rather than assuming a real bug:
-`tests/visual.spec.js-snapshots/` was last regenerated 2026-08-01
-(`126ec42`), but 10 real content-visible commits shipped since then (PDPA
-privacy page, phone field, `BreadcrumbList` schema, legal-liability
-callouts, real project photos, NAP fix, Google tag, plus this session's new
-tile) — each adds height, so every page's live render had simply outgrown
-the stale baseline. Confirmed via `git log` on the snapshots path before
-acting. Triggered `update-visual-baseline.yml` (user-confirmed, since it
-pushes to `main` under `github-actions[bot]`) — 22/22 passed, new baselines
-committed (`5d4cf1d`). Note: bot pushes using the default `GITHUB_TOKEN`
-don't auto-trigger further workflow runs (GitHub's anti-recursion
-protection), so `ci.yml` had to be manually re-dispatched
-(`workflow_dispatch`) to confirm green — it came back all-clear
-(`lint-and-links`, `visual-regression` 22 passed, `lighthouse`). No code
-changes resulted; this was a re-baseline, not a fix.
+**End state: working tree clean, `main` fully pushed, CI all-green
+(`lint-and-links`, `lighthouse`, `visual-regression`).**
 
 **2026-08-11 session:** installed the Google Ads base tag (`gtag.js`, `AW-18350815493`)
 in `<head>` on all 14 pages, per a screenshot the user saved of Google Ads' manual-install
@@ -231,25 +221,17 @@ Four pieces of build-time tooling, all wired up and confirmed green on `main` th
 
 ## Recently resolved (kept briefly for continuity, drop once confirmed stable)
 
-- Final 2 blog posts of the "4-6 more" item — home theatre soundproofing cost
-  and a new neighbour-noise/party-wall guide, both cross-linked and added to
-  `sitemap.xml`/every footer (2026-08-01, not yet committed as of this
-  writing — see `SEO_RECOMMENDATIONS.md`'s 2026-08-01 entry).
-- GBP existence check (2026-08-01) — live Search/Maps confirm no B-Acoustics
-  listing is findable; reframes open item #1 above.
-- Service/blog page Lighthouse performance — removed ~350KB of inline base64 logo images per page, fixed the service-page hero photo to load eagerly from a relative path instead of lazily from an absolute production URL, tightened `lighthouserc.json`'s generic budget accordingly (2026-07-31, commit `5f8dc50`).
-- Studio section (08) had zero top padding, jamming its heading against the dark FAQ section above it — a copy/paste slip from the 70de168 re-platform, not a new bug. **Fixed 2026-07-28**, commit `5a14df8`; user-verified live.
-- While wiring up the new HTML checkers: fixed unescaped `&` in two service-page `<title>` tags and one blog paragraph, a `<style>` block incorrectly placed under `<body>` instead of `<head>` in `index.html`, and a couple of trivial whitespace/attribute nits (2026-07-28, PR #2).
-- Homepage bundler-format → plain static HTML re-platform (2026-07-28, `70de168`) — fixed the indexing-gap root cause and a 6.6s LCP render delay (Lighthouse: 74→95, LCP 5.4s→2.4s).
-- Accent-orange WCAG contrast failure on light backgrounds, site-wide (2026-07-28, `78799bf`).
-- Service-page visual consistency — hero photos, step tags, FAQ dividers, dark closing CTA band (2026-07-28, `3352352`).
-- Mobile hamburger nav across all 6 pages (2026-07-28, `2f817d6`).
-- WCAG fixes on the homepage contact form + dead Instagram link removed (2026-07-28, `b570422`).
-- 2 new blog posts (NEA boundary noise limits, HDB vs Condo) + cross-linking (2026-07-28, `bd31a0c`).
-- Backlink Targets.md research doc (2026-07-28, `a302e1a`).
-- Contact form + AI chat agent backend (2026-07-27).
-- AEO/GEO: `FAQPage` JSON-LD site-wide (2026-07-27).
-- Registered address added to schema + NAP (2026-07-27).
+- New Corporate Office project photo + team-listing rename (2026-08-19, `bcb1a75`).
+- Continuous-improvement Week of 2026-08-19, all 5 items (2026-08-19, `99dfde6`) —
+  sitemap freshness, enquiry-form spam protection, `llms.txt` fix, WhatsApp CTA,
+  partial CSP.
+- Visual-regression baseline re-syncs, twice (2026-08-19, `5d4cf1d` and `f5f974d`) —
+  routine CI maintenance, not bug fixes; see memory `ci_visual_baseline_maintenance_2026-08`.
+- Google Ads base tag install, all 14 pages (2026-08-11, `c9d944c`).
+
+*(Everything older than 2026-08-11 has been stable across several sessions —
+dropped from this list per the file's own upkeep rule. Full history lives in
+git log and the individual tracker files.)*
 
 ## How to keep this current
 
