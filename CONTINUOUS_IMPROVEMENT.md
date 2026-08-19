@@ -12,6 +12,60 @@ first, bigger/strategic bets later even if their absolute impact ceiling is high
 
 ---
 
+## Week of 2026-08-19
+
+Last ranking pass was 2026-08-07 (12 days stale — all 4 of that batch's items shipped,
+see `STATUS.md` #17-20). This pass is grounded in direct code/live-site inspection, not
+guessed. Ranked by impact vs. effort:
+
+| # | Topic | Impact | Effort | Why now |
+|---|---|---|---|---|
+| 1 | **`sitemap.xml`'s homepage entry has no `<lastmod>` at all**, and every other page's `<lastmod>` is frozen at 2026-08-07 or earlier | High | Trivial | Direct inspection: the homepage `<url>` block has `<loc>`/`<changefreq>`/`<priority>` but no `<lastmod>` tag, and it's had *more* real changes than any other page since 08-07 (phone NAP fix, Google Ads tag install 08-11, today's new work-grid photo + team rename) — none reflected. `lastmod` is a real re-crawl-priority signal, and this directly bears on the site's own tracked "homepage indexing gap" watch item in `STATUS.md`. |
+| 2 | **`/api/enquiry` (Worker backend) has zero spam/abuse protection** — no rate limit, no honeypot field | Med-High | Low | Code inspection of `worker/src/index.js`: `/api/chat` already has IP-based KV rate limiting (`checkRateLimit`, line 102), but `/api/enquiry` — which sends a real email via Resend and now collects name/email/phone — has no rate limit and no honeypot at all. Wide open to being spammed/abused; the rate-limit pattern already exists to reuse. |
+| 3 | **`llms.txt` contains a now-false claim**: "We do not publish named client case studies (client confidentiality)" | Med | Trivial | The site now shows a real, consented, named case study (Ultra Studio) plus a second real project (Corporate Office) in the homepage work grid — added 2026-08-07 and 2026-08-19 respectively. `llms.txt` is specifically read by AI crawlers/answer engines as a trust signal; a self-contradicting claim right next to the site's own portfolio is a bad look if an LLM cites it. One-sentence fix. |
+| 4 | **Security response headers (partial CSP via `<meta http-equiv>`)** | Low-Med | Low (partial) | Carried over from Week of 2026-08-07, item 5 — never implemented. Still true: GitHub Pages serves no custom HTTP headers and DNS isn't proxied through Cloudflare, so a *full* fix needs a hosting decision (flag, don't act unilaterally), but a meta-tag CSP is doable now without infra changes. |
+| 5 | **No WhatsApp click-to-chat CTA** (`wa.me` link) | Med | Low | The business's canonical contact number (+65 8784 7481, confirmed real and already the GBP/site NAP) is a mobile number, and WhatsApp is the dominant informal-enquiry channel for SG SMBs — checked, no `wa.me` link exists anywhere on the site. Cheap addition next to the existing "Enquire" CTA, no backend change needed. |
+
+**Suggested next action:** items 1-3 are mechanical, low-risk fixes (no design
+judgment calls) — safe to do in the same session once confirmed. Item 5 is a small
+content/markup addition. Item 4 touches every page's `<head>` and risks breaking
+Google Fonts/the chat Worker's cross-origin calls if the policy is too strict — needs
+careful testing (CSP report-only first, or a narrow allowlist) before shipping, more
+than the others.
+
+**All 5 items done, same session (2026-08-19).**
+1. `sitemap.xml` — added the missing homepage `<lastmod>`, bumped every page's date to
+   its real last-changed date per `git log`.
+2. `/api/enquiry` — added a honeypot field (`ba-contact-website`, visually hidden,
+   `tabindex="-1"`) and reused the existing `checkRateLimit` KV pattern from `/api/chat`
+   (generalized to accept a key prefix + limit; enquiry gets its own `enq` prefix, 8/day
+   per IP). Deployed to the live Worker (`npx wrangler deploy`, user-confirmed since it's
+   a live-backend push) and verified end-to-end: an honeypot-filled request returns
+   `{"ok":true}` without an email being sent (short-circuits before the Resend call).
+3. `llms.txt` — replaced the false "we do not publish named client case studies" line
+   with an accurate one reflecting the real Ultra Studio/Corporate Office case studies
+   (named only with client consent, generic otherwise).
+4. Added a `wa.me/6587847481` "Message us" link to the homepage contact block, next to
+   Phone.
+5. **CSP via `<meta http-equiv>`** — added to all 14 pages. Turned out *not* to be safe
+   to ship blind, exactly as flagged: a naive `img-src 'self' https://*.google.com
+   https://*.doubleclick.net` allowlist broke Google Ads' conversion pixel, because it
+   loads from country-TLD domains (`google.com.sg`, etc.) that a single-level CSP
+   wildcard can't cover — no way to enumerate every ccTLD Google might use. Found via a
+   real test, not guesswork: served the site locally and drove it with Playwright
+   (`chromium.launch()`), which surfaced the exact blocked URL and directive in the
+   console. Fixed by loosening `img-src` to `'self' data: https:` (images can't execute
+   code, so this is a low-risk trade). Re-tested clean (zero CSP violations across
+   homepage + a service page + a blog page, plus a full enquiry-form submission through
+   the live Worker). A separate cluster of `net::ERR_ABORTED` Google Ads beacon
+   requests showed up in both the with-CSP and a with-CSP-stripped control run —
+   confirmed pre-existing headless-browser/gtag behavior, not caused by this change.
+   Note: `frame-ancestors` is deliberately not in the policy — browsers silently ignore
+   that directive when set via `<meta>` (HTTP-header-only), so including it would be a
+   false sense of security.
+
+---
+
 ## Week of 2026-08-07
 
 The 2026-08-01/08-03 batch (items 12-16 in `STATUS.md`) is fully closed, so this

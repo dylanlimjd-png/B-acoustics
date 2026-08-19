@@ -7,7 +7,7 @@ and `Photo request list.md` separately — those remain the detailed logs
 (method, findings, reasoning) for their respective activities; this file is
 just the rollup of what's still open, updated whenever any of them change.
 
-Last updated: 2026-08-19 (new real project photos added to homepage work grid; team name change).
+Last updated: 2026-08-19 (continuous-improvement Week of 2026-08-19, 5 items shipped).
 
 **2026-08-19 session:** user saved 10 new project photos (`images/`, dated
 2026-08-17/18) from a completed commercial office fit-out — a conference
@@ -199,7 +199,8 @@ outreach) and can't be started in a coding session.
 | ~~23~~ | ~~Text-overlap spacing bug on `/blog/` guides index~~ — **DONE 2026-08-07**, commit `f020eb2`. User-reported (screenshot) — a hardcoded `-24px` negative margin under the dek paragraph overlapped its last line whenever it wrapped to 4 lines. Fixed with normal non-negative margins; reproduced and confirmed fixed locally. Audited the rest of the site for the same pattern — it was the only instance. | Med | Low | Done | This session |
 | ~~24~~ | ~~Google Ads base tag (`gtag.js`, `AW-18350815493`) install~~ — **DONE 2026-08-11**, commit `c9d944c`. Added to all 14 pages, verified live post-deploy. | Med | Low | Done | This session |
 | 25 | Google Ads conversion action for enquiry-form submission | Med | Low (once label is known) | **Still blocked** — checked for a new screenshot 2026-08-19, none found (only Google-tag file present was the already-handled base-tag one). User will get the right screenshot later. | This session |
-| ~~26~~ | ~~Second real project photo (Corporate Office) added to homepage work grid~~ — **DONE 2026-08-19**. New 4th tile, `images/commercial-office-acoustic-panels.webp`, raw originals archived `photos/project-3/`. Not committed yet. | Med | Low | Done | This session |
+| ~~26~~ | ~~Second real project photo (Corporate Office) added to homepage work grid~~ — **DONE 2026-08-19**. New 4th tile, `images/commercial-office-acoustic-panels.webp`, raw originals archived `photos/project-3/`. | Med | Low | Done | This session |
+| ~~27~~ | ~~Continuous-improvement Week of 2026-08-19 (5 items)~~ — **DONE 2026-08-19**, same session. `sitemap.xml` lastmod fix, `/api/enquiry` spam protection (honeypot + rate limit, Worker deployed), `llms.txt` false-claim fix, WhatsApp CTA, partial CSP via meta tag (all 14 pages) — CSP required a real Playwright test to catch a broken Google Ads pixel allowlist before shipping. See `CONTINUOUS_IMPROVEMENT.md`'s 2026-08-19 entry for full detail. | Med-High | Low-Med | Done | This session |
 
 **All actionable-by-me items through 2026-08-07 are done (#12-23), plus #2 partially
 (website side) and #7 now technically unblocked (thin on review count).** Everything

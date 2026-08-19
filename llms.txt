@@ -2,7 +2,7 @@
 
 > B-Acoustics is an acoustic engineering and soundproofing consultancy based in Singapore. We design, model, and build noise control for commercial, residential, and industrial spaces — from open-office acoustic panels and party-wall sound isolation to industrial boundary-noise compliance.
 
-Singapore-only, B2B and B2C. We do not quote firm pricing without a site survey. We do not publish named client case studies (client confidentiality). Every acoustic claim we make is backed by on-site measurement (Class 1 sound-level meters, impulse-response capture, tapping-machine testing), not estimates.
+Singapore-only, B2B and B2C. We do not quote firm pricing without a site survey. Client confidentiality is the default — project photos are only shown with explicit consent, and are named only when the client agrees to it (otherwise described generically, e.g. "Corporate Office"). Every acoustic claim we make is backed by on-site measurement (Class 1 sound-level meters, impulse-response capture, tapping-machine testing), not estimates.
 
 ## Services
 

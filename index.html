@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.google.com https://*.doubleclick.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://b-acoustics-api.dylanlimjd.workers.dev https://www.googletagmanager.com https://*.google.com https://*.doubleclick.net https://static.cloudflareinsights.com https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'self';">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18350815493"></script>
 <script>
@@ -484,6 +485,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
               <div style="font-family:'Space Grotesk',sans-serif; font-size:18px; margin-top:4px;"><a href="tel:+6587847481" style="color:inherit; text-decoration:none;">+65 8784 7481</a></div>
             </div>
             <div>
+              <div style="font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:#8B8473;">WhatsApp</div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-size:18px; margin-top:4px;"><a href="https://wa.me/6587847481" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;">Message us</a></div>
+            </div>
+            <div>
               <div style="font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:#8B8473;">Registered Office</div>
               <div style="font-family:'Space Grotesk',sans-serif; font-size:18px; margin-top:4px;">228 Changi Road #03-02<br>Singapore 419741</div>
             </div>
@@ -492,6 +497,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 
         <div>
             <form id="ba-contact-form" style="display:flex; flex-direction:column; gap:26px;">
+              <div style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
+                <label for="ba-contact-website">Website</label>
+                <input id="ba-contact-website" name="website" type="text" tabindex="-1" autocomplete="off">
+              </div>
               <div>
                 <label for="ba-contact-name" style="font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:#A8A294;">Name *</label>
                 <input id="ba-contact-name" placeholder="Your name" style="width:100%; background:transparent; border:none; border-bottom:1px solid rgba(241,237,228,0.3); color:#F1EDE4; font-size:16px; padding:12px 0; margin-top:6px;">
@@ -575,6 +584,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   var phoneInput = document.getElementById('ba-contact-phone');
   var typeInput = document.getElementById('ba-contact-type');
   var messageInput = document.getElementById('ba-contact-message');
+  var websiteInput = document.getElementById('ba-contact-website');
   var errName = document.getElementById('ba-contact-err-name');
   var errEmail = document.getElementById('ba-contact-err-email');
   var errMessage = document.getElementById('ba-contact-err-message');
@@ -608,7 +618,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
       email: emailInput.value,
       phone: phoneInput.value,
       type: typeInput.value,
-      message: messageInput.value
+      message: messageInput.value,
+      website: websiteInput.value
     };
     var errors = {};
     if (!f.name.trim()) errors.name = 'Required';

@@ -51,6 +51,19 @@ async function handleEnquiry(request, env) {
     return json({ ok: false, error: 'Invalid request body' }, 400, request);
   }
 
+  // Honeypot: real visitors never see or fill this field. A filled value means a bot —
+  // report success without sending an email or consuming rate-limit budget, so the bot
+  // gets no signal it was caught.
+  if ((body.website || '').trim()) {
+    return json({ ok: true }, 200, request);
+  }
+
+  const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+  const allowed = await checkRateLimit(env, ip, 'enq', 8);
+  if (!allowed) {
+    return json({ ok: false, error: "You've reached today's enquiry limit — please email studio@b-acoustics.com directly." }, 429, request);
+  }
+
   const name = (body.name || '').trim();
   const company = (body.company || '').trim();
   const email = (body.email || '').trim();
@@ -99,18 +112,18 @@ async function handleEnquiry(request, env) {
   return json({ ok: true }, 200, request);
 }
 
-async function checkRateLimit(env, ip) {
+async function checkRateLimit(env, ip, prefix = 'rl', limit = 30) {
   const dateKey = new Date().toISOString().slice(0, 10);
-  const key = `rl:${ip}:${dateKey}`;
+  const key = `${prefix}:${ip}:${dateKey}`;
   const current = parseInt((await env.CHAT_RATE_LIMIT.get(key)) || '0', 10);
-  if (current >= 30) return false;
+  if (current >= limit) return false;
   await env.CHAT_RATE_LIMIT.put(key, String(current + 1), { expirationTtl: 60 * 60 * 26 });
   return true;
 }
 
 async function handleChat(request, env) {
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
-  const allowed = await checkRateLimit(env, ip);
+  const allowed = await checkRateLimit(env, ip, 'rl', 30);
   if (!allowed) {
     return json({ ok: false, error: "You've reached today's message limit — please email studio@b-acoustics.com or try again tomorrow." }, 429, request);
   }
