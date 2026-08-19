@@ -7,7 +7,37 @@ and `Photo request list.md` separately — those remain the detailed logs
 (method, findings, reasoning) for their respective activities; this file is
 just the rollup of what's still open, updated whenever any of them change.
 
-Last updated: 2026-08-11 (Google tag install + conversion tracking — see below).
+Last updated: 2026-08-19 (new real project photos added to homepage work grid; team name change).
+
+**2026-08-19 session:** user saved 10 new project photos (`images/`, dated
+2026-08-17/18) from a completed commercial office fit-out — a conference
+room with fabric acoustic panels and a second room with panels plus a wood
+pegboard-style acoustic feature wall. Consent to use publicly confirmed by
+user (no client name — generic "Corporate Office" descriptor only, per
+user's choice). Picked the cleanest shot (conference room, no clutter/boxes
+visible), converted to `.webp` via the already-installed `sharp` package
+(`images/commercial-office-acoustic-panels.webp`, 53KB, in line with other
+site images), and added as a **new 4th tile** in the homepage's work grid
+(`#work` section) rather than replacing either of the two remaining
+generic/stock tiles (Home Theatre, Industrial Plant) — those are a category
+mismatch for office photos. All 10 raw originals archived under
+`photos/project-3/` (following the existing `project-1`/`project-2`
+convention) and removed from `images/`. `check-site`/`html-validate` both
+clean. **Not yet committed** — do that this session if the user confirms.
+
+Also this session: renamed the "Lead Architect" team member on the homepage
+Studio section from "Ivan Cheong" to "Mr Cheong" at user's request (privacy/
+formality — reason not stated). Only touched the live site's team listing;
+left the historical GBP-reviewer references to "Ivan Cheong" in
+`SEO_RECOMMENDATIONS.md`/this file's older entries as-is since those are a
+factual record of who left the review, not the team roster.
+
+Item #25 (Google Ads conversion-action label) is still blocked — checked for
+a new screenshot in the working directory per last session's note, found
+none (the only Google-tag-related file present, `google tag setup
+instructions.png`, is the same base-tag screenshot from 2026-08-11, already
+handled). User said they'll get the right screenshot later; no change to
+this item's status below.
 
 **2026-08-11 session:** installed the Google Ads base tag (`gtag.js`, `AW-18350815493`)
 in `<head>` on all 14 pages, per a screenshot the user saved of Google Ads' manual-install
@@ -149,7 +179,8 @@ outreach) and can't be started in a coding session.
 | ~~22~~ | ~~"Studio" address label implied a walk-in physical location~~ — **DONE 2026-08-07**, commit `f020eb2`. User confirmed no physical studio exists; relabeled to "Registered Office" on the homepage contact block. | Low | Low | Done | This session |
 | ~~23~~ | ~~Text-overlap spacing bug on `/blog/` guides index~~ — **DONE 2026-08-07**, commit `f020eb2`. User-reported (screenshot) — a hardcoded `-24px` negative margin under the dek paragraph overlapped its last line whenever it wrapped to 4 lines. Fixed with normal non-negative margins; reproduced and confirmed fixed locally. Audited the rest of the site for the same pattern — it was the only instance. | Med | Low | Done | This session |
 | ~~24~~ | ~~Google Ads base tag (`gtag.js`, `AW-18350815493`) install~~ — **DONE 2026-08-11**, commit `c9d944c`. Added to all 14 pages, verified live post-deploy. | Med | Low | Done | This session |
-| 25 | Google Ads conversion action for enquiry-form submission | Med | Low (once label is known) | **Blocked** — hook point identified (`index.html` ~line 634-636), just need the real per-conversion label from Google Ads. User pasted 3 wrong values in a row; asked for a screenshot instead. Check the folder for a new one next session before asking again. | This session |
+| 25 | Google Ads conversion action for enquiry-form submission | Med | Low (once label is known) | **Still blocked** — checked for a new screenshot 2026-08-19, none found (only Google-tag file present was the already-handled base-tag one). User will get the right screenshot later. | This session |
+| ~~26~~ | ~~Second real project photo (Corporate Office) added to homepage work grid~~ — **DONE 2026-08-19**. New 4th tile, `images/commercial-office-acoustic-panels.webp`, raw originals archived `photos/project-3/`. Not committed yet. | Med | Low | Done | This session |
 
 **All actionable-by-me items through 2026-08-07 are done (#12-23), plus #2 partially
 (website side) and #7 now technically unblocked (thin on review count).** Everything
