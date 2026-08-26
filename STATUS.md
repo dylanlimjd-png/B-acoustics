@@ -53,6 +53,16 @@ Last updated: 2026-08-26 (full session recap below; all work committed, pushed, 
 `check-site`/`html-validate` both clean after item 2's edits; new testimonial
 section verified via local server + live browser screenshot before committing.
 
+**Session-end note:** the last two STATUS.md-only commits (`5d88132`, `e068119`)
+hit what looks like a transient GitHub Actions hiccup — the `CI` run for `5d88132`
+came back `startup_failure` after 0 seconds (nothing in this session touched
+`.github/workflows/`, and the same workflow had already run clean twice earlier
+tonight), and `pages build and deployment` runs were stuck `queued` for 20+
+minutes. Didn't keep polling since CI is advisory-only and doesn't gate the live
+deploy. **Next session: check `gh run list` first** — re-dispatch `ci.yml`
+manually if it's still red/missing for the latest commit, same as the routine
+visual-baseline re-sync check.
+
 **2026-08-19 session (full recap):** four pieces of work, all committed and
 deployed:
 1. **New real project photo.** User provided 10 photos of a completed
