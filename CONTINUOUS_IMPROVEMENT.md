@@ -12,6 +12,50 @@ first, bigger/strategic bets later even if their absolute impact ceiling is high
 
 ---
 
+## Week of 2026-08-26
+
+Last ranking pass was 2026-08-19 (7 days stale — all 5 of that batch's items shipped
+same session, see `STATUS.md` #27). This pass is grounded in direct code inspection
+of the live repo, not guessed. Ranked by impact vs. effort:
+
+| # | Topic | Impact | Effort | Why now |
+|---|---|---|---|---|
+| 1 | **Zero visible testimonial/social-proof content on the homepage**, despite a real 5-star GBP review existing since 2026-08-07 | High | Low | Direct inspection: no "review"/"testimonial" content anywhere in `index.html`. The GBP review (Ivan Cheong, 5.0★) is real and consented-to-exist publicly (it's on Google's own listing), but nothing on-site surfaces it as a trust signal. This is separate from the `AggregateRating` schema question (still correctly held off per the user's 2026-08-07 call — 1 review is thin for a schema-level claim) — a plain visible quote block carries no such risk. |
+| 2 | **Homepage `og:image`/`twitter:image` point at the plain logo**, not real project photography | Med | Low | Checked: both tags resolve to `images/logo-dark.png`. The homepage's "Selected Work" grid now has 2 real photos (Ultra Studio, Corporate Office) that didn't exist when these tags were set. A real completed-installation photo is a much stronger link-preview for shared enquiries (WhatsApp/LinkedIn, the exact channels a B2B lead would forward a link through) than a logo. |
+| 3 | **`ProfessionalService` schema has no `sameAs` linking to the GBP listing** | Med | Low | Checked `index.html`'s JSON-LD — no `sameAs` array at all. The GBP listing has existed and been live since 2026-08-07 but was never linked back from the site's own structured data, a missed entity-disambiguation signal for Google (and increasingly for AI answer engines cross-referencing GBP/Maps data). Needs the GBP listing's Maps URL — grabbing it as part of this session's SEO ranking check rather than guessing. |
+| 4 | **No `Referrer-Policy` set** | Low-Med | Trivial | Carried-over-adjacent to last week's partial CSP work — checked, no `<meta name="referrer">` anywhere. GitHub Pages still can't set real HTTP headers, but this one (unlike most security headers) has a working meta-tag equivalent. Rides along cheaply next to the existing CSP meta tag. |
+| 5 | **No RSS/Atom feed for `/blog/`** | Low-Med | Low-Med | The `/blog/` hub page (shipped 2026-08-01) lists all 6 posts but has no feed for syndication/aggregator discovery. Minor but cheap win for content distribution and is a signal some AI/answer-engine crawlers also check for alongside `llms.txt`. |
+
+**Suggested next action:** items 1, 2, and 4 are mechanical content/markup edits with
+no design-judgment risk — safe to do together this session. Item 3 depends on the
+GBP Maps URL coming out of this session's SEO ranking check. Item 5 is a bit more
+build (a hand-written or generated XML feed, kept in sync manually since there's no
+static-site generator) — lowest priority of the five.
+
+**Items 1-4 done, same session (2026-08-26).** This session's SEO ranking check
+(see `SEO_RECOMMENDATIONS.md`'s 2026-08-26 entry) found the GBP review count had
+grown 1→2, with a real named quote from the new review — used directly rather than
+inventing copy:
+1. New dark testimonial strip on the homepage (`#testimonial`, between the
+   Selected Work grid and Materials section) — 5-star mark, the verbatim Ultraband
+   review quote ("B-Acoustics recently completed the renovation of Ultrastudio
+   Live..."), and a "5.0 · 2 Google reviews" badge linking out to the live GBP
+   listing. Deliberately still no `AggregateRating` schema (that call stands from
+   2026-08-07 — 2 reviews is still thin for a schema-level claim); this is just
+   visible on-page trust content, lower-risk than a structured-data assertion.
+2. `og:image`/`twitter:image` swapped from the plain logo to the real Ultra Studio
+   project photo (`images/commercial-studio-acoustics.webp`) — thematically apt
+   given the new review is also about an Ultrastudio project.
+3. Added `sameAs` to the `ProfessionalService` JSON-LD schema, linking to the GBP
+   Maps listing URL captured live during this session's SEO check.
+4. Added `<meta name="referrer" content="strict-origin-when-cross-origin">`.
+
+`check-site`/`html-validate` both clean after. Verified the new testimonial section
+renders correctly via a local server + live browser screenshot (desktop) before
+committing. Item 5 (RSS feed) not started — carry to next week if still worth it.
+
+---
+
 ## Week of 2026-08-19
 
 Last ranking pass was 2026-08-07 (12 days stale — all 4 of that batch's items shipped,

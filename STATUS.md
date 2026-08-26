@@ -7,7 +7,36 @@ and `Photo request list.md` separately — those remain the detailed logs
 (method, findings, reasoning) for their respective activities; this file is
 just the rollup of what's still open, updated whenever any of them change.
 
-Last updated: 2026-08-19 (full session recap below; all work committed, pushed, and CI green).
+Last updated: 2026-08-26 (full session recap below; all work committed, pushed, and CI green).
+
+**2026-08-26 session (full recap):** three things, all committed:
+1. **SEO ranking check** (full 9-query rotation, first since 2026-08-07 — see
+   `SEO_RECOMMENDATIONS.md`'s 2026-08-26 entry). Headline finding: the
+   `site:b-acoustics.com` indexing gap is still unchanged, now ~29 days past the
+   homepage re-platform fix and well past the 2026-08-11 checkpoint — flagged more
+   strongly this run, still blocked on GSC access. Branded-query visibility has
+   plateaued at zero rather than still declining. New local-pack check: B-Acoustics
+   doesn't yet appear in the Places pack for non-brand local-intent queries. Real
+   positive: **GBP review count grew 1→2** (new named review from a client band,
+   "Ultraband," about a second studio project).
+2. **Continuous-improvement Week of 2026-08-26, items 1-4 shipped** (see
+   `CONTINUOUS_IMPROVEMENT.md`'s entry): a new homepage testimonial section quoting
+   the real new GBP review (no `AggregateRating` schema yet — still holding off per
+   the 2026-08-07 decision), `og:image`/`twitter:image` swapped from the logo to a
+   real project photo, `sameAs` added to the `ProfessionalService` schema linking
+   the live GBP listing, and a `Referrer-Policy` meta tag added. Item 5 (RSS feed)
+   not started.
+3. **Google Ads image-generation prompts** — user provided a screenshot of Google
+   Ads' asset-group image picker (needs 2 horizontal/2 square/1 vertical image to
+   reach "Excellent ad strength"); wrote 5 Gemini-ready prompts matched to the
+   site's existing photo style, saved to `google-ads-image-prompts.md` (repo root,
+   for the user's own reference — not committed as site content). Noted for the
+   user: the account's 5 existing images are crops of `GBP photo 1/2.png`, which
+   memory flags as AI placeholders never meant for public/live use — pre-existing,
+   not something this session changed, but worth the user's awareness.
+
+`check-site`/`html-validate` both clean after item 2's edits; new testimonial
+section verified via local server + live browser screenshot before committing.
 
 **2026-08-19 session (full recap):** four pieces of work, all committed and
 deployed:
@@ -164,13 +193,13 @@ outreach) and can't be started in a coding session.
 
 | Rank | Item | Impact | Effort | Actionable by me now? | Source |
 |---|---|---|---|---|---|
-| 1 | First GBP reviews — solicit from real clients | Very High | Low (for you) | **Reversed 2026-08-07**: the GBP listing exists and is live (`b-acoustics.com` correctly linked, 3 owner photos, 1 five-star review already). Phone mismatch (8784 7481 on GBP vs. old +65 9641 6999 on the site) **fixed same session** — user confirmed 8784 7481 is correct; website (index.html schema + visible link) and the chat-assistant Worker updated to match, deployed. No address on GBP is deliberate (no physical studio) — confirmed by user. Keep soliciting more reviews; 1 isn't many yet. | `SEO_RECOMMENDATIONS.md` 2026-08-07 entry |
+| 1 | First GBP reviews — solicit from real clients | Very High | Low (for you) | **Progress 2026-08-26**: review count grew 1→2 organically (new named review from client band "Ultraband", about a second studio project) — now also quoted directly on the homepage (see item 28 below). Still just 2; keep soliciting more. No address on GBP is deliberate (no physical studio) — confirmed by user. | `SEO_RECOMMENDATIONS.md` 2026-08-26 entry |
 | ~~2~~ | ~~Real GBP photos~~ — **PARTIALLY DONE 2026-08-07**: client consent confirmed (both branding/name visibility and individuals in-frame). Website side shipped, commit `a6c4a9d` — the homepage's "Selected Work" grid now shows a real completed installation (Ultra Studio, a recording/rehearsal studio) instead of a stock photo. GBP-side still blocked on item #1 (no verified listing exists yet to add photos to). All 14 raw originals archived under `photos/` for that future use. | High | Low (just need consent confirmed) | Done (website); GBP side blocked on #1 | `Photo request list.md`, memory `gbp_photo_files_still_placeholders_2026-08` |
 | ~~3~~ | ~~Mobile nav has no hamburger/collapse~~ — **FIXED 2026-07-28**, commit `2f817d6` | High | Low-Medium | Done | `DESIGN_FEEDBACK.md` |
 | ~~4~~ | ~~WCAG pass~~ — **FIXED 2026-07-28**, commit `b570422`: label/for association, focus-visible outlines, chat input accessible name (real failures found via direct audit — alt text was already complete, checked and confirmed) | Med-High | Medium | Done | `CONTINUOUS_IMPROVEMENT.md` Item 4 |
 | ~~5~~ | ~~4-6 more blog posts~~ — **DONE**: 2026-07-28 commit `bd31a0c` (NEA boundary noise limits, HDB vs Condo) + 2026-08-01 (home theatre soundproofing cost, neighbour-noise/party-wall guide). Item fully closed. | Medium | High | Done | `SEO_RECOMMENDATIONS.md` |
 | 6 | Off-page authority: SG directory listings, MIOA, outreach, press | High ceiling, slow | Very High, ongoing, partly needs your relationships | **Research done** (`Backlink Targets.md`, commit `a302e1a`) — actual submission needs you | `SEO_RECOMMENDATIONS.md` |
-| 7 | `AggregateRating`/`Review` schema | Low until #1 exists | Low | **Unblocked 2026-08-07** — GBP now has 1 real review (5.0★, Ivan Cheong). User decided 2026-08-07 to hold off (1 review is thin) and push for more first — revisit once review count grows. | `SEO_RECOMMENDATIONS.md` |
+| 7 | `AggregateRating`/`Review` schema | Low until #1 exists | Low | GBP now has 2 real reviews (5.0★). Still holding off on the schema-level claim per the 2026-08-07 decision (thin count) — but added a plain visible testimonial quote instead 2026-08-26 (item 28), which carries no such risk. Revisit the schema once review count grows further. | `SEO_RECOMMENDATIONS.md` |
 | ~~8~~ | ~~Dead Instagram footer link~~ — **FIXED 2026-07-28**, commit `b570422` (removed until a real profile URL exists) | Trivial | Trivial | Done | `DESIGN_FEEDBACK.md` |
 | 9 | Optional H1 A/B test | Low, needs analytics infra we don't have | Medium | No — no infra | `SEO_RECOMMENDATIONS.md` |
 | ~~10~~ | ~~Service/blog page performance~~ — **FIXED 2026-07-31**, commit `5f8dc50`: root cause was two oversized logo PNGs embedded as inline base64 in every `services/*.html`/`blog/*.html` page (~350KB of dead weight per page, invisible to `check-site.js` since it skips `data:` URIs) plus the hero photo on service pages being `loading="lazy"` and fetched from an absolute production URL instead of the local static file. Replaced with the same relative-path + eager-hero pattern the homepage already used. Local Lighthouse: office-acoustics page 0.86 perf/2.6s LCP (was 0.78–0.83/up to 4.1s), stc-vs-nrc blog page 0.96 perf/2.3s LCP. `lighthouserc.json`'s generic budget tightened (0.72→0.78 min score, 4500→3800ms max LCP). | Medium | Medium | Done | This session |
@@ -191,21 +220,24 @@ outreach) and can't be started in a coding session.
 | 25 | Google Ads conversion action for enquiry-form submission | Med | Low (once label is known) | **Still blocked** — checked for a new screenshot 2026-08-19, none found (only Google-tag file present was the already-handled base-tag one). User will get the right screenshot later. | This session |
 | ~~26~~ | ~~Second real project photo (Corporate Office) added to homepage work grid~~ — **DONE 2026-08-19**. New 4th tile, `images/commercial-office-acoustic-panels.webp`, raw originals archived `photos/project-3/`. | Med | Low | Done | This session |
 | ~~27~~ | ~~Continuous-improvement Week of 2026-08-19 (5 items)~~ — **DONE 2026-08-19**, same session. `sitemap.xml` lastmod fix, `/api/enquiry` spam protection (honeypot + rate limit, Worker deployed), `llms.txt` false-claim fix, WhatsApp CTA, partial CSP via meta tag (all 14 pages) — CSP required a real Playwright test to catch a broken Google Ads pixel allowlist before shipping. See `CONTINUOUS_IMPROVEMENT.md`'s 2026-08-19 entry for full detail. | Med-High | Low-Med | Done | This session |
+| ~~28~~ | ~~Continuous-improvement Week of 2026-08-26, items 1-4~~ — **DONE 2026-08-26**, same session. New homepage testimonial section (real GBP review quote), `og:image`/`twitter:image` swapped to a real project photo, `sameAs` added to `ProfessionalService` schema (links the live GBP listing), `Referrer-Policy` meta tag. Item 5 (RSS feed) not started. See `CONTINUOUS_IMPROVEMENT.md`'s 2026-08-26 entry. | Med-High | Low | Done | This session |
 
-**All actionable-by-me items through 2026-08-07 are done (#12-23), plus #2 partially
-(website side) and #7 now technically unblocked (thin on review count).** Everything
-remaining open needs you (#1's ongoing review solicitation, the GBP-gallery half of #2,
-actual directory/association submissions from #6) or is a judgment call worth asking
-about (#7 — add `AggregateRating` now with just 1 review, or wait) or blocked on
-something outside this session's control (#9). Next session: check whether the user
-has made progress on those, or run a fresh continuous-improvement idea-generation pass
-for new candidates.
+**All actionable-by-me items through 2026-08-26 are done, plus #2 partially
+(website side) and #7 now technically unblocked (still thin on review count, holding
+off the schema).** Everything remaining open needs you (#1's ongoing review
+solicitation, the GBP-gallery half of #2, actual directory/association submissions
+from #6) or is a judgment call worth asking about (#7 — add `AggregateRating` now with
+2 reviews, or wait) or blocked on something outside this session's control (#9, GSC
+access for the indexing gap). Next session: check whether the user has made progress
+on those, pick up item 5 (RSS feed) from this week's list, or run a fresh
+continuous-improvement idea-generation pass for new candidates.
 
 ## Watch items (not actionable yet, just checking periodically)
 
-- **Homepage indexing gap** — structural fix shipped 2026-07-28 (commit `70de168`). `site:b-acoustics.com` still didn't show the homepage or any service page as of the 2026-08-03 SEO ranking check, ~6 days post-fix (still expected — normal re-crawl windows run longer than this). **Re-check on the next SEO ranking run**; if still absent by ~2026-08-11 (~2 weeks post-fix), consider a manual indexing request (needs GSC access, still blocked).
-- **Branded-query regression** — the quoted query `"B-Acoustics" acoustic consultant` returned 2 organic results (both blog posts, top 2 slots) on 2026-07-31, but only 1 on 2026-08-03, now outranked by an unrelated same-initial competitor ("a/b acoustics", Brisbane). Likely SERP noise from one data point, not confirmed as a trend — re-check on the next run before acting.
-- **GSC-capable MCP connector** — not connected as of last check. Would unblock real daily/weekly SEO data automation. Ask "is a Search-Console connector available now?" next session.
+- **Homepage indexing gap** — structural fix shipped 2026-07-28 (commit `70de168`). `site:b-acoustics.com` still only shows the same 2 blog posts as of the 2026-08-26 check, ~29 days post-fix — well past the 2026-08-11 checkpoint that was meant to trigger reconsidering options. Still blocked on GSC access (no connector available, checked again this session). **Next run: if still unindexed, explicitly ask the user whether they're open to a one-time GSC login exception** for a manual indexing request (their call — stands against the "no Google login" preference, so don't do it unilaterally).
+- **Branded-query visibility** — downgraded from "active regression" to "stable at zero": the quoted query `"B-Acoustics" acoustic consultant` and bare `b-acoustics` have both shown 0 organic results across 3 consecutive runs now (2026-08-07, and again 2026-08-26). No longer needs flagging as newly-worsening each run, but still worth a periodic check.
+- **Local pack absence** — new 2026-08-26 finding: a Places local pack now appears on 3 of the 6 target-keyword searches, but B-Acoustics isn't among the top-3 shown results on any of them. Same root cause as the indexing/authority gap above, not a separate issue — re-check alongside the next full rotation.
+- **GSC-capable MCP connector** — not connected as of last check (2026-08-26). Would unblock real daily/weekly SEO data automation. Ask "is a Search-Console connector available now?" next session.
 - **GitHub App install on `dylanlimjd-png/B-acoustics`** — not verified as of last check. Needed before the weekly tracker doc can be committed by an unattended cloud routine.
 - **Blank favicon in Google search results** — not due for a recheck until ~2026-08-13 (one month after it shipped).
 - **`worker-uptime.yml` scheduled workflow** — GitHub auto-disables scheduled workflows after 60 days with no repository *activity* (any push resets the clock). If pushes to this repo ever go quiet for 2 months, re-enable it manually in the Actions tab.
@@ -221,15 +253,17 @@ Four pieces of build-time tooling, all wired up and confirmed green on `main` th
 
 ## Recently resolved (kept briefly for continuity, drop once confirmed stable)
 
+- SEO ranking check, full 9-query rotation (2026-08-26) — indexing gap unchanged
+  (flagged more strongly, past checkpoint), branded-query decline plateaued at
+  zero, GBP reviews grew 1→2. See `SEO_RECOMMENDATIONS.md`'s 2026-08-26 entry.
+- Continuous-improvement Week of 2026-08-26, items 1-4 (2026-08-26) — homepage
+  testimonial section, real-photo `og:image`, schema `sameAs`, `Referrer-Policy`.
 - New Corporate Office project photo + team-listing rename (2026-08-19, `bcb1a75`).
 - Continuous-improvement Week of 2026-08-19, all 5 items (2026-08-19, `99dfde6`) —
   sitemap freshness, enquiry-form spam protection, `llms.txt` fix, WhatsApp CTA,
   partial CSP.
-- Visual-regression baseline re-syncs, twice (2026-08-19, `5d4cf1d` and `f5f974d`) —
-  routine CI maintenance, not bug fixes; see memory `ci_visual_baseline_maintenance_2026-08`.
-- Google Ads base tag install, all 14 pages (2026-08-11, `c9d944c`).
 
-*(Everything older than 2026-08-11 has been stable across several sessions —
+*(Everything older than 2026-08-19 has been stable across several sessions —
 dropped from this list per the file's own upkeep rule. Full history lives in
 git log and the individual tracker files.)*
 

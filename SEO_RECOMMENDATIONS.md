@@ -535,3 +535,84 @@ ran the brand-name queries plus a direct Google Maps lookup.
 **Next run:** full weekly rotation (all target keywords) to check whether
 the local pack now surfaces B-Acoustics for non-brand local-intent queries
 now that the listing is confirmed live.
+
+---
+
+## SEO ranking check — 2026-08-26
+
+Full 9-query rotation, first one since 2026-08-07 (19 days stale — well past
+the routine's intended weekly cadence, just hadn't come up in a session).
+Live-browser, no Google login, per standing method.
+
+### Findings
+
+1. **`site:b-acoustics.com` indexing gap — still unchanged.** Only the same 2
+   blog posts (STC vs NRC, office soundproofing cost) show. This is now
+   **~29 days** since the homepage re-platform fix (commit `70de168`,
+   2026-07-28) that was diagnosed as the indexing blocker — well past the
+   ~2-week (2026-08-11) checkpoint that was set to consider next steps.
+   Neither the homepage nor either service page nor the other 4 blog posts
+   nor the `/blog/` hub are indexed. Still blocked on GSC access to do
+   anything more targeted than wait (no Search-Console-capable connector
+   available this session either — checked the deferred-tool list, nothing
+   matching).
+2. **Zero organic visibility, all 6 target keywords + 2 broad terms** —
+   unchanged from every prior run: "acoustic consultant Singapore",
+   "soundproofing Singapore", "office acoustics Singapore", "office
+   soundproofing cost Singapore", "party wall soundproofing Singapore",
+   "industrial noise compliance Singapore". No b-acoustics.com result on
+   page 1 or 2 for any of them.
+3. **Local pack (Places) now appears on 3 of those queries** ("office
+   acoustics Singapore", "office soundproofing cost Singapore", "party wall
+   soundproofing Singapore") — new since the last run, a sign Google is
+   maturing local-intent results for this niche. **B-Acoustics does not
+   appear** in the 3 shown results on any of them (competitors shown:
+   Aural-Aid, Just Acoustics, Consoundancy, ArteCoustic, NoiseStop, TC
+   Acoustic). This directly answers the 2026-08-07 follow-up ("worth
+   checking whether the local pack now surfaces GBP for non-brand queries")
+   — answer is no, not yet. Didn't check the "More places" expansion (would
+   need a click-through per query) to see if B-Acoustics is just outside the
+   top 3 vs. absent entirely — worth doing on a future run if the plateau
+   continues.
+4. **Branded queries — regression has plateaued at zero, not still
+   declining.** Bare `b-acoustics` and quoted `"B-Acoustics" acoustic
+   consultant` both still show zero b-acoustics.com results (same as the
+   2026-08-07 run) — the earlier 2→1→0 decline (07-31→08-03→08-07) hasn't
+   continued past 0, it's just been sitting at 0 for 3 consecutive runs now.
+5. **GBP review count grew 1 → 2 — real, organic, positive.** Direct Maps
+   lookup (`google.com/maps/place/B-Acoustics/...`) confirms: still 5.0★
+   average, name/phone (8784 7481)/website all correctly linked. **New
+   review**, 5 days old, from "不得了樂隊Ultraband" (a band/music group, 4
+   reviews · 4 photos on their own profile): *"B-Acoustics recently
+   completed the renovation of Ultrastudio Live, our second music studio,
+   and we are extremely pleased with the results..."* (full text didn't
+   expand in the automated read — this is the visible portion, already a
+   complete usable sentence). This is a second real, named, positive,
+   project-specific review — first organic (non-solicited-by-us-directly)
+   growth signal on the review front since the listing went live.
+
+### Resolution plans
+
+1. **Indexing gap** — no new action available (still GSC-blocked); flagging
+   more strongly than prior runs since it's now well past the checkpoint
+   that was meant to trigger reconsidering options. Continue watching; if
+   still unindexed by the next run, worth explicitly asking the user whether
+   they're open to a GSC login exception for a one-time manual indexing
+   request (their call, not something to do unilaterally given the standing
+   "no Google login" preference).
+2. **Zero organic on target keywords** — same standing root cause
+   (backlinks/domain authority/indexing gap above); no new action.
+3. **Local pack absence** — logged as a new baseline to track; no action
+   this run (it's a symptom of the same authority/review-volume gap as
+   items 1-2 and `STATUS.md` item #1, not a separate bug).
+4. **Branded-query plateau** — downgrading from "active regression" to
+   "stable at zero" in the watch item; still worth a periodic re-check but
+   no longer needs flagging every single run as if it's actively worsening.
+5. **New review** — this session also used the review text captured here as
+   the source for a new homepage testimonial section (see
+   `CONTINUOUS_IMPROVEMENT.md`'s 2026-08-26 entry, item 1) — real, sourced
+   content rather than paraphrased/invented copy.
+
+**Next run:** re-check indexing (`site:`) as the top-priority item given the
+overdue checkpoint; if the local-pack absence persists across 2+ more runs,
+consider it a stable finding rather than re-verifying every time.
