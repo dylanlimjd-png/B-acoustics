@@ -221,20 +221,21 @@ outreach) and can't be started in a coding session.
 | ~~26~~ | ~~Second real project photo (Corporate Office) added to homepage work grid~~ — **DONE 2026-08-19**. New 4th tile, `images/commercial-office-acoustic-panels.webp`, raw originals archived `photos/project-3/`. | Med | Low | Done | This session |
 | ~~27~~ | ~~Continuous-improvement Week of 2026-08-19 (5 items)~~ — **DONE 2026-08-19**, same session. `sitemap.xml` lastmod fix, `/api/enquiry` spam protection (honeypot + rate limit, Worker deployed), `llms.txt` false-claim fix, WhatsApp CTA, partial CSP via meta tag (all 14 pages) — CSP required a real Playwright test to catch a broken Google Ads pixel allowlist before shipping. See `CONTINUOUS_IMPROVEMENT.md`'s 2026-08-19 entry for full detail. | Med-High | Low-Med | Done | This session |
 | ~~28~~ | ~~Continuous-improvement Week of 2026-08-26, items 1-4~~ — **DONE 2026-08-26**, same session. New homepage testimonial section (real GBP review quote), `og:image`/`twitter:image` swapped to a real project photo, `sameAs` added to `ProfessionalService` schema (links the live GBP listing), `Referrer-Policy` meta tag. Item 5 (RSS feed) not started. See `CONTINUOUS_IMPROVEMENT.md`'s 2026-08-26 entry. | Med-High | Low | Done | This session |
+| 29 | Homepage indexing gap — `site:b-acoustics.com` still only shows 2 blog posts | High | None available without GSC | **Blocked on you** — ~29 days past the 2026-07-28 structural fix, past the 2026-08-11 checkpoint, no further code-side fix available. Needs a decision: are you open to a one-time GSC login exception so a manual indexing request can be submitted? This goes against the standing "no Google login" preference, so not done without asking first. | `SEO_RECOMMENDATIONS.md` 2026-08-26 entry, watch items below |
 
 **All actionable-by-me items through 2026-08-26 are done, plus #2 partially
 (website side) and #7 now technically unblocked (still thin on review count, holding
 off the schema).** Everything remaining open needs you (#1's ongoing review
 solicitation, the GBP-gallery half of #2, actual directory/association submissions
-from #6) or is a judgment call worth asking about (#7 — add `AggregateRating` now with
-2 reviews, or wait) or blocked on something outside this session's control (#9, GSC
-access for the indexing gap). Next session: check whether the user has made progress
+from #6, #29's GSC-access decision) or is a judgment call worth asking about (#7 —
+add `AggregateRating` now with 2 reviews, or wait) or blocked on something outside
+this session's control (#9). Next session: check whether the user has made progress
 on those, pick up item 5 (RSS feed) from this week's list, or run a fresh
 continuous-improvement idea-generation pass for new candidates.
 
 ## Watch items (not actionable yet, just checking periodically)
 
-- **Homepage indexing gap** — structural fix shipped 2026-07-28 (commit `70de168`). `site:b-acoustics.com` still only shows the same 2 blog posts as of the 2026-08-26 check, ~29 days post-fix — well past the 2026-08-11 checkpoint that was meant to trigger reconsidering options. Still blocked on GSC access (no connector available, checked again this session). **Next run: if still unindexed, explicitly ask the user whether they're open to a one-time GSC login exception** for a manual indexing request (their call — stands against the "no Google login" preference, so don't do it unilaterally).
+- **Homepage indexing gap** — now tracked as open item **#29** above (promoted out of pure-watch status 2026-08-26, since it needs an actual decision from the user, not just monitoring). Structural fix shipped 2026-07-28 (commit `70de168`); `site:b-acoustics.com` still only shows the same 2 blog posts as of the 2026-08-26 check, ~29 days post-fix.
 - **Branded-query visibility** — downgraded from "active regression" to "stable at zero": the quoted query `"B-Acoustics" acoustic consultant` and bare `b-acoustics` have both shown 0 organic results across 3 consecutive runs now (2026-08-07, and again 2026-08-26). No longer needs flagging as newly-worsening each run, but still worth a periodic check.
 - **Local pack absence** — new 2026-08-26 finding: a Places local pack now appears on 3 of the 6 target-keyword searches, but B-Acoustics isn't among the top-3 shown results on any of them. Same root cause as the indexing/authority gap above, not a separate issue — re-check alongside the next full rotation.
 - **GSC-capable MCP connector** — not connected as of last check (2026-08-26). Would unblock real daily/weekly SEO data automation. Ask "is a Search-Console connector available now?" next session.
