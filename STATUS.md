@@ -26,14 +26,29 @@ Last updated: 2026-08-26 (full session recap below; all work committed, pushed, 
    real project photo, `sameAs` added to the `ProfessionalService` schema linking
    the live GBP listing, and a `Referrer-Policy` meta tag added. Item 5 (RSS feed)
    not started.
-3. **Google Ads image-generation prompts** — user provided a screenshot of Google
-   Ads' asset-group image picker (needs 2 horizontal/2 square/1 vertical image to
-   reach "Excellent ad strength"); wrote 5 Gemini-ready prompts matched to the
-   site's existing photo style, saved to `google-ads-image-prompts.md` (repo root,
-   for the user's own reference — not committed as site content). Noted for the
-   user: the account's 5 existing images are crops of `GBP photo 1/2.png`, which
-   memory flags as AI placeholders never meant for public/live use — pre-existing,
-   not something this session changed, but worth the user's awareness.
+3. **Google Ads image-generation prompts, then a full round-trip to real assets.**
+   User provided a screenshot of Google Ads' asset-group image picker (needs 2
+   horizontal/2 square/1 vertical to reach "Excellent ad strength"); wrote 5
+   prompts matched to the site's existing photo style, saved to
+   `google-ads-image-prompts.md` (repo root, user's own reference — not site
+   content). User then asked to mix in a residential/WFH-homeowner angle
+   alongside the commercial one and to compare AI image tools for
+   photorealism — prompts rewritten (2 commercial, 2 residential/WFH, 1
+   neutral material shot) and a tool comparison added (Midjourney/FLUX/
+   Firefly/GPT-image-1). User generated candidates from a couple of different
+   tools, then decided to keep only the ChatGPT-generated set
+   (`Google ads image cpt 1-5.png`) and asked to remove the rest — deleted 5
+   other candidate images (`google ads pic 1-3.jpeg`, `4google ads pic
+   3.jpeg`, `Google ads davinci home 1.png`) after confirming exactly which
+   ones to keep. The final ChatGPT set maps cleanly onto all 5 required
+   slots (two ~1.9:1 horizontals, two exact 1:1 squares, one exact 4:5
+   vertical) — ready for the user to upload directly. None of these image
+   files are committed to git (stay local, same convention as other loose
+   reference screenshots in the repo root). Noted for the user: the ad
+   account's 5 *pre-existing* images (before this session) are crops of `GBP
+   photo 1/2.png`, which memory flags as AI placeholders never meant for
+   public/live use — not something this session changed, just worth
+   awareness next time that asset group is reviewed.
 
 `check-site`/`html-validate` both clean after item 2's edits; new testimonial
 section verified via local server + live browser screenshot before committing.
