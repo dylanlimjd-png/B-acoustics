@@ -6,6 +6,9 @@ Check this file first at the start of a session instead of opening
 and `Photo request list.md` separately — those remain the detailed logs
 (method, findings, reasoning) for their respective activities; this file is
 just the rollup of what's still open, updated whenever any of them change.
+For forward-looking strategy (what to pursue next, and in what order,
+beyond the immediate punch list below) see `ROADMAP.md` instead — this file
+stays backward-looking (what's done, what's open right now).
 
 Last updated: 2026-08-28 (GSC/Ads diagnostics + a full design/graphic/editorial audit, both shipped, CI green).
 
