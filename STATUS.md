@@ -7,7 +7,47 @@ and `Photo request list.md` separately — those remain the detailed logs
 (method, findings, reasoning) for their respective activities; this file is
 just the rollup of what's still open, updated whenever any of them change.
 
-Last updated: 2026-08-26 (full session recap below; all work committed, pushed, and CI green).
+Last updated: 2026-08-28 (full diagnostics session, GSC + Ads fixes shipped, CI green).
+
+**2026-08-28 session (full recap):** user asked for a full diagnostic pass on both
+the indexing gap and Google Ads, with a one-time exception to the standing
+"no Google login" policy for GSC and Ads specifically (their explicit call, asked
+first, not assumed). Real findings, not guesses:
+1. **GSC diagnostics.** `site:` was still showing only 2 pages (item #29,
+   unchanged for ~32 days). Root cause found: the sitemap was last read by
+   Google on **21 Jul** despite being updated repeatedly since, discovering
+   only 3 of 13 URLs. **Resubmitted the sitemap** to force a fresh read.
+   Homepage: crawled twice (most recently 4 Aug), fully crawlable/indexable —
+   Google simply hasn't chosen to index it (authority/trust judgment on a
+   young, low-backlink domain — 6 total organic clicks in 90 days — not a
+   bug). The 3 service pages were **completely unknown to Google**, never
+   crawled at all. **Submitted manual indexing requests for the homepage +
+   all 3 service pages.** Technical basics all confirmed clean: robots.txt,
+   canonical tags, meta robots, http/www→https redirects.
+2. **Google Ads diagnostics — root cause of item #25 found and fixed.**
+   Account: single Performance Max campaign "B-Acoustics", SGD15/day,
+   spending and getting impressions/clicks normally (SGD175/7,069 impr. over
+   28 days) — the ads themselves are fine. But **0 conversions ever
+   recorded**. Two pre-existing conversion actions ("Submit lead form" via
+   GA4 import, "Contact" via Website auto-detection) were both
+   Misconfigured/never received data — root cause: the enquiry form submits
+   via `fetch()` with no page navigation, so Google's auto-detection (which
+   watches for a navigation/URL change) never fires. This is exactly what
+   item #25 was blocked on. **Fixed live**: created a new manual "Submit lead
+   form" conversion action in Ads (event snippet, not GA4/auto-detect),
+   wired `gtag('event','conversion',{'send_to':'AW-18350815493/R4F8CJ_4rekcEIXyrK5E'})`
+   into `index.html` right after a successful `/api/enquiry` response
+   (commit `1c49c25`). Verified two ways before considering it done: the
+   exact snippet executed cleanly in a live browser with no exception, and
+   the resulting network beacon to `google.com/pagead/1p-conversion/...`
+   carried the correct label `R4F8CJ_4rekcEIXyrK5E`. A real end-to-end form
+   submission wasn't used to verify (would have emailed a real notification
+   to the business inbox from a local test origin the Worker's CORS
+   would've rejected anyway). Deployed and confirmed live via `curl` against
+   the production homepage post-deploy. The two old misconfigured conversion
+   actions were left in place (inert, never fired, low risk) rather than
+   deleted — flagged below as an optional cleanup.
+`check-site`/`html-validate` both clean; single-line diff.
 
 **2026-08-26 session (full recap):** three things, all committed:
 1. **SEO ranking check** (full 9-query rotation, first since 2026-08-07 — see
@@ -242,11 +282,11 @@ outreach) and can't be started in a coding session.
 | ~~22~~ | ~~"Studio" address label implied a walk-in physical location~~ — **DONE 2026-08-07**, commit `f020eb2`. User confirmed no physical studio exists; relabeled to "Registered Office" on the homepage contact block. | Low | Low | Done | This session |
 | ~~23~~ | ~~Text-overlap spacing bug on `/blog/` guides index~~ — **DONE 2026-08-07**, commit `f020eb2`. User-reported (screenshot) — a hardcoded `-24px` negative margin under the dek paragraph overlapped its last line whenever it wrapped to 4 lines. Fixed with normal non-negative margins; reproduced and confirmed fixed locally. Audited the rest of the site for the same pattern — it was the only instance. | Med | Low | Done | This session |
 | ~~24~~ | ~~Google Ads base tag (`gtag.js`, `AW-18350815493`) install~~ — **DONE 2026-08-11**, commit `c9d944c`. Added to all 14 pages, verified live post-deploy. | Med | Low | Done | This session |
-| 25 | Google Ads conversion action for enquiry-form submission | Med | Low (once label is known) | **Still blocked** — checked for a new screenshot 2026-08-19, none found (only Google-tag file present was the already-handled base-tag one). User will get the right screenshot later. | This session |
+| ~~25~~ | ~~Google Ads conversion action for enquiry-form submission~~ — **DONE 2026-08-28**, commit `1c49c25`. Root cause: existing conversion actions relied on auto-detection that needs page navigation; the form uses `fetch()` so it never fired. Created a manual "Submit lead form" conversion action and wired its event snippet into the success handler. Verified live. | Med | Low | Done | This session |
 | ~~26~~ | ~~Second real project photo (Corporate Office) added to homepage work grid~~ — **DONE 2026-08-19**. New 4th tile, `images/commercial-office-acoustic-panels.webp`, raw originals archived `photos/project-3/`. | Med | Low | Done | This session |
 | ~~27~~ | ~~Continuous-improvement Week of 2026-08-19 (5 items)~~ — **DONE 2026-08-19**, same session. `sitemap.xml` lastmod fix, `/api/enquiry` spam protection (honeypot + rate limit, Worker deployed), `llms.txt` false-claim fix, WhatsApp CTA, partial CSP via meta tag (all 14 pages) — CSP required a real Playwright test to catch a broken Google Ads pixel allowlist before shipping. See `CONTINUOUS_IMPROVEMENT.md`'s 2026-08-19 entry for full detail. | Med-High | Low-Med | Done | This session |
 | ~~28~~ | ~~Continuous-improvement Week of 2026-08-26, items 1-4~~ — **DONE 2026-08-26**, same session. New homepage testimonial section (real GBP review quote), `og:image`/`twitter:image` swapped to a real project photo, `sameAs` added to `ProfessionalService` schema (links the live GBP listing), `Referrer-Policy` meta tag. Item 5 (RSS feed) not started. See `CONTINUOUS_IMPROVEMENT.md`'s 2026-08-26 entry. | Med-High | Low | Done | This session |
-| 29 | Homepage indexing gap — `site:b-acoustics.com` still only shows 2 blog posts | High | None available without GSC | **Blocked on you** — ~29 days past the 2026-07-28 structural fix, past the 2026-08-11 checkpoint, no further code-side fix available. Needs a decision: are you open to a one-time GSC login exception so a manual indexing request can be submitted? This goes against the standing "no Google login" preference, so not done without asking first. | `SEO_RECOMMENDATIONS.md` 2026-08-26 entry, watch items below |
+| 29 | Homepage indexing gap — `site:b-acoustics.com` still only shows 2 blog posts | High | Low (given GSC access) | **Progress 2026-08-28**: user granted a one-time GSC login exception. Real root cause found — Google's sitemap read was stuck at 21 Jul (discovering only 3/13 URLs) despite repeated updates since; resubmitted it. Homepage crawled fine (4 Aug) but not indexed — authority/trust judgment on a young domain, not a bug. Submitted manual indexing requests for the homepage + all 3 service pages. Next check: does indexing actually improve after this — re-check `site:` in a week or two. | `SEO_RECOMMENDATIONS.md` 2026-08-26 entry, this session's diagnostics, watch items below |
 
 **All actionable-by-me items through 2026-08-26 are done, plus #2 partially
 (website side) and #7 now technically unblocked (still thin on review count, holding
@@ -260,7 +300,9 @@ continuous-improvement idea-generation pass for new candidates.
 
 ## Watch items (not actionable yet, just checking periodically)
 
-- **Homepage indexing gap** — now tracked as open item **#29** above (promoted out of pure-watch status 2026-08-26, since it needs an actual decision from the user, not just monitoring). Structural fix shipped 2026-07-28 (commit `70de168`); `site:b-acoustics.com` still only shows the same 2 blog posts as of the 2026-08-26 check, ~29 days post-fix.
+- **Homepage indexing gap** — tracked as open item **#29** above. 2026-08-28: real root cause found (stale sitemap read + authority judgment, not a bug) and manual indexing requests submitted for 4 pages — re-check `site:` in a week or two to see if it actually moves; if not, the sitemap/GSC side is now doing everything it can and the remaining lever is off-page authority (item #6).
+- **Google Ads conversion data** — new 2026-08-28 conversion action (`R4F8CJ_4rekcEIXyrK5E`) just went live; check back in a few days that it's actually reporting conversions in Ads (Goals > Summary) and that Performance Max starts optimizing off real signal instead of flying blind.
+- **Old misconfigured Ads conversion actions** — "Submit lead form" (GA4-based) and "Contact" (auto-detect-based) were left in place 2026-08-28 rather than deleted since they're inert (never fired) — optional cleanup: disable or delete them in Ads > Goals > Conversions once the new one is confirmed working, so they don't clutter the account.
 - **Branded-query visibility** — downgraded from "active regression" to "stable at zero": the quoted query `"B-Acoustics" acoustic consultant` and bare `b-acoustics` have both shown 0 organic results across 3 consecutive runs now (2026-08-07, and again 2026-08-26). No longer needs flagging as newly-worsening each run, but still worth a periodic check.
 - **Local pack absence** — new 2026-08-26 finding: a Places local pack now appears on 3 of the 6 target-keyword searches, but B-Acoustics isn't among the top-3 shown results on any of them. Same root cause as the indexing/authority gap above, not a separate issue — re-check alongside the next full rotation.
 - **GSC-capable MCP connector** — not connected as of last check (2026-08-26). Would unblock real daily/weekly SEO data automation. Ask "is a Search-Console connector available now?" next session.
