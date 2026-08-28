@@ -7,9 +7,26 @@ and `Photo request list.md` separately — those remain the detailed logs
 (method, findings, reasoning) for their respective activities; this file is
 just the rollup of what's still open, updated whenever any of them change.
 
-Last updated: 2026-08-28 (full diagnostics session, GSC + Ads fixes shipped, CI green).
+Last updated: 2026-08-28 (GSC/Ads diagnostics + a full design/graphic/editorial audit, both shipped, CI green).
 
-**2026-08-28 session (full recap):** user asked for a full diagnostic pass on both
+**2026-08-28 session, part 2 (design/graphic/editorial audit):** user
+reported a spacing bug via screenshot (overlapping x-axis labels on the NEA
+boundary noise limits blog diagram) and asked for a wholistic check for
+other design/graphic/editorial errors site-wide. Root cause diagnosed
+directly from the SVG markup (a text label wider than its allotted bar-group
+spacing) and fixed — commit `0a3c90b`, verified in a live render. Extended
+the check to: the other 5 blog diagrams (same technique, all clean — no
+other instance of the bug class), a full read-through of every page's prose
+for typos/grammar/factual consistency (none found), and a live screenshot
+pass over homepage sections not covered by the 2026-07-28 design review
+(testimonial, materials, work grid, studio, process — all clean). One
+cosmetic, non-urgent naming wrinkle flagged: the new testimonial names the
+project "Ultrastudio Live, our second music studio" right next to a
+"Ultra Studio" work-grid tile (the client's *first*, different project) —
+factually correct but reads as a possible typo without context. Full
+findings and method in `DESIGN_FEEDBACK.md`'s 2026-08-28 entry.
+
+**2026-08-28 session, part 1 (GSC/Ads diagnostics):** user asked for a full diagnostic pass on both
 the indexing gap and Google Ads, with a one-time exception to the standing
 "no Google login" policy for GSC and Ads specifically (their explicit call, asked
 first, not assumed). Real findings, not guesses:
@@ -287,6 +304,8 @@ outreach) and can't be started in a coding session.
 | ~~27~~ | ~~Continuous-improvement Week of 2026-08-19 (5 items)~~ — **DONE 2026-08-19**, same session. `sitemap.xml` lastmod fix, `/api/enquiry` spam protection (honeypot + rate limit, Worker deployed), `llms.txt` false-claim fix, WhatsApp CTA, partial CSP via meta tag (all 14 pages) — CSP required a real Playwright test to catch a broken Google Ads pixel allowlist before shipping. See `CONTINUOUS_IMPROVEMENT.md`'s 2026-08-19 entry for full detail. | Med-High | Low-Med | Done | This session |
 | ~~28~~ | ~~Continuous-improvement Week of 2026-08-26, items 1-4~~ — **DONE 2026-08-26**, same session. New homepage testimonial section (real GBP review quote), `og:image`/`twitter:image` swapped to a real project photo, `sameAs` added to `ProfessionalService` schema (links the live GBP listing), `Referrer-Policy` meta tag. Item 5 (RSS feed) not started. See `CONTINUOUS_IMPROVEMENT.md`'s 2026-08-26 entry. | Med-High | Low | Done | This session |
 | 29 | Homepage indexing gap — `site:b-acoustics.com` still only shows 2 blog posts | High | Low (given GSC access) | **Progress 2026-08-28**: user granted a one-time GSC login exception. Real root cause found — Google's sitemap read was stuck at 21 Jul (discovering only 3/13 URLs) despite repeated updates since; resubmitted it. Homepage crawled fine (4 Aug) but not indexed — authority/trust judgment on a young domain, not a bug. Submitted manual indexing requests for the homepage + all 3 service pages. Next check: does indexing actually improve after this — re-check `site:` in a week or two. | `SEO_RECOMMENDATIONS.md` 2026-08-26 entry, this session's diagnostics, watch items below |
+| ~~30~~ | ~~Diagram spacing bug (NEA boundary noise limits blog post)~~ — **FIXED 2026-08-28**, commit `0a3c90b`. User-reported. Same wholistic session also swept all 5 other diagrams + full editorial copy + a homepage screenshot pass — no other real bugs found. | Med | Low | Done | This session, `DESIGN_FEEDBACK.md` 2026-08-28 entry |
+| 31 | "Ultra Studio" vs. "Ultrastudio Live" naming wrinkle in the new testimonial | Low | Low | Cosmetic, factually correct (two different real projects for the same client) — flagged for next time that testimonial copy is touched, not urgent enough to edit a live customer quote unprompted. | `DESIGN_FEEDBACK.md` 2026-08-28 entry |
 
 **All actionable-by-me items through 2026-08-26 are done, plus #2 partially
 (website side) and #7 now technically unblocked (still thin on review count, holding
