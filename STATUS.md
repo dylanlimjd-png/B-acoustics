@@ -10,7 +10,27 @@ For forward-looking strategy (what to pursue next, and in what order,
 beyond the immediate punch list below) see `ROADMAP.md` instead — this file
 stays backward-looking (what's done, what's open right now).
 
-Last updated: 2026-08-28 (GSC/Ads diagnostics + a full design/graphic/editorial audit, both shipped, CI green).
+Last updated: 2026-08-28 (GSC/Ads diagnostics, a full design/graphic/editorial audit, and Google Ads sitelink extensions — all shipped, CI green).
+
+**2026-08-28 session, part 3 (Google Ads sitelink extensions):** user asked
+for help completing the Performance Max campaign's sitelinks, off two
+screenshots (`sitelink fields.png`, `existing sitelinks.png`) showing 2
+existing sitelinks (Office Acoustics, Party-wall Sound Proofing) and 3
+Google-AI-suggested empty slots (Blog Center, Industrial Noise, Office Cost
+Guide) plus a recommended 6th. Wrote sitelink text + 2 description lines +
+Final URL for all of them, checked against real site content (meta
+descriptions, actual page titles) rather than guessed copy, and
+character-limit-verified (sitelink text ≤25, description lines ≤35):
+Blog Center → `/blog/`; Industrial Noise →
+`/services/industrial-noise-compliance-singapore.html`; Office Cost Guide →
+`/blog/office-soundproofing-cost-singapore.html` (URL confirmed directly from
+the user's screenshot). For the 6th slot, deliberately chose a residential
+angle — "Home Theatre Cost" → `/blog/home-theatre-soundproofing-cost-singapore.html`
+— since the other 5 sitelinks are all B2B/compliance-facing (office,
+party-wall, industrial, blog hub) and the campaign is a single Performance
+Max campaign covering the whole site. User confirmed all 6 saved directly in
+Ads; no browser automation/login used (text handed off for manual paste, per
+the standing no-Google-login-without-asking preference).
 
 **2026-08-28 session, part 2 (design/graphic/editorial audit):** user
 reported a spacing bug via screenshot (overlapping x-axis labels on the NEA
@@ -309,6 +329,7 @@ outreach) and can't be started in a coding session.
 | 29 | Homepage indexing gap — `site:b-acoustics.com` still only shows 2 blog posts | High | Low (given GSC access) | **Progress 2026-08-28**: user granted a one-time GSC login exception. Real root cause found — Google's sitemap read was stuck at 21 Jul (discovering only 3/13 URLs) despite repeated updates since; resubmitted it. Homepage crawled fine (4 Aug) but not indexed — authority/trust judgment on a young domain, not a bug. Submitted manual indexing requests for the homepage + all 3 service pages. Next check: does indexing actually improve after this — re-check `site:` in a week or two. | `SEO_RECOMMENDATIONS.md` 2026-08-26 entry, this session's diagnostics, watch items below |
 | ~~30~~ | ~~Diagram spacing bug (NEA boundary noise limits blog post)~~ — **FIXED 2026-08-28**, commit `0a3c90b`. User-reported. Same wholistic session also swept all 5 other diagrams + full editorial copy + a homepage screenshot pass — no other real bugs found. | Med | Low | Done | This session, `DESIGN_FEEDBACK.md` 2026-08-28 entry |
 | 31 | "Ultra Studio" vs. "Ultrastudio Live" naming wrinkle in the new testimonial | Low | Low | Cosmetic, factually correct (two different real projects for the same client) — flagged for next time that testimonial copy is touched, not urgent enough to edit a live customer quote unprompted. | `DESIGN_FEEDBACK.md` 2026-08-28 entry |
+| ~~32~~ | ~~Google Ads sitelink extensions (Performance Max campaign)~~ — **DONE 2026-08-28**. Filled in the 3 Google-AI-suggested sitelinks (Blog Center, Industrial Noise, Office Cost Guide) and drafted a 6th (Home Theatre Cost, deliberately residential to balance the other 5 B2B-leaning ones) — all confirmed saved by the user directly in Ads. | Low-Med | Low | Done | This session |
 
 **All actionable-by-me items through 2026-08-26 are done, plus #2 partially
 (website side) and #7 now technically unblocked (still thin on review count, holding
