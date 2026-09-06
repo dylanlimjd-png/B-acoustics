@@ -616,3 +616,67 @@ Live-browser, no Google login, per standing method.
 **Next run:** re-check indexing (`site:`) as the top-priority item given the
 overdue checkpoint; if the local-pack absence persists across 2+ more runs,
 consider it a stable finding rather than re-verifying every time.
+
+## Indexing/Ads recheck — 2026-09-06
+
+User granted another one-time GSC/Ads login exception specifically to check
+back on the 2026-08-28 fixes (sitemap resubmit + manual indexing requests +
+new conversion action). Real findings, logged in via the browser, not guessed:
+
+### Findings
+
+1. **Real indexing progress.** `site:b-acoustics.com` now returns **3 pages**
+   (up from 2) — the homepage joined the two blog posts. GSC's own Indexing
+   overview confirms: 3 indexed / 2 not-indexed (both "Crawled — currently
+   not indexed", i.e. Google has them but hasn't chosen to serve them yet —
+   an authority judgment, not a technical fault).
+2. **Sitemap re-read is still stuck.** The Sitemaps report shows `Last read:
+   21 Jul 2026` and `Discovered pages: 3` — completely unchanged from the
+   2026-08-28 diagnostics, despite that session's resubmission 9 days ago.
+   Re-submitted `sitemap.xml` again this session (no error, but Google
+   controls its own re-crawl schedule — no way to force an earlier read).
+3. **The 3 service pages are still "URL is unknown to Google"** in URL
+   Inspection (no referring sitemap detected for any of them) — but each
+   showed **"Request indexing" as "Request again"**, confirming the
+   2026-08-28 manual requests did register; they just haven't been acted on
+   yet 9 days later. Re-submitted indexing requests for all 3
+   (`office-acoustics-singapore.html`, `party-wall-soundproofing-singapore.html`,
+   `industrial-noise-compliance-singapore.html`) — each confirmed "Indexing
+   requested, added to priority crawl queue."
+4. **Google Ads conversion tracking is genuinely working now.** The
+   2026-08-28 manual "Submit lead form" conversion action has recorded **2
+   real conversions** (results value 2.00) since going live — confirms the
+   `fetch()`-vs-navigation root cause fix actually resolved the 0-conversions
+   problem, not just fired cleanly in a test. Conversion tracking status: 1
+   action recording conversions (the new one), 1 "no recent conversions" and
+   1 "unverified" (the two old inert actions, already flagged for optional
+   cleanup — expected, not new).
+5. **New finding, needs the user's attention: the Ads account shows "Account
+   is paused — Complete advertiser verification"** on the overview page.
+   Ambiguous severity — the campaign still shows real recent spend (+SGD32.12,
+   +46.81% cost in the last 7 days vs. the prior 7), so it may not be fully
+   paused *yet*, or verification is a looming requirement rather than an
+   already-enforced block. Not investigated further or acted on: Google's
+   advertiser identity verification requires submitting identity/business
+   documents, which is outside what this session should handle (identity
+   verification is the account owner's action, not something to do on their
+   behalf) — **user needs to open Google Ads themselves and check/complete
+   this**, ideally soon, since an unresolved verification requirement can
+   eventually stop the campaign from serving.
+
+### Resolution plans
+
+1. Indexing gap — real, measurable progress (2→3 pages); sitemap + all 3
+   service-page indexing requests re-submitted this session. Re-check again
+   in another week or two; if the sitemap `Last read` date still hasn't
+   moved by then, that's worth flagging as unusually slow even by Google's
+   own standards, though there's no lever beyond resubmitting to pull on.
+2. Ads conversion tracking — confirmed working with real data; no further
+   action needed on the tracking fix itself. Optional cleanup (disable/delete
+   the 2 old inert conversion actions) remains just optional, not urgent.
+3. **Ads advertiser verification — flagged to the user as a new, time-
+   sensitive action item** (see `STATUS.md`'s open items). Not something this
+   session can resolve.
+
+**Next run:** re-check `site:` indexing again in ~1-2 weeks; ask the user
+whether the Ads advertiser-verification banner has been resolved.

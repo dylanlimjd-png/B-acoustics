@@ -10,7 +10,25 @@ For forward-looking strategy (what to pursue next, and in what order,
 beyond the immediate punch list below) see `ROADMAP.md` instead — this file
 stays backward-looking (what's done, what's open right now).
 
-Last updated: 2026-08-28 (GSC/Ads diagnostics, a full design/graphic/editorial audit, and Google Ads sitelink extensions — all shipped, CI green).
+Last updated: 2026-09-06 (RSS feed shipped, GSC/Ads recheck — real indexing progress, conversion tracking confirmed working, new Ads advertiser-verification issue found).
+
+**2026-09-06 session:** two pieces of work. (1) Shipped the RSS feed
+(`feed.xml`) — the last open item from the Week of 2026-08-26
+continuous-improvement list, see that file's entry and item #28 below. (2)
+User granted another one-time GSC/Ads login exception to check back on the
+2026-08-28 fixes. Real findings (full detail in `SEO_RECOMMENDATIONS.md`'s
+2026-09-06 entry): `site:b-acoustics.com` now shows 3 pages (up from 2, the
+homepage joined the 2 blog posts) — real progress; the sitemap's `Last read`
+date is still stuck at 21 Jul despite 2 resubmissions, nothing more to do
+there but wait on Google's own crawl schedule; the 3 service pages are still
+unindexed and their manual indexing requests were re-submitted (confirmed
+queued); and the 2026-08-28 Google Ads conversion action has recorded **2
+real conversions** — the fix is genuinely working, not just firing clean in
+a test. One new issue found and flagged (item #33): the Ads account shows an
+"Account is paused: Complete advertiser verification" banner — ambiguous
+urgency since real spend still happened in the last 7 days, but this needs
+the user to resolve directly (identity verification isn't something this
+session should do on their behalf).
 
 **2026-08-28 session, part 3 (Google Ads sitelink extensions):** user asked
 for help completing the Performance Max campaign's sitelinks, off two
@@ -326,10 +344,11 @@ outreach) and can't be started in a coding session.
 | ~~26~~ | ~~Second real project photo (Corporate Office) added to homepage work grid~~ — **DONE 2026-08-19**. New 4th tile, `images/commercial-office-acoustic-panels.webp`, raw originals archived `photos/project-3/`. | Med | Low | Done | This session |
 | ~~27~~ | ~~Continuous-improvement Week of 2026-08-19 (5 items)~~ — **DONE 2026-08-19**, same session. `sitemap.xml` lastmod fix, `/api/enquiry` spam protection (honeypot + rate limit, Worker deployed), `llms.txt` false-claim fix, WhatsApp CTA, partial CSP via meta tag (all 14 pages) — CSP required a real Playwright test to catch a broken Google Ads pixel allowlist before shipping. See `CONTINUOUS_IMPROVEMENT.md`'s 2026-08-19 entry for full detail. | Med-High | Low-Med | Done | This session |
 | ~~28~~ | ~~Continuous-improvement Week of 2026-08-26, all 5 items~~ — **DONE**. Items 1-4 (2026-08-26, same session): new homepage testimonial section (real GBP review quote), `og:image`/`twitter:image` swapped to a real project photo, `sameAs` added to `ProfessionalService` schema (links the live GBP listing), `Referrer-Policy` meta tag. Item 5 (2026-09-06): RSS feed (`feed.xml`) for `/blog/`, with autodiscovery link + footer link + `llms.txt` entry. See `CONTINUOUS_IMPROVEMENT.md`'s 2026-08-26 entry. | Med-High | Low | Done | This session |
-| 29 | Homepage indexing gap — `site:b-acoustics.com` still only shows 2 blog posts | High | Low (given GSC access) | **Progress 2026-08-28**: user granted a one-time GSC login exception. Real root cause found — Google's sitemap read was stuck at 21 Jul (discovering only 3/13 URLs) despite repeated updates since; resubmitted it. Homepage crawled fine (4 Aug) but not indexed — authority/trust judgment on a young domain, not a bug. Submitted manual indexing requests for the homepage + all 3 service pages. Next check: does indexing actually improve after this — re-check `site:` in a week or two. | `SEO_RECOMMENDATIONS.md` 2026-08-26 entry, this session's diagnostics, watch items below |
+| 29 | Homepage indexing gap — `site:b-acoustics.com` still only shows 2 blog posts | High | Low (given GSC access) | **Progress 2026-09-06**: real movement — `site:` now shows **3 pages** (homepage joined the 2 blog posts). Sitemap's `Last read` is still stuck at 21 Jul despite 2 resubmissions (08-28 and 09-06) — Google controls its own re-crawl schedule, nothing more to do there. The 3 service pages are still unindexed; re-submitted manual indexing requests for all 3 this session (confirmed queued). Next check: re-check `site:` again in 1-2 weeks. | `SEO_RECOMMENDATIONS.md` 2026-09-06 entry, watch items below |
 | ~~30~~ | ~~Diagram spacing bug (NEA boundary noise limits blog post)~~ — **FIXED 2026-08-28**, commit `0a3c90b`. User-reported. Same wholistic session also swept all 5 other diagrams + full editorial copy + a homepage screenshot pass — no other real bugs found. | Med | Low | Done | This session, `DESIGN_FEEDBACK.md` 2026-08-28 entry |
 | 31 | "Ultra Studio" vs. "Ultrastudio Live" naming wrinkle in the new testimonial | Low | Low | Cosmetic, factually correct (two different real projects for the same client) — flagged for next time that testimonial copy is touched, not urgent enough to edit a live customer quote unprompted. | `DESIGN_FEEDBACK.md` 2026-08-28 entry |
 | ~~32~~ | ~~Google Ads sitelink extensions (Performance Max campaign)~~ — **DONE 2026-08-28**. Filled in the 3 Google-AI-suggested sitelinks (Blog Center, Industrial Noise, Office Cost Guide) and drafted a 6th (Home Theatre Cost, deliberately residential to balance the other 5 B2B-leaning ones) — all confirmed saved by the user directly in Ads. | Low-Med | Low | Done | This session |
+| 33 | **NEW — Google Ads account shows "Account is paused: Complete advertiser verification"** | High, time-sensitive | None (needs the account owner) | Found 2026-09-06 checking on the conversion-tracking fix. Ambiguous urgency — real spend still happened in the last 7 days (+SGD32.12), so it may not be fully blocking yet — but advertiser identity verification is exactly the kind of thing this session shouldn't handle (requires submitting identity/business documents on your behalf). **You need to open Google Ads and check/complete this yourself**, ideally soon, before it actually stops the campaign from serving. | `SEO_RECOMMENDATIONS.md` 2026-09-06 entry |
 
 **All actionable-by-me items through 2026-08-26 are done, plus #2 partially
 (website side) and #7 now technically unblocked (still thin on review count, holding
@@ -343,8 +362,9 @@ continuous-improvement idea-generation pass for new candidates.
 
 ## Watch items (not actionable yet, just checking periodically)
 
-- **Homepage indexing gap** — tracked as open item **#29** above. 2026-08-28: real root cause found (stale sitemap read + authority judgment, not a bug) and manual indexing requests submitted for 4 pages — re-check `site:` in a week or two to see if it actually moves; if not, the sitemap/GSC side is now doing everything it can and the remaining lever is off-page authority (item #6).
-- **Google Ads conversion data** — new 2026-08-28 conversion action (`R4F8CJ_4rekcEIXyrK5E`) just went live; check back in a few days that it's actually reporting conversions in Ads (Goals > Summary) and that Performance Max starts optimizing off real signal instead of flying blind.
+- **Homepage indexing gap** — tracked as open item **#29** above. 2026-09-06: real progress (2→3 indexed pages), but sitemap `Last read` still stuck at 21 Jul despite 2 resubmissions — re-check `site:` again in 1-2 weeks; the sitemap/GSC side is doing everything it can, remaining lever is off-page authority (item #6).
+- **Google Ads conversion data** — **CONFIRMED WORKING 2026-09-06**: the 2026-08-28 conversion action (`R4F8CJ_4rekcEIXyrK5E`) has recorded 2 real conversions. No longer just-deployed-and-unverified — drop this watch item once Performance Max visibly starts optimizing off it (check back in a few more weeks).
+- **Google Ads advertiser verification** — tracked as new open item **#33** above, needs the user directly.
 - **Old misconfigured Ads conversion actions** — "Submit lead form" (GA4-based) and "Contact" (auto-detect-based) were left in place 2026-08-28 rather than deleted since they're inert (never fired) — optional cleanup: disable or delete them in Ads > Goals > Conversions once the new one is confirmed working, so they don't clutter the account.
 - **Branded-query visibility** — downgraded from "active regression" to "stable at zero": the quoted query `"B-Acoustics" acoustic consultant` and bare `b-acoustics` have both shown 0 organic results across 3 consecutive runs now (2026-08-07, and again 2026-08-26). No longer needs flagging as newly-worsening each run, but still worth a periodic check.
 - **Local pack absence** — new 2026-08-26 finding: a Places local pack now appears on 3 of the 6 target-keyword searches, but B-Acoustics isn't among the top-3 shown results on any of them. Same root cause as the indexing/authority gap above, not a separate issue — re-check alongside the next full rotation.
