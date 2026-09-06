@@ -680,3 +680,72 @@ new conversion action). Real findings, logged in via the browser, not guessed:
 
 **Next run:** re-check `site:` indexing again in ~1-2 weeks; ask the user
 whether the Ads advertiser-verification banner has been resolved.
+
+## SEO ranking check — 2026-09-06
+
+Full 9-query rotation, same session as the indexing/Ads recheck above,
+same login state (already signed in as the GBP account owner,
+dylanlimjd@gmail.com — flagged below where that matters for interpretation).
+
+### Findings
+
+1. **`site:b-acoustics.com`** — 3 pages (homepage, STC vs NRC, office
+   soundproofing cost), consistent with this session's indexing-gap entry
+   above.
+2. **Zero organic visibility, unchanged, on all 6 non-branded target
+   keywords**: "acoustic consultant Singapore", "soundproofing Singapore",
+   "office acoustics Singapore", "office soundproofing cost Singapore",
+   "party wall soundproofing Singapore", "industrial noise compliance
+   Singapore". No b-acoustics.com result on page 1 for any of them — same
+   standing finding as every prior run. Worth noting: "office soundproofing
+   cost Singapore" is the exact topic of an already-indexed B-Acoustics blog
+   post, and it still doesn't rank — indexed isn't the same as ranking,
+   confirms the bottleneck is authority/backlinks, not indexing, once a page
+   does get indexed.
+3. **Local pack (Places) still doesn't show B-Acoustics** on the 2 queries
+   that triggered one this run ("office acoustics Singapore": TC Acoustic,
+   Aural-Aid, JD Acoustic; "party wall soundproofing Singapore": ArteCoustic
+   DFantastic, JD Acoustic, Aural-Aid) — same competitors as 2026-08-26,
+   same absence.
+4. **Real improvement: branded-query visibility is back, not just
+   plateaued.** Bare `b-acoustics` now returns b-acoustics.com as the **#1
+   organic result**. The quoted query `"B-Acoustics" acoustic consultant`
+   — the one that had regressed to zero by 2026-08-07 (displaced by an
+   unrelated Brisbane firm, "a/b acoustics") — now returns **b-acoustics.com
+   twice** (homepage #1, the STC-vs-NRC blog post #2). This is the first
+   time either branded query has shown any b-acoustics.com result since the
+   2026-07-31→08-07 decline. **Caveat**: this browser is signed in as the
+   GBP account owner, which can bias personalized results toward your own
+   listing on brand-name searches specifically — worth a confirming check
+   from a logged-out/incognito session next time to rule out personalization
+   inflating just these two queries. It's a meaningful data point either
+   way since the non-branded queries (#2 above) show zero despite the same
+   login state, meaning the login isn't blanket-boosting every result.
+5. **New concrete engagement data point**: searching bare `b-acoustics`
+   while logged in surfaced the GBP dashboard's own "Your business on
+   Google" panel, showing **2 customer interactions** recorded on the
+   listing — the first non-review engagement metric seen for this GBP
+   listing.
+
+### Resolution plans
+
+1. Indexing gap — see the indexing/Ads recheck entry above; already being
+   worked (sitemap + indexing request resubmissions this session).
+2. Zero organic on non-branded target keywords — same standing root cause
+   (backlinks/domain authority); no new lever beyond `STATUS.md` item #6
+   (off-page authority). Worth flagging to the user that even an indexed,
+   on-topic page ("office soundproofing cost Singapore") isn't ranking —
+   this is evidence the constraint really is authority, not content
+   completeness.
+3. Local pack absence — same as 2026-08-26, no new action, still a symptom
+   of the same authority/review-volume gap.
+4. Branded-query recovery — real positive signal, logged as-is; flagged the
+   personalization caveat rather than overclaiming. Re-verify from a
+   logged-out session on the next run if practical.
+5. GBP "2 customer interactions" — new baseline, not previously tracked;
+   watch whether it grows over future runs as a leading indicator ahead of
+   review counts.
+
+**Next run:** re-check the two branded queries specifically to see if the
+recovery holds, ideally from a logged-out browser; continue tracking local
+pack absence and the GBP interaction count as a new baseline.
