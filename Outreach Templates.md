@@ -1,10 +1,12 @@
 # Outreach Templates — B-Acoustics
 
 Reference templates for the user's own use (email/text/LinkedIn) — not
-website content, not deployed anywhere. Two sets below: (1) referral
-outreach to architects and contractors, per `ROADMAP.md`'s Phase 2b, and
-(2) a simplified client follow-up template, replacing one that client
-feedback flagged as too complex/offputting.
+website content, not deployed anywhere. Three sets below: (1) referral
+outreach to architects and contractors, per `ROADMAP.md`'s Phase 2b, (2) a
+simplified client follow-up template for residential/simple web enquiries,
+and (3) a simplified B2B quote-request follow-up for drawing-based
+contractor enquiries — both replacing patterns that client feedback
+flagged as too complex/offputting.
 
 ---
 
@@ -168,3 +170,81 @@ of restoring.
 - If you have the actual old template handy, share it and I'll do a
   direct before/after diff instead of a from-scratch rewrite — that'll be
   more precise about which specific questions triggered the pushback.
+
+---
+
+## 3. B2B quote-request follow-up (drawings provided, tight deadline)
+
+**Different scenario from #2 above** — this is a contractor/main-contractor
+sending a formal quote request with drawings already attached and a hard
+deadline (no time for a site visit first). Here you genuinely do need to
+confirm scope, dimensions, and technical detail by email before pricing —
+the "defer to a call" trick from #2 doesn't fully apply. What still applies:
+**how** it's asked matters as much as **what** is asked.
+
+**Real before/after** (2026-09, a main contractor's quote request for two
+meeting rooms — a band/music room + a workshop room; client/company details
+redacted here on purpose, this repo is not the place for a client's
+project information):
+
+**Before** (the version that read as complex/offputting): 7 dense
+paragraph blocks under headers like "Performance intent," "Scope
+boundaries," "Dimensions and existing conditions" — each a wall of prose
+mixing the question with the reasoning behind it, heavy on jargon
+("isolation detail," "ceiling void heights," "acoustic build-up"), no
+acknowledgment of the client's own tone (they made a joke about painting
+the door green; the reply didn't engage with it at all).
+
+**After** — same technical content, restructured:
+
+> Dear [Name],
+>
+> Thanks for the brief, drawings and mockups — [acknowledge anything
+> personable in their email, e.g. a joke, briefly and warmly].
+>
+> A few quick things to confirm before we finalise pricing:
+>
+> **1. [Room] — what kind of soundproofing?**
+> [One sentence explaining the technical distinction in plain terms, if
+> one exists — e.g. absorption vs. isolation — then the actual question.]
+>
+> **2. What's ours to quote?**
+> So we don't overlap with your other trades — can you confirm we're only
+> pricing [X, Y, Z], and everything else is being handled separately?
+>
+> **3. [Any material-specific question, e.g. windows/doors]**
+> [Short, direct question — one line, no preamble.]
+>
+> **4. Measurements**
+> If the drawing is fully dimensioned and to scale, we're happy to take
+> measurements straight off it — just confirm that's OK. [Optional: ask
+> for existing construction detail, but frame it as "helps us, not
+> required."]
+>
+> **5. Timeline**
+> Any target dates or working-hour restrictions we should plan around?
+>
+> Happy to jump on a quick call if that's faster than back-and-forth by
+> email — either way, we'll aim to have the quote with you by [deadline].
+>
+> Best,
+> [Name]
+
+### What actually changed, and why it generalizes
+
+- **One short header + one direct question per numbered point**, not a
+  paragraph that buries the question inside the reasoning. The reasoning
+  (if needed at all) gets one plain sentence, not a paragraph.
+- **Jargon gets a one-line plain-English gloss inline**, right before the
+  question that depends on it — don't assume the reader (often a project
+  coordinator, not an acoustic engineer) already knows the term.
+- **Acknowledge the human element** in their email (a joke, an aside)
+  before diving into the list — costs one sentence, changes the whole tone
+  from "RFI form" to "reply from a person."
+- **Offer a call as an escape hatch** from the email back-and-forth —
+  doesn't reduce what's asked, but reduces the *feeling* of being
+  interrogated in writing.
+- **Nothing technical gets cut** in this scenario (unlike template #2) —
+  the goal here is legibility and tone, not fewer questions, since a
+  B2B drawing-based quote genuinely needs this level of detail to be
+  accurate.
