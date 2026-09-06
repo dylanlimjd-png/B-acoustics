@@ -13,6 +13,7 @@ Singapore-only, B2B and B2C. We do not quote firm pricing without a site survey.
 ## Guides
 
 - [Guides index](https://b-acoustics.com/blog/): All published guides.
+- [RSS feed](https://b-acoustics.com/feed.xml): Guides published as an RSS 2.0 feed, for feed readers and update tracking.
 - [STC vs NRC Explained](https://b-acoustics.com/blog/stc-vs-nrc-explained.html): The difference between Sound Transmission Class (blocking sound) and Noise Reduction Coefficient (absorbing sound), and how each relates to NEA's dB(A) boundary limits.
 - [Office Soundproofing Cost in Singapore](https://b-acoustics.com/blog/office-soundproofing-cost-singapore.html): What drives the cost of a commercial acoustic project.
 - [HDB vs Condo Soundproofing](https://b-acoustics.com/blog/hdb-vs-condo-soundproofing-singapore.html): How approval processes and construction differ between HDB and condo/MCST projects.

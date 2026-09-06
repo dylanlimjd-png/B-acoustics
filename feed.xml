@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>B-Acoustics Guides — Acoustic Engineering &amp; Soundproofing, Singapore</title>
+  <link>https://b-acoustics.com/blog/</link>
+  <description>Resource and compliance guides on soundproofing, acoustic ratings, and Singapore noise regulations — written from projects we've actually scoped, not generic advice.</description>
+  <language>en-sg</language>
+  <atom:link href="https://b-acoustics.com/feed.xml" rel="self" type="application/rss+xml"/>
+  <lastBuildDate>Sat, 01 Aug 2026 00:00:00 +0800</lastBuildDate>
+
+  <item>
+    <title>Noisy Neighbours in Singapore: Mediation, Enforcement, and the Acoustic Fix</title>
+    <link>https://b-acoustics.com/blog/neighbour-noise-singapore.html</link>
+    <guid>https://b-acoustics.com/blog/neighbour-noise-singapore.html</guid>
+    <pubDate>Sat, 01 Aug 2026 00:00:00 +0800</pubDate>
+    <description>Singapore's Community Disputes Resolution Act can compel mediation and issue abatement orders for neighbour noise. Here's how that process works, and where soundproofing actually fits alongside it.</description>
+  </item>
+
+  <item>
+    <title>What Drives Home Theatre Soundproofing Cost in Singapore</title>
+    <link>https://b-acoustics.com/blog/home-theatre-soundproofing-cost-singapore.html</link>
+    <guid>https://b-acoustics.com/blog/home-theatre-soundproofing-cost-singapore.html</guid>
+    <pubDate>Sat, 01 Aug 2026 00:00:00 +0800</pubDate>
+    <description>Home theatre soundproofing cost depends on the STC target, wall construction, and whether low-frequency bass is isolated — not floor area alone. Here's what actually sets the price.</description>
+  </item>
+
+  <item>
+    <title>HDB vs Condo Soundproofing Rules in Singapore</title>
+    <link>https://b-acoustics.com/blog/hdb-vs-condo-soundproofing-singapore.html</link>
+    <guid>https://b-acoustics.com/blog/hdb-vs-condo-soundproofing-singapore.html</guid>
+    <pubDate>Tue, 28 Jul 2026 00:00:00 +0800</pubDate>
+    <description>HDB and condo soundproofing projects follow different approval processes in Singapore — permit timing and noise-hour rules for HDB, MCST approval for condos. Here's what actually differs.</description>
+  </item>
+
+  <item>
+    <title>NEA Boundary Noise Limits in Singapore, Explained</title>
+    <link>https://b-acoustics.com/blog/nea-boundary-noise-limits-singapore.html</link>
+    <guid>https://b-acoustics.com/blog/nea-boundary-noise-limits-singapore.html</guid>
+    <pubDate>Tue, 28 Jul 2026 00:00:00 +0800</pubDate>
+    <description>The real NEA boundary noise limits for factory premises in Singapore — dB(A) limits by premises type and time of day, how compliance is assessed, and what to do if you're over the limit.</description>
+  </item>
+
+  <item>
+    <title>STC vs NRC: Which Acoustic Rating Matters for Your Space?</title>
+    <link>https://b-acoustics.com/blog/stc-vs-nrc-explained.html</link>
+    <guid>https://b-acoustics.com/blog/stc-vs-nrc-explained.html</guid>
+    <pubDate>Thu, 02 Jul 2026 00:00:00 +0800</pubDate>
+    <description>STC and NRC are the two acoustic ratings most often confused. Here's what each one actually measures, and how to know which one your project needs.</description>
+  </item>
+
+  <item>
+    <title>What Actually Drives the Cost of Office Soundproofing</title>
+    <link>https://b-acoustics.com/blog/office-soundproofing-cost-singapore.html</link>
+    <guid>https://b-acoustics.com/blog/office-soundproofing-cost-singapore.html</guid>
+    <pubDate>Thu, 02 Jul 2026 00:00:00 +0800</pubDate>
+    <description>Every fit-out enquiry starts with the same question: how much will this cost? The honest answer is that office soundproofing is priced on a handful of variables, not a flat rate per square metre.</description>
+  </item>
+
+</channel>
+</rss>

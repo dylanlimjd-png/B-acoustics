@@ -52,7 +52,17 @@ inventing copy:
 
 `check-site`/`html-validate` both clean after. Verified the new testimonial section
 renders correctly via a local server + live browser screenshot (desktop) before
-committing. Item 5 (RSS feed) not started — carry to next week if still worth it.
+committing.
+
+**Item 5 (RSS feed) done 2026-09-06.** New `feed.xml` at the site root (RSS 2.0,
+`atom:link rel="self"` for spec compliance), one `<item>` per published guide
+(title, link, guid, pubDate, description) sourced directly from `blog/index.html`'s
+existing post copy — no invented text. Autodiscovery `<link rel="alternate"
+type="application/rss+xml">` added to `blog/index.html`'s `<head>`, plus a visible
+"RSS Feed" link in its footer nav. Also added to `llms.txt`'s Guides section for
+crawler/agent discoverability. XML validity confirmed via PowerShell's `[xml]` parser
+(6 items parsed correctly); `check-site`/`html-validate` both stayed clean. All 5
+items from this week's list now shipped.
 
 ---
 
