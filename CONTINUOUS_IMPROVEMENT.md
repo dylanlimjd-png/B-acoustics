@@ -12,6 +12,30 @@ first, bigger/strategic bets later even if their absolute impact ceiling is high
 
 ---
 
+## Week of 2026-09-06
+
+Last ranking pass was 2026-08-26 (all 5 items now shipped — RSS feed landed
+this session). Grounded in direct inspection (git log dates vs. sitemap/
+schema dates, and a grep across `og:image`/`twitter:image`), not guessed:
+
+| # | Topic | Impact | Effort | Why now |
+|---|---|---|---|---|
+| 1 | **`sitemap.xml`'s `lastmod` dates were stale on 11 of 13 URLs** | Med | Trivial | Checked `git log` per file vs. the sitemap: the homepage showed `2026-08-19` despite real content edits on 08-26 (testimonial) and 08-28 (conversion tracking) — 9 and 11 days stale. All 3 service pages, both legal pages, and 5 of 6 blog posts showed `2026-08-11` despite being touched in the 08-19 CSP rollout; the NEA guide showed `2026-08-05` despite its 08-28 diagram fix. Directly relevant to this session's indexing-gap recheck — accurate `lastmod` is one of the few signals that can nudge Google's crawl priority, and ours was actively wrong. |
+| 2 | **Blog hub + all 3 service pages' `og:image`/`twitter:image` still point at the plain logo** | Med | Low | Checked: `blog/index.html` and all 3 `services/*.html` pages still resolve to `images/logo-dark.png`, the exact issue fixed on the homepage 2026-08-26 (item 2 of that week) but never carried to the rest of the site. Same rationale applies — real project photos make a stronger link-preview than a logo when these pages get shared. |
+| 3 | **Old inert Google Ads conversion actions** (GA4 "Submit lead form", auto-detect "Contact") still in the account | Low | Low | Carried over from the 2026-08-28 watch items — optional cleanup now that the real manual conversion action is confirmed recording data (see `SEO_RECOMMENDATIONS.md`'s 2026-09-06 entry). Not urgent, just account hygiene. |
+
+**Items 1 done, same session (2026-09-06):** all 11 stale `lastmod`/`dateModified`
+dates corrected to their real last-edit dates (sitemap.xml homepage → 08-28,
+blog hub → 09-06, the rest → 08-19 or 08-28 to match actual git history; the
+NEA guide's JSON-LD `dateModified` bumped 08-05 → 08-28 to match its real
+diagram fix). `check-site`/`html-validate` both clean after.
+
+Items 2-3 not started — item 2 needs picking a relevant real photo per page
+(a small design decision, not just a metadata edit) so it's queued rather
+than done same-session; item 3 remains optional/low-priority.
+
+---
+
 ## Week of 2026-08-26
 
 Last ranking pass was 2026-08-19 (7 days stale — all 5 of that batch's items shipped

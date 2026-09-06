@@ -10,7 +10,7 @@ For forward-looking strategy (what to pursue next, and in what order,
 beyond the immediate punch list below) see `ROADMAP.md` instead — this file
 stays backward-looking (what's done, what's open right now).
 
-Last updated: 2026-09-06 (RSS feed shipped, GSC/Ads recheck — real indexing progress, conversion tracking confirmed working, new Ads advertiser-verification issue found).
+Last updated: 2026-09-06 (RSS feed shipped, GSC/Ads recheck — real indexing progress, conversion tracking confirmed working, new Ads advertiser-verification issue found, stale sitemap `lastmod`/`dateModified` dates fixed).
 
 **2026-09-06 session:** two pieces of work. (1) Shipped the RSS feed
 (`feed.xml`) — the last open item from the Week of 2026-08-26
@@ -28,7 +28,14 @@ a test. One new issue found and flagged (item #33): the Ads account shows an
 "Account is paused: Complete advertiser verification" banner — ambiguous
 urgency since real spend still happened in the last 7 days, but this needs
 the user to resolve directly (identity verification isn't something this
-session should do on their behalf).
+session should do on their behalf). A fresh continuous-improvement pass
+(`CONTINUOUS_IMPROVEMENT.md` Week of 2026-09-06) then found and fixed a
+real, related bug: `sitemap.xml`'s `lastmod` dates were stale on 11 of 13
+URLs (up to 11 days behind real edits, checked against `git log`), plus the
+NEA guide's JSON-LD `dateModified` hadn't been bumped for its 08-28 diagram
+fix — all corrected. Two more candidates queued, not yet built: service/blog
+`og:image` still on the plain logo (needs picking real photos per page), and
+optional cleanup of the 2 old inert Ads conversion actions.
 
 **2026-08-28 session, part 3 (Google Ads sitelink extensions):** user asked
 for help completing the Performance Max campaign's sitelinks, off two
@@ -349,6 +356,8 @@ outreach) and can't be started in a coding session.
 | 31 | "Ultra Studio" vs. "Ultrastudio Live" naming wrinkle in the new testimonial | Low | Low | Cosmetic, factually correct (two different real projects for the same client) — flagged for next time that testimonial copy is touched, not urgent enough to edit a live customer quote unprompted. | `DESIGN_FEEDBACK.md` 2026-08-28 entry |
 | ~~32~~ | ~~Google Ads sitelink extensions (Performance Max campaign)~~ — **DONE 2026-08-28**. Filled in the 3 Google-AI-suggested sitelinks (Blog Center, Industrial Noise, Office Cost Guide) and drafted a 6th (Home Theatre Cost, deliberately residential to balance the other 5 B2B-leaning ones) — all confirmed saved by the user directly in Ads. | Low-Med | Low | Done | This session |
 | 33 | **NEW — Google Ads account shows "Account is paused: Complete advertiser verification"** | High, time-sensitive | None (needs the account owner) | Found 2026-09-06 checking on the conversion-tracking fix. Ambiguous urgency — real spend still happened in the last 7 days (+SGD32.12), so it may not be fully blocking yet — but advertiser identity verification is exactly the kind of thing this session shouldn't handle (requires submitting identity/business documents on your behalf). **You need to open Google Ads and check/complete this yourself**, ideally soon, before it actually stops the campaign from serving. | `SEO_RECOMMENDATIONS.md` 2026-09-06 entry |
+| ~~34~~ | ~~Stale `sitemap.xml` `lastmod`/blog `dateModified` dates~~ — **DONE 2026-09-06**. 11 of 13 sitemap URLs were stale by up to 11 days vs. real `git log` edit dates; the NEA guide's JSON-LD `dateModified` was also stuck at 08-05 despite its 08-28 diagram fix. All corrected. | Med | Trivial | Done | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-09-06 |
+| 35 | Blog hub + all 3 service pages' `og:image`/`twitter:image` still point at the plain logo | Med | Low | Same fix already done for the homepage 2026-08-26 — never carried to the rest of the site. Needs picking a relevant real photo per page (small design call), queued not built. | `CONTINUOUS_IMPROVEMENT.md` Week of 2026-09-06 |
 
 **All actionable-by-me items through 2026-08-26 are done, plus #2 partially
 (website side) and #7 now technically unblocked (still thin on review count, holding
