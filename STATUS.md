@@ -10,32 +10,74 @@ For forward-looking strategy (what to pursue next, and in what order,
 beyond the immediate punch list below) see `ROADMAP.md` instead — this file
 stays backward-looking (what's done, what's open right now).
 
-Last updated: 2026-09-06 (RSS feed shipped, GSC/Ads recheck — real indexing progress, conversion tracking confirmed working, new Ads advertiser-verification issue found, stale sitemap `lastmod`/`dateModified` dates fixed).
+Last updated: 2026-09-06 (RSS feed, GSC/Ads recheck, sitemap freshness fix, a
+full SEO ranking check, ROADMAP.md's marketing phase expanded, and new
+referral/follow-up outreach templates — full recap below).
 
-**2026-09-06 session:** two pieces of work. (1) Shipped the RSS feed
-(`feed.xml`) — the last open item from the Week of 2026-08-26
-continuous-improvement list, see that file's entry and item #28 below. (2)
-User granted another one-time GSC/Ads login exception to check back on the
-2026-08-28 fixes. Real findings (full detail in `SEO_RECOMMENDATIONS.md`'s
-2026-09-06 entry): `site:b-acoustics.com` now shows 3 pages (up from 2, the
-homepage joined the 2 blog posts) — real progress; the sitemap's `Last read`
-date is still stuck at 21 Jul despite 2 resubmissions, nothing more to do
-there but wait on Google's own crawl schedule; the 3 service pages are still
-unindexed and their manual indexing requests were re-submitted (confirmed
-queued); and the 2026-08-28 Google Ads conversion action has recorded **2
-real conversions** — the fix is genuinely working, not just firing clean in
-a test. One new issue found and flagged (item #33): the Ads account shows an
-"Account is paused: Complete advertiser verification" banner — ambiguous
-urgency since real spend still happened in the last 7 days, but this needs
-the user to resolve directly (identity verification isn't something this
-session should do on their behalf). A fresh continuous-improvement pass
-(`CONTINUOUS_IMPROVEMENT.md` Week of 2026-09-06) then found and fixed a
-real, related bug: `sitemap.xml`'s `lastmod` dates were stale on 11 of 13
-URLs (up to 11 days behind real edits, checked against `git log`), plus the
-NEA guide's JSON-LD `dateModified` hadn't been bumped for its 08-28 diagram
-fix — all corrected. Two more candidates queued, not yet built: service/blog
-`og:image` still on the plain logo (needs picking real photos per page), and
-optional cleanup of the 2 old inert Ads conversion actions.
+**2026-09-06 session (full recap):** five pieces of work, all committed and
+pushed:
+1. **RSS feed shipped** (`feed.xml`) — the last open item from the Week of
+   2026-08-26 continuous-improvement list, see that file's entry and item
+   #28 below.
+2. **GSC/Ads recheck** (one-time login exception, granted again by the
+   user). Real findings (full detail in `SEO_RECOMMENDATIONS.md`'s
+   2026-09-06 entries): `site:b-acoustics.com` now shows 3 pages (up from
+   2, the homepage joined the 2 blog posts) — real progress; the sitemap's
+   `Last read` date is still stuck at 21 Jul despite 2 resubmissions,
+   nothing more to do there but wait on Google's own crawl schedule; the 3
+   service pages are still unindexed and their manual indexing requests
+   were re-submitted (confirmed queued); and the 2026-08-28 Google Ads
+   conversion action has recorded **2 real conversions** — the fix is
+   genuinely working, not just firing clean in a test. One new issue found
+   and flagged (item #33): the Ads account shows an "Account is paused:
+   Complete advertiser verification" banner — ambiguous urgency since real
+   spend still happened in the last 7 days, but this needs the user to
+   resolve directly.
+3. **Continuous-improvement pass**: found and fixed a real bug —
+   `sitemap.xml`'s `lastmod` dates were stale on 11 of 13 URLs (up to 11
+   days behind real edits, checked against `git log`), plus the NEA
+   guide's JSON-LD `dateModified` hadn't been bumped for its 08-28 diagram
+   fix — all corrected. Two candidates queued, not built: service/blog
+   `og:image` still on the plain logo (item #35), and optional cleanup of
+   the 2 old inert Ads conversion actions.
+4. **Full SEO ranking check** (9-query rotation) — see
+   `SEO_RECOMMENDATIONS.md`'s "SEO ranking check — 2026-09-06" entry. Real
+   positive: **branded-query visibility recovered** — bare `b-acoustics`
+   now ranks #1, and the quoted `"B-Acoustics" acoustic consultant` query
+   (which had gone to zero in August) now shows b-acoustics.com twice.
+   Caveat: checked while logged into the GBP account, worth a logged-out
+   re-confirm next time. New data point: GBP dashboard shows 2 recorded
+   customer interactions. Non-branded target keywords remain at zero,
+   including a page that's indexed but doesn't rank for its own topic —
+   confirms the constraint is backlink authority, not content/indexing.
+5. **`ROADMAP.md` updated**: Phase 1 closed out (everything actionable by
+   this session is done; the new Ads-verification item is the one
+   exception). Added **Phase 2b — Marketing channel diversification** at
+   the user's request for a long-term marketing plan beyond SEO/Ads:
+   referral/partnership outreach, a structured review-solicitation
+   process, LinkedIn content, a PR angle off the real Ultraband
+   testimonial, and retargeting once Ads verification clears.
+6. **Outreach Templates.md created** (repo root) — referral-partnership
+   email templates for architects/contractors (cold, warm, contractor
+   variant, LinkedIn note), plus two simplified client follow-up patterns
+   responding to feedback that the existing follow-up was too complex: a
+   residential/web-enquiry version (defer technical scoping to the site
+   visit, 3 questions max) and a real before/after for a B2B
+   drawings-based quote request (client details redacted from the repo —
+   same technical depth, restructured for legibility and tone). Also
+   published as a private, mobile-friendly Artifact
+   (tap-to-copy cards, matches the site's own visual identity) since the
+   user wanted something easy to read/use on a phone —
+   `https://claude.ai/code/artifact/b885a3e3-26bb-43bc-b298-19bbeb1fd660`.
+7. **Cross-project learnings file created**, at the user's request, for a
+   separate "reuse these lessons on future website projects" purpose —
+   deliberately **outside** this repo at
+   `C:\Users\Dylan\OneDrive\Desktop\Claude files\Website learnings\WEBSITE_LEARNINGS.md`.
+   Covers technical/dev patterns, SEO/AEO tactics, and marketing/Ads
+   learnings pulled from this project's real history. A memory note in
+   this project points future sessions at it.
+
+`check-site`/`html-validate` clean throughout. All commits pushed to `main`.
 
 **2026-08-28 session, part 3 (Google Ads sitelink extensions):** user asked
 for help completing the Performance Max campaign's sitelinks, off two
@@ -375,8 +417,11 @@ continuous-improvement idea-generation pass for new candidates.
 - **Google Ads conversion data** — **CONFIRMED WORKING 2026-09-06**: the 2026-08-28 conversion action (`R4F8CJ_4rekcEIXyrK5E`) has recorded 2 real conversions. No longer just-deployed-and-unverified — drop this watch item once Performance Max visibly starts optimizing off it (check back in a few more weeks).
 - **Google Ads advertiser verification** — tracked as new open item **#33** above, needs the user directly.
 - **Old misconfigured Ads conversion actions** — "Submit lead form" (GA4-based) and "Contact" (auto-detect-based) were left in place 2026-08-28 rather than deleted since they're inert (never fired) — optional cleanup: disable or delete them in Ads > Goals > Conversions once the new one is confirmed working, so they don't clutter the account.
-- **Branded-query visibility** — downgraded from "active regression" to "stable at zero": the quoted query `"B-Acoustics" acoustic consultant` and bare `b-acoustics` have both shown 0 organic results across 3 consecutive runs now (2026-08-07, and again 2026-08-26). No longer needs flagging as newly-worsening each run, but still worth a periodic check.
-- **Local pack absence** — new 2026-08-26 finding: a Places local pack now appears on 3 of the 6 target-keyword searches, but B-Acoustics isn't among the top-3 shown results on any of them. Same root cause as the indexing/authority gap above, not a separate issue — re-check alongside the next full rotation.
+- **Branded-query visibility** — **RECOVERED 2026-09-06**: after 3 runs at zero, bare `b-acoustics` now ranks #1 and the quoted `"B-Acoustics" acoustic consultant` query shows b-acoustics.com twice. Caveat: checked while logged into the GBP account, which can bias personalization on brand-name searches specifically — worth a logged-out re-confirm on the next run before fully trusting this as organic.
+- **GBP customer interactions** — new 2026-09-06 baseline: 2 recorded interactions shown on the GBP dashboard. Watch whether this grows over future checks as a leading indicator ahead of review counts.
+- **Local pack absence** — new 2026-08-26 finding, unchanged 2026-09-06: a Places local pack now appears on some target-keyword searches, but B-Acoustics isn't among the top-3 shown results on any of them. Same root cause as the indexing/authority gap above, not a separate issue — re-check alongside the next full rotation.
+- **Referral/marketing outreach not yet sent** — `Outreach Templates.md` and the mobile Artifact (`STATUS.md`'s 2026-09-06 entry above) are ready; actually sending them to architects/contractors and setting up the structured review-solicitation process (`ROADMAP.md` Phase 2b) needs the user.
+- **Service/blog `og:image` still on the plain logo** — tracked as open item **#35** above, queued not built (needs picking a relevant real photo per page).
 - **GSC-capable MCP connector** — not connected as of last check (2026-08-26). Would unblock real daily/weekly SEO data automation. Ask "is a Search-Console connector available now?" next session.
 - **GitHub App install on `dylanlimjd-png/B-acoustics`** — not verified as of last check. Needed before the weekly tracker doc can be committed by an unattended cloud routine.
 - **Blank favicon in Google search results** — not due for a recheck until ~2026-08-13 (one month after it shipped).
