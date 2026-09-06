@@ -26,16 +26,17 @@ so the reasoning stays visible.
 
 ## Phase 1 — Let current work land (next 2-4 weeks)
 
-Mostly monitoring, not new work — both major fixes from 2026-08-28 need
-time to show results before the next real decision point.
+**Phase 1 — done as of 2026-09-06** for everything actionable by me; two
+items still need you.
 
 | Action | Actionable by me? |
 |---|---|
-| Re-check GSC indexing coverage (`site:` + Page indexing report) — did the resubmitted sitemap + manual indexing requests actually move the needle? | Yes, next session (needs GSC access again — ask first) |
-| Re-check Ads Goals > Summary — is the new conversion action reporting real, non-zero data? | Yes, next session (needs Ads access again — ask first) |
+| ~~Re-check GSC indexing coverage~~ — **done 2026-09-06**: real progress, `site:` now shows 3 pages (up from 2); sitemap + all 3 service-page indexing requests re-submitted. | Done |
+| ~~Re-check Ads Goals > Summary~~ — **done 2026-09-06**: confirmed, the conversion action has recorded 2 real conversions. New issue found instead: an "Account is paused: Complete advertiser verification" banner needs you directly (`STATUS.md` item #33). | Done (surfaced a new user-action item) |
 | Keep soliciting GBP reviews (still just 2) | No — needs you |
 | Upload GBP photo gallery (website side done, all raw photos archived and ready) | No — needs you, ~10 minutes |
-| Finish the RSS feed (leftover item from the 2026-08-26 continuous-improvement list) | Yes |
+| ~~Finish the RSS feed~~ — **done 2026-09-06**. | Done |
+| **NEW**: Resolve Google Ads advertiser verification before it blocks the campaign | No — needs you |
 
 ## Phase 2 — Authority & trust (1-3 months)
 
@@ -49,6 +50,25 @@ organic rankings, more than further code changes will.
 | Turn "Selected Work" tiles into full case-study pages (problem → approach → result) once more real project photos exist — also gives Google more unique indexable content | Yes, once source material exists |
 | Replace remaining 2 stock "Selected Work" tiles (Home Theatre, Industrial Plant) with real project photos as they become available | Yes, once photos exist |
 | Revisit `AggregateRating`/`Review` schema once GBP review count justifies it (currently thin at 2) | Yes — judgment call on timing |
+
+## Phase 2b — Marketing channel diversification (1-6 months, runs alongside Phase 2/3)
+
+**Added 2026-09-06**, at the user's request for a long-term marketing plan
+beyond SEO/Ads. B-Acoustics' actual buying pattern is relationship- and
+referral-driven B2B — architects, interior designers, contractors, MCST/
+facilities managers — more than pure organic search discovery, which the
+site-only roadmap above doesn't fully address. These channels are lower
+code-effort but higher relationship-effort; most need you.
+
+| Action | Actionable by me? |
+|---|---|
+| **Referral/partnership channel**: reach out to architects, ID firms, and contractors who repeatedly need an acoustic consultant on their projects — a standing referral relationship (formal fee or informal reciprocal) compounds faster than cold SEO for B2B trades | No — needs your relationships |
+| **Structured review-solicitation process**: turn review-asking from ad hoc into a standard step at project handoff (e.g., a short WhatsApp/email template sent to every client at completion) — the 2 existing reviews both came from real happy clients, the gap is process, not client satisfaction | Yes — I can draft the template; sending it each time needs you |
+| **LinkedIn organic content**: B2B decision-makers (architects, developers, facilities managers) are more reachable there than via search for a young domain — post project case studies, before/after acoustic-treatment photos (once consented), and short "what we learned" technical notes | Partial — I can draft post copy, you post/own the account and relationships |
+| **Case-study content marketing**: expand "Selected Work" tiles into full narrative case studies (problem → approach → measured result) — doubles as indexable content (Phase 3) and as LinkedIn/outreach material | Yes, once source material exists (ties to Phase 2's case-study item) |
+| **Industry credibility**: MIOA membership/directory listing, SG business directories — research already done in `Backlink Targets.md`, submission needs you | No — needs you |
+| **Press/PR angle**: the real, named Ultraband testimonial (a music studio client) is a usable local-press or trade-press hook ("local band builds custom studio") — more interesting to a journalist than generic B2B copy | No — needs you to pitch it, I can help draft |
+| **Retargeting / remarketing**: once Ads advertiser verification is resolved and enough site traffic exists, a low-cost remarketing campaign to past site visitors is cheaper per lead than pure prospecting PMax | Yes, once verification is resolved and traffic justifies it |
 
 ## Phase 3 — Content & SEO expansion (3-6 months)
 
@@ -87,6 +107,16 @@ reviews, outreach relationships, project photos/case-study material — not
 more code. The technical foundation (CI, schema, performance, now Ads
 tracking) is in solid shape; the constraint has shifted to real-world
 business inputs.
+
+**Update 2026-09-06**: this held up under a fresh ranking check. Non-branded
+target keywords are still at zero — including a page that's indexed but
+still doesn't rank for its own exact topic, which is direct evidence the
+bottleneck really is off-page authority, not content or indexing mechanics.
+The one genuinely positive movement (branded-query visibility recovering,
+`SEO_RECOMMENDATIONS.md`'s 2026-09-06 entry) came from real-world signals
+(the new GBP review, direct traffic), not a code change — reinforcing why
+Phase 2b above leans on relationships and referrals rather than more
+technical SEO work.
 
 ## How to keep this current
 
