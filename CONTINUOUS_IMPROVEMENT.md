@@ -12,6 +12,22 @@ first, bigger/strategic bets later even if their absolute impact ceiling is high
 
 ---
 
+## Week of 2026-09-21
+
+Grounded in `git log` per file vs. sitemap dates, and a grep across share-image tags.
+
+| # | Topic | Impact | Effort | Status |
+|---|---|---|---|---|
+| 1 | Per-page `og:image`/`twitter:image` for blog hub + 3 service pages (carried from 09-06 item 2) | Med | Low | **Done** — real Ultra Studio photo on the hub, real office photo on the office page, own hero images on party-wall/industrial (AI-generated, no real photos yet) |
+| 2 | `sitemap.xml` `lastmod` stale again after item 1 | Med | Trivial | **Done** — blog hub, office-cost post and 3 service pages set to 2026-09-21. NEA guide deliberately left at 08-28: its 09-06 commit only touched date metadata, not content |
+| 3 | Office-cost blog post share image | Low-Med | Trivial | **Done** — real office photo (only post with a genuinely matching real photo) |
+| 4 | Remaining 5 blog posts still share the plain logo | Low-Med | Low | Queued — no matching real photos; needs a design call or new photography |
+| 5 | Old inert Ads conversion actions cleanup | Low | Low | Queued — needs Ads login, ask first |
+
+`check-site` and `html-validate` clean after.
+
+---
+
 ## Week of 2026-09-06
 
 Last ranking pass was 2026-08-26 (all 5 items now shipped — RSS feed landed
