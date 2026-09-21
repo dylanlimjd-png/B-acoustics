@@ -26,6 +26,44 @@ Grounded in `git log` per file vs. sitemap dates, and a grep across share-image 
 
 `check-site` and `html-validate` clean after.
 
+**Internal-linking audit (2026-09-21, SEO idea #1 of the week):** ran a script over
+all 14 pages, counting links in the shared nav/footer separately from links inside
+the page body.
+
+- **Sitewide structure is complete.** Every content page links to every other
+  content page (via the shared nav/footer), and 404 is the only page with no
+  inbound links. Nothing is orphaned.
+- **Contextual (in-body) inbound links are uneven:**
+
+| Page | Indexed? | Contextual inbound links |
+|---|---|---|
+| STC vs NRC guide | Yes | 7 |
+| Party-wall service | Yes | 5 |
+| NEA boundary noise guide | No | 4 |
+| HDB vs condo post | No | 3 |
+| Office-cost post | Yes | 2 |
+| Office service | No | 2 |
+| Industrial service | No | 2 |
+| Home theatre cost post | No | 1 |
+| Neighbour noise post | No | 1 |
+
+  Correlation with indexing is only partial (the NEA guide has 4 and is still
+  unindexed), so this is a weak signal, not a proven cause.
+- **Generic anchor text.** The homepage's three service links all read "Learn
+  more →", and every blog and service page ends with "Get a tailored quote" /
+  "See our services" pointing at the homepage. None of those anchors describe the
+  target page.
+- **Proposed fixes (not built):**
+  1. Add 1-2 descriptive in-body links to the home theatre and neighbour-noise
+     posts, e.g. from the HDB-vs-condo and party-wall pages, which are already
+     indexed and closely related.
+  2. Add contextual links to the office and industrial service pages from the
+     indexed pages (office-cost post already links to the office page; the STC
+     guide could link to industrial).
+  3. Replace "Learn more →" on the homepage with descriptive anchors (e.g.
+     "Office acoustics in Singapore").
+  4. Link the blog hub from body copy on the homepage, not only from the nav.
+
 ---
 
 ## Week of 2026-09-06
