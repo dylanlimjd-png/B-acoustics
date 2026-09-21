@@ -10,9 +10,40 @@ For forward-looking strategy (what to pursue next, and in what order,
 beyond the immediate punch list below) see `ROADMAP.md` instead — this file
 stays backward-looking (what's done, what's open right now).
 
-Last updated: 2026-09-06 (RSS feed, GSC/Ads recheck, sitemap freshness fix, a
+Last updated: 2026-09-21 (Ads verification cleared, budget SGD10/day, indexing 5 pages, share images, CI pass, Vercel evaluation; full recap below). Previous: 2026-09-06 (RSS feed, GSC/Ads recheck, sitemap freshness fix, a
 full SEO ranking check, ROADMAP.md's marketing phase expanded, and new
 referral/follow-up outreach templates — full recap below).
+
+**2026-09-21 session (full recap):** follow-up on the 2026-09-06 session, all
+committed and pushed (last commit `20b2ae6`).
+1. **Google Ads verification cleared** (user completed it). Live check: the
+   "Account is paused" banner is gone (item #33 closed). New finding, item
+   #36: campaign is "Eligible" but served 0 impressions / SGD0 for 14-20 Sep,
+   and conversion status shows tag inactive, unverified, 0 recording.
+   Re-check in 2-3 days.
+2. **Ads budget lowered SGD15 to SGD10/day** at the user's request, confirmed
+   in the campaigns table.
+3. **Indexing recheck**: `site:b-acoustics.com` now shows **5 pages** (was
+   3): homepage, disclaimer, STC-vs-NRC guide, party-wall service page,
+   office-cost post. Item #29 updated. Logged-out branded-query re-confirm
+   still needs the user (an incognito window).
+4. **Item #35 done**: per-page `og:image`/`twitter:image` on blog hub + 3
+   service pages (real photos where they exist; party-wall/industrial use
+   their AI-generated hero images).
+5. **Continuous-improvement pass (Week of 2026-09-21)**: proposed and
+   status of actions:
+   - Per-page share images for hub + services: **done**
+   - `sitemap.xml` `lastmod` stale again after those edits: **done**
+     (NEA guide deliberately left at 08-28, its 09-06 commit was metadata only)
+   - Office-cost blog post share image to real office photo: **done**
+   - Remaining 5 blog posts still on the plain logo: **queued** (no real
+     matching photos, needs a design call or new photography)
+   - Cleanup of 2 old inert Ads conversion actions: **queued** (needs Ads
+     login, ask first)
+6. **Vercel hosting evaluated, decided to stay on GitHub Pages** (site
+   already served from a Singapore edge; backlink authority is the real
+   constraint). Saved to memory. Cloudflare in front is the lighter option
+   if real HTTP headers ever matter.
 
 **2026-09-06 session (full recap):** five pieces of work, all committed and
 pushed:
