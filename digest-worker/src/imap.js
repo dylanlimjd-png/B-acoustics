@@ -89,9 +89,31 @@ export class ImapClient {
   }
 
   async selectInbox() {
-    const { lines } = await this.command('EXAMINE INBOX');
+    return this.examine('INBOX');
+  }
+
+  async examine(mailbox) {
+    const { lines } = await this.command(`EXAMINE ${quote(mailbox)}`);
     const v = lines.map((l) => l.match(/\[UIDVALIDITY (\d+)\]/)).find(Boolean);
     return { uidValidity: v ? v[1] : null };
+  }
+
+  // Finds the Sent folder: the \Sent special-use flag if advertised, else by name.
+  async findSentMailbox() {
+    const { lines } = await this.command('LIST "" "*"');
+    const boxes = lines
+      .map((l) => l.match(/^\* LIST \(([^)]*)\) (?:"[^"]*"|NIL) (.+)$/))
+      .filter(Boolean)
+      .map(([, flags, name]) => ({ flags, name: name.replace(/^"(.*)"$/, '$1').replace(/\\(["\\])/g, '$1') }));
+    const flagged = boxes.find((b) => /\\Sent\b/i.test(b.flags));
+    if (flagged) return flagged.name;
+    const named = boxes.find((b) => /^(INBOX[./])?Sent( Items| Messages)?$/i.test(b.name));
+    return named ? named.name : null;
+  }
+
+  async hasSentTo(address, since) {
+    const uids = await this.searchUids(`SINCE ${imapDate(since)} TO ${quote(address)}`);
+    return uids.length > 0;
   }
 
   async searchUids(criteria) {
