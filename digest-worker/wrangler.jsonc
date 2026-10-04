@@ -7,7 +7,7 @@
   // 00:00 UTC = 08:00 Singapore, daily.
   "triggers": { "crons": ["0 0 * * *"] },
   "kv_namespaces": [
-    { "binding": "DIGEST_STATE", "id": "REPLACE_WITH_KV_ID" }
+    { "binding": "DIGEST_STATE", "id": "f252e1bcf80d4861bf4eedba0d523bb8" }
   ],
   "vars": {
     "IMAP_HOST": "imap.porkbun.com",
