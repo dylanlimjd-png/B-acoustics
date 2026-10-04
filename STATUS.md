@@ -10,9 +10,24 @@ For forward-looking strategy (what to pursue next, and in what order,
 beyond the immediate punch list below) see `ROADMAP.md` instead — this file
 stays backward-looking (what's done, what's open right now).
 
-Last updated: 2026-09-21 (Ads verification cleared, budget SGD10/day, indexing 5 pages, share images, CI pass, Vercel evaluation; full recap below). Previous: 2026-09-06 (RSS feed, GSC/Ads recheck, sitemap freshness fix, a
+Last updated: 2026-10-04 (daily enquiry digest + reach-out tracker live; see below). Previous: 2026-09-21 (Ads verification cleared, budget SGD10/day, indexing 5 pages, share images, CI pass, Vercel evaluation; full recap below). Earlier: 2026-09-06 (RSS feed, GSC/Ads recheck, sitemap freshness fix, a
 full SEO ranking check, ROADMAP.md's marketing phase expanded, and new
 referral/follow-up outreach templates — full recap below).
+
+**2026-10-04 session:**
+1. **Enquiry digest LIVE** (`digest-worker/`, Cloudflare Worker `b-acoustics-digest`).
+   Daily at 12:00 SGT it reads the Porkbun studio@ mailbox (read-only IMAP),
+   summarises each enquiry with Claude and emails a digest to the team via
+   Resend. Each enquiry has a signed "Update status" page (who, status,
+   site visit date, note, with history); replies sent from studio@ are
+   auto-detected. Digest sections: new, awaiting reach-out (with age),
+   upcoming site visits, updates since last digest. Runs on Cloudflare, not
+   this PC. First real digest sent manually 2026-10-04 (5 enquiries).
+   Recipient emails are set on the Worker only (repo is public). Fixed a
+   CPU-limit failure on large emails the same day. Commits `f5c2528`..`a517d1b`, pushed.
+2. **Not done this session (carry over):** `site:` indexing re-check (Chrome
+   extension wasn't connected; restart Chrome) and Ads delivery / conversion
+   tag re-check (#36, needs Ads login approval).
 
 **2026-09-21 session (full recap):** follow-up on the 2026-09-06 session, all
 committed and pushed (last commit `20b2ae6`).
