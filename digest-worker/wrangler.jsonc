@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "b-acoustics-digest",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  // 00:00 UTC = 08:00 Singapore, daily.
+  "triggers": { "crons": ["0 0 * * *"] },
+  "kv_namespaces": [
+    { "binding": "DIGEST_STATE", "id": "REPLACE_WITH_KV_ID" }
+  ],
+  "vars": {
+    "IMAP_HOST": "imap.porkbun.com",
+    "IMAP_USER": "studio@b-acoustics.com",
+    "DIGEST_TO": "studio@b-acoustics.com",
+    "ALERT_TO": "studio@b-acoustics.com"
+  }
+  // Secrets (wrangler secret put): IMAP_PASSWORD, ANTHROPIC_API_KEY, RESEND_API_KEY, RUN_TOKEN
+}
