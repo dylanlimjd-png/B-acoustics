@@ -42,16 +42,31 @@ export class ImapClient {
 
   async readLine() {
     let i;
-    while ((i = indexOfCrlf(this.buf)) === -1) await this.fill();
+    let from = 0;
+    while ((i = indexOfCrlf(this.buf, from)) === -1) {
+      from = Math.max(0, this.buf.length - 1);
+      await this.fill();
+    }
     const line = dec.decode(this.buf.subarray(0, i));
     this.buf = this.buf.slice(i + 2);
     return line;
   }
 
+  // Copies straight into a preallocated buffer: re-concatenating per chunk is
+  // quadratic and blew the Workers CPU limit on emails with photo attachments.
   async readBytes(n) {
-    while (this.buf.length < n) await this.fill();
-    const out = this.buf.slice(0, n);
-    this.buf = this.buf.slice(n);
+    const out = new Uint8Array(n);
+    let filled = Math.min(n, this.buf.length);
+    out.set(this.buf.subarray(0, filled), 0);
+    this.buf = this.buf.slice(filled);
+    while (filled < n) {
+      const { value, done } = await this.reader.read();
+      if (done) throw new Error('IMAP connection closed unexpectedly');
+      const take = Math.min(n - filled, value.length);
+      out.set(value.subarray(0, take), filled);
+      filled += take;
+      if (take < value.length) this.buf = value.slice(take);
+    }
     return out;
   }
 
@@ -127,8 +142,10 @@ export class ImapClient {
     return uids.sort((a, b) => a - b);
   }
 
-  async fetchRaw(uid) {
-    const { literals } = await this.command(`UID FETCH ${uid} (BODY.PEEK[])`);
+  // Only the first maxBytes: enough for headers, the text part and attachment
+  // names, without downloading and decoding multi-MB photos.
+  async fetchRaw(uid, maxBytes = 400000) {
+    const { literals } = await this.command(`UID FETCH ${uid} (BODY.PEEK[]<0.${maxBytes}>)`);
     if (!literals.length) throw new Error(`IMAP returned no body for UID ${uid}`);
     return literals[0];
   }
