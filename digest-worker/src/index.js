@@ -60,11 +60,27 @@ function addrText(a) {
   return a.name ? `${a.name} <${a.address}>` : a.address || '';
 }
 
+// Opens a logged-in IMAP session, retrying with a fresh socket: Porkbun
+// occasionally drops the connection before the greeting ("Stream was cancelled").
+async function openImap(env, attempts = 3) {
+  for (let i = 1; ; i++) {
+    const imap = new ImapClient(env.IMAP_HOST);
+    try {
+      await imap.open(env.IMAP_USER, env.IMAP_PASSWORD);
+      return imap;
+    } catch (err) {
+      await imap.close();
+      if (i >= attempts || /LOGIN failed/.test(err.message)) throw err;
+      console.warn(`IMAP connect attempt ${i} failed, retrying`, err.message);
+      await new Promise((r) => setTimeout(r, 5000 * i));
+    }
+  }
+}
+
 async function fetchNewMessages(env) {
   const prev = JSON.parse((await env.DIGEST_STATE.get(STATE_KEY)) || 'null');
-  const imap = new ImapClient(env.IMAP_HOST);
+  const imap = await openImap(env);
   try {
-    await imap.open(env.IMAP_USER, env.IMAP_PASSWORD);
     const { uidValidity } = await imap.selectInbox();
 
     let uids;
@@ -361,9 +377,9 @@ async function detectEmailReplies(env, open, nowIso) {
   const candidates = open.filter((r) => r.x.contact_email && !OUR_ADDRESSES.has(r.x.contact_email.toLowerCase()));
   if (!candidates.length) return [];
   const changed = [];
-  const imap = new ImapClient(env.IMAP_HOST);
+  let imap;
   try {
-    await imap.open(env.IMAP_USER, env.IMAP_PASSWORD);
+    imap = await openImap(env);
     const sent = await imap.findSentMailbox();
     if (!sent) {
       console.warn('No Sent folder found; skipping reply detection');
@@ -380,7 +396,7 @@ async function detectEmailReplies(env, open, nowIso) {
     // Reply detection is a nice-to-have; never let it block the digest.
     console.error('Reply detection failed', err);
   } finally {
-    await imap.close();
+    if (imap) await imap.close();
   }
   return changed;
 }
