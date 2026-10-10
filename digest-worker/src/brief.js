@@ -98,11 +98,34 @@ function enquiryText(x, subject) {
 }
 
 // Research call with web search / fetch; resumes pause_turn. Returns notes with [n] markers and the numbered sources.
+// Web tools need enabling for the organisation in the Claude Console; if they are refused (403), fall back to
+// search only, then to no web access (brief written from the enquiry alone and labelled as such).
+const TOOLSETS = [['web_search', 'web_fetch'], ['web_search'], []];
+
 async function research(client, x, subject) {
-  const tools = [
-    { type: 'web_search_20260209', name: 'web_search', max_uses: 6, user_location: { type: 'approximate', country: 'SG', city: 'Singapore', timezone: 'Asia/Singapore' } },
+  let lastErr;
+  for (const names of TOOLSETS) {
+    try {
+      return { ...(await researchWith(client, x, subject, names)), web: names };
+    } catch (err) {
+      if (err?.status !== 403) throw err;
+      lastErr = err;
+      console.warn(`Web tools refused (${names.join(', ') || 'none'}), trying fewer`);
+    }
+  }
+  throw lastErr;
+}
+
+async function researchWith(client, x, subject, names) {
+  const all = [
+    // no user_location: the API rejects country SG; the prompt already sets the Singapore context
+    { type: 'web_search_20260209', name: 'web_search', max_uses: 6 },
     { type: 'web_fetch_20260209', name: 'web_fetch', max_uses: 4 },
   ];
+  const tools = all.filter((t) => names.includes(t.name));
+  const offline = !tools.length
+    ? '\n\nYou have no web access for this enquiry. Do not claim to have checked anything online: for section 1 say the background was not checked, and base sections 2 to 5 on the enquiry and your general knowledge, marking every regulation "to verify".'
+    : '';
   const user = { role: 'user', content: `<enquiry>\n${enquiryText(x, subject)}\n</enquiry>\n\nResearch this enquiry and write the notes.` };
   const blocks = [];
   let messages = [user];
@@ -111,7 +134,7 @@ async function research(client, x, subject) {
     const res = await client.beta.messages.create({
       model: MODEL, max_tokens: 16000, ...FALLBACK,
       output_config: { effort: 'medium' },
-      system: RESEARCH_SYSTEM, tools, messages,
+      system: RESEARCH_SYSTEM + offline, ...(tools.length ? { tools } : {}), messages,
     });
     usage.input_tokens += res.usage?.input_tokens || 0;
     usage.output_tokens += res.usage?.output_tokens || 0;
@@ -167,6 +190,7 @@ export async function makeBrief(client, x, subject) {
   for (const q of b.requirements) q.sources = valid(q.sources);
   return {
     ...b,
+    web: r.web,
     sources: r.sources,
     usage: {
       input_tokens: r.usage.input_tokens + s.usage.input_tokens,
@@ -195,6 +219,7 @@ export function briefHtml(brief) {
     : '<p style="margin:4px 0 0;color:#667085">None noted.</p>');
   const H = 'font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#475467;margin:12px 0 0;font-weight:600';
   return `<div style="margin:14px 0 0;padding:12px 14px;background:#f9fafb;border-radius:6px;font-size:14px">
+  ${brief.web && !brief.web.length ? '<div style="margin:0 0 8px;padding:6px 8px;background:#fffaeb;color:#b54708;font-size:12px;border-radius:4px">No web research this time (web search is not enabled for the API organisation), so the background was not checked and regulations are from general knowledge only.</div>' : ''}
   <div style="font-size:13px"><strong style="color:${FIT_COLOUR[brief.fit] || '#344054'}">${esc(brief.fit)} fit</strong> · value ${esc(brief.value_band)} · ${esc(brief.customer_type.replace('_', ' '))} · ${esc(brief.confidence)} confidence</div>
   <div style="${H}">Background</div><p style="margin:4px 0 0">${esc(brief.background)}${refs(brief.background_sources)}</p>
   <div style="${H}">Potential issues</div>${list(brief.issues)}

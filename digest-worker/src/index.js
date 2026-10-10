@@ -266,7 +266,7 @@ export function renderDigest({ fresh, waiting, updates, visits, skipped, links, 
       return `<tr>
   <td style="padding:6px 12px 6px 0;vertical-align:top"><strong>${esc(who(r))}</strong><br><span style="color:#667085">${esc(r.x.service_needed || r.subject)}</span><br><span style="color:#667085">${esc(contact)}</span></td>
   <td style="padding:6px 12px 6px 0;vertical-align:top;color:${colour};white-space:nowrap">${d === 0 ? 'today' : `${d} day${d === 1 ? '' : 's'}`}</td>
-  <td style="padding:6px 0;vertical-align:top;white-space:nowrap"><a href="${esc(links[r.id])}">Update</a></td>
+  <td style="padding:6px 0;vertical-align:top;white-space:nowrap"><a href="${esc(links[r.id])}">Update</a>${r.x.brief && !r.x.brief.error ? '<br><span style="color:#067647;font-size:12px">brief ready</span>' : ''}</td>
 </tr>`;
     })
     .join('');
@@ -507,6 +507,28 @@ async function runDigest(env, { dryRun = false, briefs = true } = {}) {
   return { ...summary, sent: Boolean(html) };
 }
 
+// One-off backfill: adds a brief to an enquiry that is still open but arrived before briefs existed (or whose
+// brief failed). One enquiry per call so each request stays short; call again until remaining is 0.
+async function backfillOne(env) {
+  const todo = (await loadRecords(env))
+    .filter((r) => r.status === 'open' && (!r.x.brief || r.x.brief.error))
+    .sort((a, b) => a.receivedAt.localeCompare(b.receivedAt));
+  if (!todo.length) return { done: null, remaining: 0 };
+  const r = todo[0];
+  let brief;
+  try {
+    brief = await makeBrief(new Anthropic({ apiKey: env.ANTHROPIC_API_KEY }), r.x, r.subject);
+  } catch (err) {
+    console.error('Backfill brief failed', r.subject, err);
+    brief = { error: 'research failed' };
+  }
+  // re-read so a status update made meanwhile is kept; only the brief is added
+  const current = (await env.DIGEST_STATE.get(ENQ_PREFIX + r.id, 'json')) || r;
+  current.x.brief = brief;
+  await env.DIGEST_STATE.put(ENQ_PREFIX + r.id, JSON.stringify(current));
+  return { done: { id: r.id, subject: r.subject, ok: !brief.error, usage: brief.usage || null }, remaining: todo.length - 1, html: briefHtml(brief) };
+}
+
 async function alertFailure(env, err) {
   try {
     await sendEmail(env, recipients(env.ALERT_TO), 'Enquiry digest failed', `<p>The daily enquiry digest did not run:</p><pre>${esc(err.stack || err.message)}</pre><p>No emails were skipped: the next run will pick them up.</p>`);
@@ -568,9 +590,18 @@ export default {
     }
     // Manual trigger for testing: GET /run?dry=1 with "Authorization: Bearer <RUN_TOKEN>".
     // dry=1 returns the digest HTML without sending or saving anything; brief=0 skips the (paid) web research.
-    if (url.pathname !== '/run') return new Response('Not found', { status: 404 });
+    // POST /backfill (same auth) adds a brief to the oldest open enquiry without one; repeat until remaining is 0.
+    if (url.pathname !== '/run' && url.pathname !== '/backfill') return new Response('Not found', { status: 404 });
     if (!env.RUN_TOKEN || request.headers.get('Authorization') !== `Bearer ${env.RUN_TOKEN}`) {
       return new Response('Unauthorized', { status: 401 });
+    }
+    if (url.pathname === '/backfill') {
+      if (request.method !== 'POST') return new Response('Use POST', { status: 405 });
+      try {
+        return Response.json(await backfillOne(env));
+      } catch (err) {
+        return Response.json({ ok: false, error: err.message }, { status: 500 });
+      }
     }
     try {
       const dryRun = url.searchParams.get('dry') === '1';
