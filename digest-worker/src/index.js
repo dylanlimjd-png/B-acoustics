@@ -1,10 +1,13 @@
 import Anthropic from '@anthropic-ai/sdk';
 import PostalMime from 'postal-mime';
 import { ImapClient, imapDate } from './imap.js';
+import { makeBrief, briefHtml } from './brief.js';
 
 const STATE_KEY = 'imap:state';
 const MAX_BODY_CHARS = 60000;
 const DIGEST_FROM = 'B-Acoustics Digest <noreply@b-acoustics.com>';
+// Background briefs (web research) per run; more than this are listed without one. BRIEFS=off disables them.
+const DEFAULT_BRIEF_MAX = 5;
 
 const CATEGORIES = ['new_enquiry', 'client_follow_up', 'supplier_or_vendor', 'spam_or_marketing', 'other'];
 const REPORTABLE = new Set(['new_enquiry', 'client_follow_up']);
@@ -247,6 +250,7 @@ export function renderDigest({ fresh, waiting, updates, visits, skipped, links, 
   <p style="margin:0 0 10px">${esc(x.problem_summary)}</p>
   <table style="border-collapse:collapse;font-size:14px">${detailRows(x)}</table>
   <p style="margin:10px 0 0"><strong>Next step:</strong> ${esc(x.suggested_next_step)}</p>
+  ${briefHtml(x.brief)}
   ${x.truncated ? '<p style="margin:6px 0 0;color:#667085;font-size:12px">Long email: only the first part was summarised.</p>' : ''}
   ${done}
   <p style="margin:14px 0 0"><a href="${esc(links[r.id])}" style="${BUTTON}">Update status</a></p>
@@ -329,6 +333,7 @@ ${saved ? '<p class="saved">Saved. It will show in the next digest.</p>' : ''}
 <h1 style="font-size:18px;margin:6px 0 8px">${esc(r.subject || '(no subject)')}</h1>
 <p>${esc(r.x.problem_summary)}</p>
 <table style="border-collapse:collapse;font-size:14px">${detailRows(r.x)}</table>
+${briefHtml(r.x.brief)}
 ${history}
 <h2 style="font-size:16px;margin:22px 0 0">Add an update</h2>
 <form method="post" action="${esc(actionUrl)}">
@@ -401,7 +406,7 @@ async function detectEmailReplies(env, open, nowIso) {
   return changed;
 }
 
-async function runDigest(env, { dryRun = false } = {}) {
+async function runDigest(env, { dryRun = false, briefs = true } = {}) {
   const now = Date.now();
   const nowIso = new Date(now).toISOString();
   const { messages, nextState } = await fetchNewMessages(env);
@@ -424,6 +429,22 @@ async function runDigest(env, { dryRun = false } = {}) {
       history: [],
     };
     (REPORTABLE.has(x.category) ? fresh : skipped).push(rec);
+  }
+
+  // Pre-call brief (background, issues, opportunities, regulations) for new enquiries only.
+  // Runs before anything is saved, so a failed run is retried in full next time; a failed brief never blocks the digest.
+  const briefMax = briefs && env.BRIEFS !== 'off' ? Number(env.BRIEF_MAX || DEFAULT_BRIEF_MAX) : 0;
+  let briefed = 0;
+  for (const rec of fresh) {
+    if (rec.x.category !== 'new_enquiry') continue;
+    if (briefed >= briefMax) { if (briefMax) rec.x.brief = { error: `over the ${briefMax}-per-run limit` }; continue; }
+    briefed++;
+    try {
+      rec.x.brief = await makeBrief(client, rec.x, rec.subject);
+    } catch (err) {
+      console.error('Brief failed', rec.subject, err);
+      rec.x.brief = { error: 'research failed' };
+    }
   }
 
   const existing = await loadRecords(env);
@@ -455,7 +476,7 @@ async function runDigest(env, { dryRun = false } = {}) {
   const dateLabel = new Date(now).toLocaleDateString('en-SG', { timeZone: 'Asia/Singapore', day: 'numeric', month: 'short', year: 'numeric' });
   const shouldSend = fresh.length || waiting.length || updates.length || visits.length;
   const html = shouldSend ? renderDigest({ fresh, waiting, updates, visits, skipped, links, dateLabel, now }) : null;
-  const summary = { scanned: messages.length, fresh: fresh.length, waiting: waiting.length, updates: updates.length, visits: visits.length };
+  const summary = { scanned: messages.length, fresh: fresh.length, briefed, waiting: waiting.length, updates: updates.length, visits: visits.length };
 
   if (dryRun) return { ...summary, html };
 
@@ -546,14 +567,14 @@ export default {
       return handleStatusPage(request, env, url);
     }
     // Manual trigger for testing: GET /run?dry=1 with "Authorization: Bearer <RUN_TOKEN>".
-    // dry=1 returns the digest HTML without sending or saving anything.
+    // dry=1 returns the digest HTML without sending or saving anything; brief=0 skips the (paid) web research.
     if (url.pathname !== '/run') return new Response('Not found', { status: 404 });
     if (!env.RUN_TOKEN || request.headers.get('Authorization') !== `Bearer ${env.RUN_TOKEN}`) {
       return new Response('Unauthorized', { status: 401 });
     }
     try {
       const dryRun = url.searchParams.get('dry') === '1';
-      const result = await runDigest(env, { dryRun });
+      const result = await runDigest(env, { dryRun, briefs: url.searchParams.get('brief') !== '0' });
       if (dryRun && result.html) return new Response(result.html, { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
       return Response.json(result);
     } catch (err) {
