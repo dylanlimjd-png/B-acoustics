@@ -12,6 +12,25 @@ first, bigger/strategic bets later even if their absolute impact ceiling is high
 
 ---
 
+## Week of 2026-10-12
+
+First review since 2026-09-21 (3 weeks skipped). Baseline: `check-site` and
+`html-validate` clean, CI green. Ads delivering again (106 clicks / SGD62.57 / 1
+conversion, 5-11 Oct; 4 lead-form conversions in 30 days). Indexing still 5 of 13
+pages; see `SEO_RECOMMENDATIONS.md` 2026-10-12.
+
+| # | Topic | Impact | Effort | Status |
+|---|---|---|---|---|
+| 1 | **WhatsApp CTA on every service and blog page.** These are the Ads sitelink landing pages, and before this their only CTA sent people back to the homepage form. WhatsApp is the default contact channel in Singapore, and Google Ads itself is nudging "Click to WhatsApp". | High | Trivial | **Done**: secondary "See our services" button replaced with "WhatsApp us" (wa.me/6587847481) on 3 service pages + 7 blog pages. The nav already links services. |
+| 2 | **Count WhatsApp and phone clicks as Ads conversions.** Only form submits count today (4 in 30 days), which gives PMax very little signal and undercounts real leads. | High | Low | **Needs Dylan's decision**: make it Primary (PMax optimises for it; clicks are weaker leads than forms) or Secondary (observe only). Then create the action in Ads and add the click snippet. |
+| 3 | Remove the 2 inert conversion actions (GA4 "Submit lead form", auto-detected "Contact"). Both still list as Primary under account-default goals. | Low | Trivial | **Blocked for Claude** (auto-mode classifier denied the account change); Dylan to do it in Ads > Goals > Conversions: tick both, Edit > Remove. Keep "Submit lead form (1)". |
+| 4 | Ads ad strength / asset groups ("Improve to Excellent", Google estimates +1.9%): more headlines, descriptions and real photos | Med | Med | Queued; can draft copy offline for Dylan to paste |
+| 5 | Share images for the 5 remaining blog posts (carried from 09-21 #4) | Low-Med | Low | Queued; needs real photos or a design call |
+
+Visual-regression baselines will change for the 10 pages touched by #1 (button text).
+
+---
+
 ## Week of 2026-09-21
 
 Grounded in `git log` per file vs. sitemap dates, and a grep across share-image tags.
