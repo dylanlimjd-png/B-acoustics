@@ -782,3 +782,37 @@ on branded queries), so personalisation caveats from 2026-09-06 still apply.
    raising it.
 
 **Next run:** logged-out confirmation of finding 2; re-check `site:` count.
+
+### GSC + Ads follow-up — 2026-10-12 (login approved by Dylan this session)
+
+**Search Console**
+- Page indexing: 5 indexed, 2 not indexed (1 "page with redirect", 1 "crawled -
+  currently not indexed"). So Google knows only 7 URLs; the sitemap lists 13.
+- **Root cause is still the sitemap:** GSC's last read of `sitemap.xml` was
+  **21 Jul 2026** ("Success", 3 discovered pages). The 2026-08-28 resubmission
+  never took. The live file is fine (200, `application/xml`, 13 URLs, referenced
+  in robots.txt). **Resubmitted it today.**
+- URL Inspection on the 7 missing content pages showed every one as **"URL is
+  unknown to Google"** (no referring sitemap, no referring page). **Requested
+  indexing for all 7**: office acoustics + industrial noise service pages, /blog/,
+  NEA boundary noise, neighbour noise, HDB vs condo, home theatre cost. Privacy
+  page skipped.
+- Performance: 17 web-search clicks in total since July.
+- *Next:* in ~1 week, check the sitemap's "Last read" date has moved off 21 Jul
+  and the indexed count is above 5. If the sitemap is still unread, delete and
+  re-add it in GSC.
+
+**Google Ads** (account 854-323-3721, single PMax campaign)
+- Budget is now **SGD10/day** (memory said SGD15 on 2026-08-28; it was lowered
+  in between). Last 7 days (5–11 Oct): 2,294 impressions, 106 clicks, CTR 4.62%,
+  avg CPC SGD0.59, cost SGD62.57 (about 89% of the 7-day budget), **1 conversion**
+  (cost/conv SGD62.57).
+- Last 30 days: **4 "Submit lead form" conversions**, 0 "Contact".
+- Conversion tracking **works**: the manual tag action recorded its last
+  conversion on 9 Oct 20:00. It shows "Needs attention: no tag pings in 7 days",
+  which contradicts that, so treat it as a Google lag. Live site still has
+  `AW-18350815493` and the `R4F8CJ_4rekcEIXyrK5E` conversion snippet (curl
+  check).
+- "Limited by budget"; Google suggests raising it for an estimated +13.3%
+  conversions. At about SGD15–60 per lead the decision is Dylan's: compare with
+  how many of the 4 leads were real enquiries (enquiry digest records).
