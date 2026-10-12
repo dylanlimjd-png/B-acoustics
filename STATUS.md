@@ -10,9 +10,31 @@ For forward-looking strategy (what to pursue next, and in what order,
 beyond the immediate punch list below) see `ROADMAP.md` instead — this file
 stays backward-looking (what's done, what's open right now).
 
-Last updated: 2026-10-04 (daily enquiry digest + reach-out tracker live; see below). Previous: 2026-09-21 (Ads verification cleared, budget SGD10/day, indexing 5 pages, share images, CI pass, Vercel evaluation; full recap below). Earlier: 2026-09-06 (RSS feed, GSC/Ads recheck, sitemap freshness fix, a
+Last updated: 2026-10-12 (digest 9am + 4pm, GSC sitemap resubmitted + 7 indexing requests, WhatsApp CTA + click conversion; see below). Previous: 2026-10-04 (daily enquiry digest + reach-out tracker live). Earlier: 2026-09-21 (Ads verification cleared, budget SGD10/day, indexing 5 pages, share images, CI pass, Vercel evaluation; full recap below). Earlier: 2026-09-06 (RSS feed, GSC/Ads recheck, sitemap freshness fix, a
 full SEO ranking check, ROADMAP.md's marketing phase expanded, and new
 referral/follow-up outreach templates — full recap below).
+
+**2026-10-12 session:** all pushed (last commit `9407cb3`), CI green.
+1. **Digest now twice daily**: 9am SGT full digest, 4pm SGT only when new
+   enquiries/follow-ups arrived (`0dd46f4`, deployed). Quiet 4pm runs hold
+   status updates for the next 9am digest.
+2. **SEO ranking check**: `site:` 5 pages; party-wall page on page 1 for its
+   keyword (first non-branded ranking, confirm logged-out); GBP 4 interactions.
+3. **GSC (login approved)**: sitemap last read was still 21 Jul, resubmitted;
+   all 7 unindexed content pages were "URL unknown to Google", indexing
+   requested for each. Pages are technically clean, so backlinks (#6) are the
+   lever if nothing moves. **Check ~19 Oct.**
+4. **Ads**: delivering again (#36 resolved), 4 lead-form conversions in 30
+   days, budget SGD10/day "limited by budget" (Dylan's call). Dylan removed the
+   2 inert conversion actions. New Secondary conversion "WhatsApp or phone
+   click" wired sitewide (`9407cb3`). **Review early Nov whether to make it Primary.**
+5. **Continuous improvement week 2026-10-12**: WhatsApp CTA on all service and
+   blog pages (`660ba49`). Queued: ad-strength copy, blog share images.
+6. **Quotes**: Dylan confirmed AWARE Rev 2, Agilent, Wany Yishun and Kallang
+   clinic quotes are all sent. Wany Yishun and Agilent share QT-2610-01; next
+   quote starts at QT-2610-03.
+7. **Open for Dylan**: New Phoenix Park bid/no-bid (closes 30 Oct);
+   directory/backlink submissions (Claude can prep copy); keep soliciting GBP reviews.
 
 **2026-10-04 session:**
 1. **Enquiry digest LIVE** (`digest-worker/`, Cloudflare Worker `b-acoustics-digest`).
