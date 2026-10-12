@@ -9,6 +9,11 @@
   gtag('js', new Date());
 
   gtag('config', 'AW-18350815493');
+  // WhatsApp and phone taps count as a Secondary Ads conversion ("WhatsApp or phone click"): reported, not bid on.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="tel:"], a[href*="wa.me/"]');
+    if (a) gtag('event', 'conversion', {'send_to': 'AW-18350815493/FRn2CKq9tJodEIXyrK5E'});
+  });
 </script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
