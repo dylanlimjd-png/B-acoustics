@@ -749,3 +749,36 @@ dylanlimjd@gmail.com — flagged below where that matters for interpretation).
 **Next run:** re-check the two branded queries specifically to see if the
 recovery holds, ideally from a logged-out browser; continue tracking local
 pack absence and the GBP interaction count as a new baseline.
+
+## SEO ranking check — 2026-10-12
+
+Full 9-query rotation, `gl=sg&hl=en`. No login was performed, but the Chrome
+profile was already signed in as the GBP/Ads owner (the GBP and Ads panels showed
+on branded queries), so personalisation caveats from 2026-09-06 still apply.
+
+### Findings
+
+1. **`site:b-acoustics.com`: 5 pages, up from 3** (homepage, disclaimer, STC vs
+   NRC, party-wall service page, office soundproofing cost). First indexing
+   growth since the 2026-08-28 sitemap fix. Still 5 of ~13 URLs.
+   *Plan:* in GSC (ask Dylan before logging in), request indexing for the other
+   two service pages and the newer blog posts.
+2. **First non-branded page-1 ranking.** "party wall soundproofing Singapore"
+   shows the party-wall service page as roughly the 4th organic result. Possibly
+   lifted by personalisation; confirm from a logged-out browser next run.
+3. **Still nothing on page 1 for the other 5 target keywords**: acoustic
+   consultant, soundproofing, office acoustics, office soundproofing cost,
+   industrial noise compliance. The local pack shows the same competitors (JD
+   Acoustic, Aural-Aid, NoiseStop, ArteCoustic, TC Acoustic) and no B-Acoustics.
+4. **Branded searches are holding.** Bare `b-acoustics` returns the homepage #1
+   and party-wall page #2. The quoted `"B-Acoustics" acoustic consultant` query
+   returns 4 b-acoustics.com results, with a/b acoustics (Brisbane) mixed in.
+5. **GBP: 4 customer interactions** (up from 2 on 2026-09-06).
+6. **Ads (owner panel shown on the SERP):** the PMax campaign is **"Limited by
+   budget"** and stops running on busy days. Google's recommendation is to raise
+   the budget (est. +13.3% conversions), plus improve asset groups (+1.9%). The ad
+   is live with sitelinks (Office Acoustics, Office Cost Guide, Industrial Noise).
+   *Plan:* Dylan's call on budget; check actual conversions in Ads before
+   raising it.
+
+**Next run:** logged-out confirmation of finding 2; re-check `site:` count.
