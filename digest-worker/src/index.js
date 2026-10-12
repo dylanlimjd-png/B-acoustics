@@ -8,6 +8,9 @@ const MAX_BODY_CHARS = 60000;
 const DIGEST_FROM = 'B-Acoustics Digest <noreply@b-acoustics.com>';
 // Background briefs (web research) per run; more than this are listed without one. BRIEFS=off disables them.
 const DEFAULT_BRIEF_MAX = 5;
+// Two runs a day (see wrangler.jsonc): the 9am digest always goes out when there is anything to report; the 4pm
+// run only sends when new enquiries or client follow-ups arrived since the morning.
+const AFTERNOON_CRON = '0 8 * * *';
 
 const CATEGORIES = ['new_enquiry', 'client_follow_up', 'supplier_or_vendor', 'spam_or_marketing', 'other'];
 const REPORTABLE = new Set(['new_enquiry', 'client_follow_up']);
@@ -406,7 +409,7 @@ async function detectEmailReplies(env, open, nowIso) {
   return changed;
 }
 
-async function runDigest(env, { dryRun = false, briefs = true } = {}) {
+async function runDigest(env, { dryRun = false, briefs = true, newOnly = false } = {}) {
   const now = Date.now();
   const nowIso = new Date(now).toISOString();
   const { messages, nextState } = await fetchNewMessages(env);
@@ -473,10 +476,10 @@ async function runDigest(env, { dryRun = false, briefs = true } = {}) {
   const links = {};
   for (const r of [...fresh, ...waiting, ...visits]) links[r.id] = await statusLink(env, r.id);
 
-  const dateLabel = new Date(now).toLocaleDateString('en-SG', { timeZone: 'Asia/Singapore', day: 'numeric', month: 'short', year: 'numeric' });
-  const shouldSend = fresh.length || waiting.length || updates.length || visits.length;
+  const dateLabel = new Date(now).toLocaleDateString('en-SG', { timeZone: 'Asia/Singapore', day: 'numeric', month: 'short', year: 'numeric' }) + (newOnly ? ', afternoon' : '');
+  const shouldSend = newOnly ? fresh.length : fresh.length || waiting.length || updates.length || visits.length;
   const html = shouldSend ? renderDigest({ fresh, waiting, updates, visits, skipped, links, dateLabel, now }) : null;
-  const summary = { scanned: messages.length, fresh: fresh.length, briefed, waiting: waiting.length, updates: updates.length, visits: visits.length };
+  const summary = { newOnly, scanned: messages.length, fresh: fresh.length, briefed, waiting: waiting.length, updates: updates.length, visits: visits.length };
 
   if (dryRun) return { ...summary, html };
 
@@ -490,8 +493,9 @@ async function runDigest(env, { dryRun = false, briefs = true } = {}) {
     await sendEmail(env, recipients(env.DIGEST_TO), `Enquiry digest ${dateLabel}: ${parts.join(', ')}${urgent ? ` (${urgent} urgent)` : ''}`, html);
   }
 
-  // Persist only after the digest is out, so a failed run is retried next time.
-  for (const { r, e } of updates) {
+  // Persist only after the digest is out, so a failed run is retried next time. Updates held back by a quiet
+  // afternoon run stay unreported and appear in the next digest.
+  for (const { r, e } of html ? updates : []) {
     e.reported = true;
     dirty.add(r);
   }
@@ -574,7 +578,7 @@ async function handleStatusPage(request, env, url) {
 export default {
   async scheduled(controller, env, ctx) {
     try {
-      const result = await runDigest(env);
+      const result = await runDigest(env, { newOnly: controller.cron === AFTERNOON_CRON });
       console.log('Digest run', JSON.stringify(result));
     } catch (err) {
       console.error('Digest failed', err);
@@ -589,7 +593,8 @@ export default {
       return handleStatusPage(request, env, url);
     }
     // Manual trigger for testing: GET /run?dry=1 with "Authorization: Bearer <RUN_TOKEN>".
-    // dry=1 returns the digest HTML without sending or saving anything; brief=0 skips the (paid) web research.
+    // dry=1 returns the digest HTML without sending or saving anything; brief=0 skips the (paid) web research;
+    // afternoon=1 runs it as the 4pm new-enquiries-only digest.
     // POST /backfill (same auth) adds a brief to the oldest open enquiry without one; repeat until remaining is 0.
     if (url.pathname !== '/run' && url.pathname !== '/backfill') return new Response('Not found', { status: 404 });
     if (!env.RUN_TOKEN || request.headers.get('Authorization') !== `Bearer ${env.RUN_TOKEN}`) {
@@ -605,7 +610,7 @@ export default {
     }
     try {
       const dryRun = url.searchParams.get('dry') === '1';
-      const result = await runDigest(env, { dryRun, briefs: url.searchParams.get('brief') !== '0' });
+      const result = await runDigest(env, { dryRun, briefs: url.searchParams.get('brief') !== '0', newOnly: url.searchParams.get('afternoon') === '1' });
       if (dryRun && result.html) return new Response(result.html, { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
       return Response.json(result);
     } catch (err) {

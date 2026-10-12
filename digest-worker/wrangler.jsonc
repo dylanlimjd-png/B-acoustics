@@ -10,8 +10,9 @@
   // Run next to the Anthropic API: requests executed in some regions (e.g. the Hong Kong data centre) are refused
   // by the API with 403 "Request not allowed". Mailbox (Porkbun) and Resend are US-hosted too.
   "placement": { "mode": "targeted", "hostname": "api.anthropic.com" },
-  // 04:00 UTC = 12:00 noon Singapore, daily.
-  "triggers": { "crons": ["0 4 * * *"] },
+  // 01:00 UTC = 9am Singapore (full digest); 08:00 UTC = 4pm Singapore (only if new enquiries arrived).
+  // The 4pm expression must match AFTERNOON_CRON in src/index.js.
+  "triggers": { "crons": ["0 1 * * *", "0 8 * * *"] },
   "kv_namespaces": [
     { "binding": "DIGEST_STATE", "id": "f252e1bcf80d4861bf4eedba0d523bb8" }
   ],
