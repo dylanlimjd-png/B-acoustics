@@ -31,8 +31,8 @@ referral/follow-up outreach templates — full recap below).
 5. **Continuous improvement week 2026-10-12**: WhatsApp CTA on all service and
    blog pages (`660ba49`). Queued: ad-strength copy, blog share images.
 6. **Quotes**: Dylan confirmed AWARE Rev 2, Agilent, Wany Yishun and Kallang
-   clinic quotes are all sent. Wany Yishun and Agilent share QT-2610-01; next
-   quote starts at QT-2610-03.
+   clinic quotes are all sent. Wany Yishun and Agilent share QT-2610-01; suggested
+   next number QT-2610-03 (not yet confirmed by Dylan).
 7. **Open for Dylan**: New Phoenix Park bid/no-bid (closes 30 Oct);
    directory/backlink submissions (Claude can prep copy); keep soliciting GBP reviews.
 
