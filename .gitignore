@@ -4,3 +4,15 @@ test-results/
 playwright-report/
 blob-report/
 .lighthouseci/
+# private business notes live outside this public repo (../notes)
+STATUS.md
+SEO_RECOMMENDATIONS.md
+CONTINUOUS_IMPROVEMENT.md
+DESIGN_FEEDBACK.md
+ROADMAP.md
+*Outreach*.md
+*Backlink*.md
+Photo request list.md
+*PLAN*.md
+google-ads-*.md
+*.pdf

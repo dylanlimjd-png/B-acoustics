@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # SessionStart hook for this project. Two jobs:
+NOTES_DIR="${B_ACOUSTICS_NOTES:-../notes}"  # private business notes live outside the public repo
 # 1. Always surface STATUS.md's "Open items" table (the consolidated rollup
 #    across SEO_RECOMMENDATIONS.md, CONTINUOUS_IMPROVEMENT.md,
 #    DESIGN_FEEDBACK.md, and Photo request list.md) so a fresh session gets
@@ -15,11 +16,11 @@ today_epoch=$(date +%s)
 # Require the date to appear directly in the matched heading line (not just
 # anywhere in the file) so template/placeholder lines like "## Week of YYYY-MM-DD"
 # in the format-instructions footer are excluded, not mistaken for the latest entry.
-seo_date=$(grep -oE '## SEO ranking check.*[0-9]{4}-[0-9]{2}-[0-9]{2}' SEO_RECOMMENDATIONS.md 2>/dev/null | tail -1 | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}' | head -1)
+seo_date=$(grep -oE '## SEO ranking check.*[0-9]{4}-[0-9]{2}-[0-9]{2}' "$NOTES_DIR/SEO_RECOMMENDATIONS.md" 2>/dev/null | tail -1 | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}' | head -1)
 # CONTINUOUS_IMPROVEMENT.md prepends new weeks at the top (newest first) --
 # the opposite convention from SEO_RECOMMENDATIONS.md's append-at-bottom, so
 # this one needs head -1, not tail -1, to find the most recent entry.
-ci_date=$(grep -oE '## Week of [0-9]{4}-[0-9]{2}-[0-9]{2}' CONTINUOUS_IMPROVEMENT.md 2>/dev/null | head -1 | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}')
+ci_date=$(grep -oE '## Week of [0-9]{4}-[0-9]{2}-[0-9]{2}' "$NOTES_DIR/CONTINUOUS_IMPROVEMENT.md" 2>/dev/null | head -1 | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}')
 
 cadence_msg=""
 
@@ -49,7 +50,7 @@ if [ -n "$cadence_msg" ]; then
   cadence_msg="Cadence reminder:$cadence_msg (Both need an interactive session with claude-in-chrome for the SEO check.)"
 fi
 
-open_items=$(awk '/^## Open items/{flag=1; next} /^## /{flag=0} flag' STATUS.md 2>/dev/null)
+open_items=$(awk '/^## Open items/{flag=1; next} /^## /{flag=0} flag' "$NOTES_DIR/STATUS.md" 2>/dev/null)
 
 full_msg="B-Acoustics project status (from STATUS.md, the consolidated tracker across all trackers -- read that file directly for full detail/history, this is just the current punch list):
 ${open_items}
